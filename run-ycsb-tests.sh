@@ -1,5 +1,5 @@
 #!/bin/bash
-num_threads=( 1 5 10 15 20 25 )
+num_threads=( 1 5 10 15 20 25 30 35 40 )
 for num in "${num_threads[@]}"
 do
 	"./start-nmon.sh"
