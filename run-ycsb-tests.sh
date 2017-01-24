@@ -5,16 +5,16 @@ do
 	"./start-nmon.sh"
 
 	echo "Running YCSB for $num threads"
-	ssh dsl3 "cd tanuj/ycsb-jdbc-binding-0.11.0; ./run-ycsb-test.sh $num"
+	ssh dsl0 "cd tanuj/ycsb-jdbc-binding-0.11.0; ./run-ycsb-test.sh $num"
 	echo "Finished running YCSB"
 
 	echo "Waiting 120s for nmon to finish..."
 	sleep 120
 
-	path="./benchmarks/01.24.17.2/$num"
+	path="./benchmarks/01.24.17.3/$num"
 	mkdir -p $path
-	echo "Fetching ycsb-results from dsl3"
-	scp "dsl3:~/tanuj/ycsb-jdbc-binding-0.11.0/ycsb-results" $path
+	echo "Fetching ycsb-results from dsl0"
+	scp "dsl0:~/tanuj/ycsb-jdbc-binding-0.11.0/ycsb-results" $path
 	"./fetch-nmon-results.sh"
 	mv dsl* $path
 	echo ""
