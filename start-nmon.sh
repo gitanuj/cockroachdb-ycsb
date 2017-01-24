@@ -2,7 +2,7 @@
 #
 # Starts nmon on remote machines
 #
-servers=( "dsl0" )
+servers=( "dsl0" "dsl1" "dsl2" )
 for server in "${servers[@]}"
 do
 	echo "Starting nmon on $server"
