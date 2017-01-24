@@ -1,19 +1,25 @@
 #
 # python record-raft-status.py <num_of_recordings>
 #
-import requests, json, sys, time
+import requests, json, time
 
 URL = "http://128.111.44.237:8080/_status/raft"
 
 def fetch_status():
-	response = requests.get(URL)
-	data = response.json()
-	return data
+	data = None
+	try:
+		response = requests.get(URL)
+		data = response.json()
+	finally:
+		return data
 
 def record_status():
 	initial_ts = time.time()
 	data = fetch_status()
 	final_ts = time.time()
+	
+	if data is None:
+		return
 
 	ranges = data["ranges"]
 
@@ -27,7 +33,7 @@ def record_status():
 	print(", ".join(output))
 
 def main():
-	for i in range(int(sys.argv[1])):
+	while True:
 		record_status()
 		time.sleep(1)
 
