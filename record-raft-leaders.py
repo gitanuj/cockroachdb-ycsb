@@ -3,7 +3,7 @@
 #
 import requests, json, time
 
-URL = "http://128.111.44.237:8080/_status/raft"
+URL = "http://128.111.44.237:8081/_status/raft"
 
 def fetch_status():
 	data = None
