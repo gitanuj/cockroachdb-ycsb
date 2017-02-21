@@ -11,7 +11,7 @@ do
 	echo "Waiting 120s for nmon to finish..."
 	sleep 120
 
-	path="./benchmarks/01.24.17.6/$num"
+	path="./benchmarks/02.20.17.1/$num"
 	mkdir -p $path
 	echo "Fetching ycsb-results from dsl0"
 	scp "dsl0:~/tanuj/ycsb-jdbc-binding-0.11.0/ycsb-results" $path
