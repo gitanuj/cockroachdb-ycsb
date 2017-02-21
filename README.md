@@ -3,9 +3,7 @@
 2. ./cleanup.sh & ./startup.sh on servers
 3. ./init-test-db.sh on local machine
 4. load YCSB workload
-  1. ./start-nmon.sh from local machine
-  2. run YCSB workload
-  3. After nmon finishes, ./fetch-nmon-results.sh
+4. ./run-ycsb-tests.sh on local machine
 
 # Run YCSB on cockroachdb
 
