@@ -2,7 +2,7 @@
 #
 # Fecthes and then deletes nmon results from remote machines
 #
-servers=( "dsl0" "dsl1" "dsl2" )
+servers=( "dsl0" "dsl1" "dsl2" "dsl3" )
 for server in "${servers[@]}"
 do
 	echo "Fetching nmon results from $server"
