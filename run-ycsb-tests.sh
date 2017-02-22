@@ -6,7 +6,7 @@
 #
 num_threads=( 1 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 )
 ycsb_machine="dsl3"
-benchmarks_dir="02.20.17.3"
+benchmarks_dir="02.21.17.1"
 for num in "${num_threads[@]}"
 do
 	"./start-nmon.sh"
