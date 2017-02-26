@@ -4,9 +4,9 @@
 #
 
 benchmark_dir_prefix="02.26.17"
-read_types=( "0" "1" )
+read_types=( "0" "1" "2" "3" )
 workloads=( "uniform" "zipfian" )
-repetitions=1
+repetitions=3
 
 all_machines=( "dsl0" "dsl1" "dsl2" "dsl3" )
 crdb_machines=( "dsl0" "dsl1" "dsl2" )
@@ -45,7 +45,7 @@ function run {
 	echo "Setting up crdb servers"
 	for server in "${crdb_machines[@]}"
 	do
-		ssh $server "cd $wdir; COCKROACH_READ_TYPE=$read_type; ./startup.sh" &
+		ssh $server "cd $wdir; export COCKROACH_READ_TYPE=$read_type; ./startup.sh" &
 	done
 	sleep 10
 
@@ -55,7 +55,7 @@ function run {
 	# load workload
 	echo "Loading $workload workload"
 	ssh "$ycsb_machine" "cd $ycsb_wdir; bin/ycsb load jdbc -P cockroachdb-ycsb/$workload -P cockroachdb-ycsb/cockroachdb.properties -s -cp cockroachdb-ycsb/bin/postgresql-9.4.1212.jre7.jar -threads 20"
-	sleep 10
+	sleep 5
 
 	# run benchmark
 	"./run-benchmark.sh" "$benchmark_dir" "$workload"
@@ -69,7 +69,7 @@ for read_type in "${read_types[@]}"
 do
 	for workload in "${workloads[@]}"
 	do
-		for (( c=0; c<=$repetitions; c++ ))
+		for (( c=0; c<$repetitions; c++ ))
 		do
 			cleanup
 			run $read_type $workload $c

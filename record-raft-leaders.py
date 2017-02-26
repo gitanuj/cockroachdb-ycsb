@@ -14,16 +14,13 @@ def fetch_status():
 		return data
 
 def record_status():
-	initial_ts = time.time()
 	data = fetch_status()
-	final_ts = time.time()
-	
 	if data is None:
 		return
 
 	ranges = data["ranges"]
 
-	timestamp = str(int((initial_ts + final_ts)/2 * 1000))
+	timestamp = str(int(time.time()))
 	output = [timestamp]
 	for range in ranges.values():
 		rangeId = range["rangeId"]

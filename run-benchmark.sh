@@ -8,7 +8,7 @@
 benchmarks_dir="$1"
 workload="$2"
 
-num_threads=( 20 )
+num_threads=( 1 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 )
 all_machines=( "dsl0" "dsl1" "dsl2" "dsl3" )
 crdb_machines=( "dsl0" "dsl1" "dsl2" )
 wdir="~/tanuj"
@@ -72,7 +72,7 @@ done
 
 # stop record-raft-leaders.csv
 echo "Stopping record-raft-leaders.py on $ycsb_machine"
-ssh "$ycsb_machine" "kill -9 \$(ps -ef | grep 'record-raft-leaders' | grep -v grep | awk '{ print \$2 }')"
+ssh "$ycsb_machine" "kill \$(ps -ef | grep 'record-raft-leaders' | grep -v grep | awk '{ print \$2 }')"
 
 # fetch raft-leaders.csv
 path="./benchmarks/$benchmarks_dir"
