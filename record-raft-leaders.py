@@ -32,7 +32,7 @@ def record_status():
 def main():
 	while True:
 		record_status()
-		time.sleep(1)
+		time.sleep(2)
 
 if __name__ == '__main__':
 	main()
