@@ -9,5 +9,6 @@ benchmark_dirs=( "02.26.17.1" "02.26.17.2" "02.26.17.3" )
 
 for benchmark_dir in "${benchmark_dirs[@]}"
 do
-	"./run-benchmark.sh $benchmark_dir"
+	echo "Running benchmark: $benchmark_dir"
+	"./run-benchmark.sh" "$benchmark_dir"
 done

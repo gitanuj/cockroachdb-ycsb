@@ -9,8 +9,14 @@ benchmarks_dir="$1"
 num_threads=( 1 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 )
 all_machines=( "dsl0" "dsl1" "dsl2" "dsl3" )
 crdb_machines=( "dsl0" "dsl1" "dsl2" )
+wdir="~/tanuj"
 ycsb_machine="dsl3"
+ycsb_wdir="~/tanuj/ycsb-jdbc-binding-0.11.0"
 nmon_time_secs="120"
+
+# start record-raft-leaders.py
+echo "Starting record-raft-leaders.py on $ycsb_machine"
+ssh "$ycsb_machine" "cd $ycsb_wdir; python -u cockroachdb-ycsb/record-raft-leaders.py &> raft-leaders.csv &"
 
 for num in "${num_threads[@]}"
 do
@@ -18,44 +24,41 @@ do
 	for server in "${all_machines[@]}"
 	do
 		echo "Starting nmon on $server"
-		ssh $server "cd tanuj; nmon -f -s1 -c $nmon_time_secs"
+		ssh $server "cd $wdir; nmon -f -s1 -c $nmon_time_secs"
 	done
-
-	start_ts=`date +%s`
 
 	# start ycsb
 	echo "Running YCSB for $num threads"
-	ssh $ycsb_machine "cd tanuj/ycsb-jdbc-binding-0.11.0; bin/ycsb run jdbc -P cockroachdb-ycsb/workload -P cockroachdb-ycsb/cockroachdb.properties -s -cp cockroachdb-ycsb/bin/postgresql-9.4.1212.jre7.jar -threads $num &> ycsb-results"
+	ssh $ycsb_machine "cd $ycsb_wdir; bin/ycsb run jdbc -P cockroachdb-ycsb/workload -P cockroachdb-ycsb/cockroachdb.properties -s -cp cockroachdb-ycsb/bin/postgresql-9.4.1212.jre7.jar -threads $num &> ycsb-results"
 	echo "Finished running YCSB"
-
-	# wait for nmon to finish
-	finish_ts=`date +%s`
-	elapsed_ts=$(($finish_ts-$start_ts))
-	to_wait_ts=$(($nmon_time_secs-$elapsed_ts))
-	echo "Waiting $to_wait_ts secs for nmon to finish..."
-	sleep $to_wait_ts
 
 	path="./benchmarks/$benchmarks_dir/$num"
 	mkdir -p $path
 
 	# fetch ycsb_results
-	"./fetch-using-ssh.sh" "$ycsb_machine" "~/tanuj/ycsb-jdbc-binding-0.11.0/ycsb-results" "$path"
-
-	# fetch data.dump
-	for server in "${crdb_machines[@]}"
-	do
-		"./fetch-using-ssh.sh" "$server" "~/tanuj/data.dump" "$path/$server"
-	done
+	"./fetch-using-ssh.sh" "$ycsb_machine" "$ycsb_wdir/ycsb-results" "$path"
 
 	# fetch *.nmon
 	for server in "${all_machines[@]}"
 	do
-		"./fetch-using-ssh.sh" "$server" "~/tanuj/*.nmon" "$path/$server"
+		echo "Stopping nmon on $server"
+		ssh $server "cd $wdir; kill -USR2 $(ps -ef | grep "nmon" | grep -v grep | awk '{ print $2 }')"
+		"./fetch-using-ssh.sh" "$server" "$wdir/*.nmon" "$path/$server"
+	done
+
+	# fetch data.dump
+	for server in "${crdb_machines[@]}"
+	do
+		"./fetch-using-ssh.sh" "$server" "$wdir/data.dump" "$path/$server"
 	done
 
 	echo ""
 done
 
+# stop record-raft-leaders.csv
+echo "Stopping record-raft-leaders.py on $ycsb_machine"
+ssh "$ycsb_machine" "cd $ycsb_wdir; kill -9 $(ps -ef | grep "record-raft-leaders" | grep -v grep | awk '{ print $2 }')"
+
 # fetch raft-leaders.csv
 path="./benchmarks/$benchmarks_dir"
-"./fetch-using-ssh.sh" "$ycsb_machine" "~/tanuj/ycsb-jdbc-binding-0.11.0/raft-leaders.csv" "$path"
+"./fetch-using-ssh.sh" "$ycsb_machine" "$ycsb_wdir/raft-leaders.csv" "$path"

@@ -1,6 +1,6 @@
 # Steps
-1. ./startup.sh on client
-2. ./cleanup.sh & ./startup.sh on servers
+1. ./cleanup.sh every server
+2. ./startup.sh crdb servers
 3. ./init-test-db.sh on local machine
 4. load YCSB workload
 4. ./run-ycsb-tests.sh on local machine
