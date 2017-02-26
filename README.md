@@ -3,7 +3,7 @@
 2. ./startup.sh crdb servers
 3. ./init-test-db.sh on local machine
 4. load YCSB workload
-4. ./run-ycsb-tests.sh on local machine
+4. ./run-benchmark-ntimes.sh on local machine
 
 # Run YCSB on cockroachdb
 

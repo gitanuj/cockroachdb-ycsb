@@ -5,7 +5,7 @@
 # PS: Update run-benchmark.sh and vars below
 #
 
-benchmark_dirs=( "02.26.17.1" "02.26.17.2" "02.26.17.3" )
+benchmark_dirs=( "02.26.17.4" "02.26.17.5" "02.26.17.6" )
 
 for benchmark_dir in "${benchmark_dirs[@]}"
 do
