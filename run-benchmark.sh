@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# Usage: ./run-ycsb-tests.sh
-# Make sure to update vars before running
+# Usage: ./run-benchmark.sh <benchmarks_dir>
+# Runs a ycsb benchmark for different num of threads
 #
 
-benchmarks_dir="02.25.17.1"
+benchmarks_dir="$1"
 num_threads=( 1 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 )
 all_machines=( "dsl0" "dsl1" "dsl2" "dsl3" )
 crdb_machines=( "dsl0" "dsl1" "dsl2" )
