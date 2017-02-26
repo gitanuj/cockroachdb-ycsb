@@ -19,8 +19,12 @@ ycsb_wdir="~/tanuj/ycsb-jdbc-binding-0.11.0"
 # $2: remote path
 # $3: local path
 function fetchUsingSsh {
+	ssh_addr=$1
+	remote_path=$2
+	local_path=$3
+
 	echo "Fetching $remote_path from $ssh_addr"
-	mkdir -p $local_path
+	mkdir -p "$local_path"
 	scp "$ssh_addr:$remote_path" "$local_path"
 	ssh "$ssh_addr" "rm -rf $remote_path"
 }
@@ -44,7 +48,7 @@ do
 	echo "Finished running YCSB"
 
 	path="./benchmarks/$benchmarks_dir/$num"
-	mkdir -p $path
+	mkdir -p "$path"
 
 	# fetch ycsb_results
 	fetchUsingSsh "$ycsb_machine" "$ycsb_wdir/ycsb-results" "$path"

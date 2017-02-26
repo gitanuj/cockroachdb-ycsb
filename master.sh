@@ -33,7 +33,7 @@ function run {
 	workload=$2
 	count=$3
 
-	echo "Running for [read_type: $read_type, workload: $workload, count: $count]"
+	echo "Run started [read_type: $read_type, workload: $workload, count: $count]"
 
 	benchmark_dir="$benchmark_dir_prefix.$read_type.$workload.$count"
 	
@@ -54,13 +54,14 @@ function run {
 
 	# load workload
 	echo "Loading $workload workload"
-	ssh "$ycsb_machine" "cd $ycsb_wdir; bin/ycsb load jdbc -P cockroachdb-ycsb/$workload -P cockroachdb-ycsb/cockroachdb.properties -s -cp cockroachdb-ycsb/bin/postgresql-9.4.1212.jre7.jar -threads 10"
+	ssh "$ycsb_machine" "cd $ycsb_wdir; bin/ycsb load jdbc -P cockroachdb-ycsb/$workload -P cockroachdb-ycsb/cockroachdb.properties -s -cp cockroachdb-ycsb/bin/postgresql-9.4.1212.jre7.jar -threads 20"
 	sleep 10
 
 	# run benchmark
-	"./run-benchmark.sh" "$benchmark_dir $workload"
+	"./run-benchmark.sh" "$benchmark_dir" "$workload"
 
-	echo "Finished!"
+	echo "Run finished!"
+	echo ""
 }
 
 # main
