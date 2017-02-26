@@ -11,4 +11,5 @@ for benchmark_dir in "${benchmark_dirs[@]}"
 do
 	echo "Running benchmark: $benchmark_dir"
 	"./run-benchmark.sh" "$benchmark_dir"
+	echo ""
 done

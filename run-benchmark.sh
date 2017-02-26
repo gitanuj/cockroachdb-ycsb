@@ -14,8 +14,8 @@ ycsb_machine="dsl3"
 ycsb_wdir="~/tanuj/ycsb-jdbc-binding-0.11.0"
 
 # start record-raft-leaders.py
-echo "Starting record-raft-leaders.py on $ycsb_machine"
-ssh "$ycsb_machine" "cd $ycsb_wdir; python -u cockroachdb-ycsb/record-raft-leaders.py &> raft-leaders.csv &"
+# echo "Starting record-raft-leaders.py on $ycsb_machine"
+# ssh "$ycsb_machine" "cd $ycsb_wdir; python -u cockroachdb-ycsb/record-raft-leaders.py &> raft-leaders.csv &"
 
 for num in "${num_threads[@]}"
 do
@@ -41,7 +41,7 @@ do
 	for server in "${all_machines[@]}"
 	do
 		echo "Stopping nmon on $server"
-		ssh "$server" "cd $wdir; kill -USR2 \$(ps -ef | grep 'nmon' | grep -v grep | awk '{ print \$2 }')"
+		ssh "$server" "kill -USR2 \$(ps -ef | grep 'nmon' | grep -v grep | awk '{ print \$2 }')"
 		"./fetch-using-ssh.sh" "$server" "$wdir/*.nmon" "$path/$server"
 	done
 
@@ -55,9 +55,9 @@ do
 done
 
 # stop record-raft-leaders.csv
-echo "Stopping record-raft-leaders.py on $ycsb_machine"
-ssh "$ycsb_machine" "cd $ycsb_wdir; kill -9 \$(ps -ef | grep 'record-raft-leaders' | grep -v grep | awk '{ print \$2 }')"
+# echo "Stopping record-raft-leaders.py on $ycsb_machine"
+# ssh "$ycsb_machine" "kill -9 \$(ps -ef | grep 'record-raft-leaders' | grep -v grep | awk '{ print \$2 }')"
 
 # fetch raft-leaders.csv
-path="./benchmarks/$benchmarks_dir"
-"./fetch-using-ssh.sh" "$ycsb_machine" "$ycsb_wdir/raft-leaders.csv" "$path"
+# path="./benchmarks/$benchmarks_dir"
+# "./fetch-using-ssh.sh" "$ycsb_machine" "$ycsb_wdir/raft-leaders.csv" "$path"
