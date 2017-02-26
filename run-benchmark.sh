@@ -2,6 +2,7 @@
 #
 # Usage: ./run-benchmark.sh <benchmarks_dir>
 # Runs a ycsb benchmark for different num of threads
+# PS: Update workload file and the vars below
 #
 
 benchmarks_dir="$1"

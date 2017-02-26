@@ -2,6 +2,7 @@
 #
 # Usage: ./run-benchmark-ntimes.sh
 # Runs run-benchmark.sh n times
+# PS: Update run-benchmark.sh and vars below
 #
 
 benchmark_dirs=( "02.26.17.1" "02.26.17.2" "02.26.17.3" )
