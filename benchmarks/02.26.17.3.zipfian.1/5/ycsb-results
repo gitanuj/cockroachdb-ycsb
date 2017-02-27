@@ -1,0 +1,69 @@
+java -cp cockroachdb-ycsb/bin/postgresql-9.4.1212.jre7.jar:/home/migr/tanuj/ycsb-jdbc-binding-0.11.0/jdbc-binding/conf:/home/migr/tanuj/ycsb-jdbc-binding-0.11.0/conf:/home/migr/tanuj/ycsb-jdbc-binding-0.11.0/lib/htrace-core4-4.1.0-incubating.jar:/home/migr/tanuj/ycsb-jdbc-binding-0.11.0/lib/core-0.11.0.jar:/home/migr/tanuj/ycsb-jdbc-binding-0.11.0/lib/commons-collections-3.2.1.jar:/home/migr/tanuj/ycsb-jdbc-binding-0.11.0/lib/jackson-core-asl-1.9.4.jar:/home/migr/tanuj/ycsb-jdbc-binding-0.11.0/lib/geronimo-jms_1.1_spec-1.1.1.jar:/home/migr/tanuj/ycsb-jdbc-binding-0.11.0/lib/jackson-mapper-asl-1.9.4.jar:/home/migr/tanuj/ycsb-jdbc-binding-0.11.0/lib/geronimo-jta_1.1_spec-1.1.1.jar:/home/migr/tanuj/ycsb-jdbc-binding-0.11.0/lib/serp-1.13.1.jar:/home/migr/tanuj/ycsb-jdbc-binding-0.11.0/lib/openjpa-jdbc-2.1.1.jar:/home/migr/tanuj/ycsb-jdbc-binding-0.11.0/lib/openjpa-lib-2.1.1.jar:/home/migr/tanuj/ycsb-jdbc-binding-0.11.0/lib/commons-pool-1.5.4.jar:/home/migr/tanuj/ycsb-jdbc-binding-0.11.0/lib/openjpa-kernel-2.1.1.jar:/home/migr/tanuj/ycsb-jdbc-binding-0.11.0/lib/HdrHistogram-2.1.4.jar:/home/migr/tanuj/ycsb-jdbc-binding-0.11.0/lib/commons-lang-2.4.jar:/home/migr/tanuj/ycsb-jdbc-binding-0.11.0/lib/jdbc-binding-0.11.0.jar com.yahoo.ycsb.Client -db com.yahoo.ycsb.db.JdbcDBClient -P cockroachdb-ycsb/zipfian -P cockroachdb-ycsb/cockroachdb.properties -s -threads 5 -t
+YCSB Client 0.11.0
+Command line: -db com.yahoo.ycsb.db.JdbcDBClient -P cockroachdb-ycsb/zipfian -P cockroachdb-ycsb/cockroachdb.properties -s -threads 5 -t
+Loading workload...
+Starting test.
+2017-02-26 16:25:53:918 0 sec: 0 operations; est completion in 0 seconds 
+Adding shard node URL: jdbc:postgresql://128.111.44.237:26267/test
+Adding shard node URL: jdbc:postgresql://128.111.44.237:26267/test
+Adding shard node URL: jdbc:postgresql://128.111.44.237:26267/test
+Adding shard node URL: jdbc:postgresql://128.111.44.237:26267/test
+Adding shard node URL: jdbc:postgresql://128.111.44.237:26267/test
+Adding shard node URL: jdbc:postgresql://128.111.44.241:26267/test
+Adding shard node URL: jdbc:postgresql://128.111.44.241:26267/test
+Adding shard node URL: jdbc:postgresql://128.111.44.241:26267/test
+Adding shard node URL: jdbc:postgresql://128.111.44.241:26267/test
+Adding shard node URL: jdbc:postgresql://128.111.44.241:26267/test
+Adding shard node URL: jdbc:postgresql://128.111.44.238:26267/test
+Adding shard node URL: jdbc:postgresql://128.111.44.238:26267/test
+Adding shard node URL: jdbc:postgresql://128.111.44.238:26267/test
+Adding shard node URL: jdbc:postgresql://128.111.44.238:26267/test
+Adding shard node URL: jdbc:postgresql://128.111.44.238:26267/test
+Using shards: 3, batchSize:-1, fetchSize: -1
+Using shards: 3, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 3, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 3, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 3, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+2017-02-26 16:26:03:897 10 sec: 6499 operations; 649.84 current ops/sec; est completion in 2 minutes [READ: Count=6180, Max=62879, Min=588, Avg=1759.56, 90=2163, 99=4563, 99.9=7083, 99.99=30767] [UPDATE: Count=319, Max=117503, Min=1740, Avg=4198.99, 90=4643, 99=8823, 99.9=117503, 99.99=117503] 
+2017-02-26 16:26:13:897 20 sec: 6499 operations; 0 current ops/sec; est completion in 4 minutes [READ: Count=0, Max=0, Min=9223372036854775807, Avg=�, 90=0, 99=0, 99.9=0, 99.99=0] [UPDATE: Count=0, Max=0, Min=9223372036854775807, Avg=�, 90=0, 99=0, 99.9=0, 99.99=0] 
+2017-02-26 16:26:23:897 30 sec: 7586 operations; 108.69 current ops/sec; est completion in 6 minutes [READ: Count=1029, Max=27295743, Min=858, Avg=54667.14, 90=2323, 99=3765, 99.9=27000831, 99.99=27295743] [UPDATE: Count=61, Max=25968639, Min=2670, Avg=429639.85, 90=5035, 99=6999, 99.9=25968639, 99.99=25968639] 
+2017-02-26 16:26:33:897 40 sec: 31659 operations; 2407.54 current ops/sec; est completion in 1 minutes [READ: Count=22834, Max=28131327, Min=681, Avg=4331.05, 90=2155, 99=4367, 99.9=6247, 99.99=875007] [UPDATE: Count=1240, Max=816127, Min=1733, Avg=4546.68, 90=4643, 99=7867, 99.9=64415, 99.99=816127] 
+2017-02-26 16:26:43:897 50 sec: 56422 operations; 2476.05 current ops/sec; est completion in 39 seconds [READ: Count=23473, Max=1415167, Min=623, Avg=1883.17, 90=2139, 99=5043, 99.9=8111, 99.99=361471] [UPDATE: Count=1288, Max=402687, Min=1793, Avg=4384.52, 90=4727, 99=9535, 99.9=259711, 99.99=402687] 
+2017-02-26 16:26:53:897 60 sec: 83184 operations; 2676.47 current ops/sec; est completion in 13 seconds [READ: Count=25405, Max=368383, Min=689, Avg=1751.27, 90=2105, 99=5375, 99.9=8123, 99.99=49983] [UPDATE: Count=1355, Max=119423, Min=1786, Avg=3953.23, 90=4663, 99=9007, 99.9=59903, 99.99=119423] 
+2017-02-26 16:27:01:075 67 sec: 100000 operations; 2342.71 current ops/sec; [READ: Count=16045, Max=12135, Min=658, Avg=1726.3, 90=2137, 99=5915, 99.9=9663, 99.99=11799] [CLEANUP: Count=5, Max=460, Min=155, Avg=246.4, 90=460, 99=460, 99.9=460, 99.99=460] [UPDATE: Count=771, Max=11871, Min=1626, Avg=3798.44, 90=4603, 99=9463, 99.9=10935, 99.99=11871] 
+[OVERALL], RunTime(ms), 67178.0
+[OVERALL], Throughput(ops/sec), 1488.5825716752508
+[TOTAL_GCS_PS_Scavenge], Count, 2.0
+[TOTAL_GC_TIME_PS_Scavenge], Time(ms), 11.0
+[TOTAL_GC_TIME_%_PS_Scavenge], Time(%), 0.01637440828842776
+[TOTAL_GCS_PS_MarkSweep], Count, 0.0
+[TOTAL_GC_TIME_PS_MarkSweep], Time(ms), 0.0
+[TOTAL_GC_TIME_%_PS_MarkSweep], Time(%), 0.0
+[TOTAL_GCs], Count, 2.0
+[TOTAL_GC_TIME], Time(ms), 11.0
+[TOTAL_GC_TIME_%], Time(%), 0.01637440828842776
+[READ], Operations, 94966.0
+[READ], AverageLatency(us), 2973.8522418549796
+[READ], MinLatency(us), 588.0
+[READ], MaxLatency(us), 2.8131327E7
+[READ], 95thPercentileLatency(us), 2355.0
+[READ], 99thPercentileLatency(us), 4915.0
+[READ], Return=OK, 94966
+[CLEANUP], Operations, 5.0
+[CLEANUP], AverageLatency(us), 246.4
+[CLEANUP], MinLatency(us), 155.0
+[CLEANUP], MaxLatency(us), 460.0
+[CLEANUP], 95thPercentileLatency(us), 460.0
+[CLEANUP], 99thPercentileLatency(us), 460.0
+[UPDATE], Operations, 5034.0
+[UPDATE], AverageLatency(us), 9359.928883591578
+[UPDATE], MinLatency(us), 1626.0
+[UPDATE], MaxLatency(us), 2.5968639E7
+[UPDATE], 95thPercentileLatency(us), 5483.0
+[UPDATE], 99thPercentileLatency(us), 8903.0
+[UPDATE], Return=OK, 5034
