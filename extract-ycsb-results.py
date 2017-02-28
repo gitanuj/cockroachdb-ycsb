@@ -1,43 +1,58 @@
 #
-# Extracts results for a benchmark done using different number of threads for Google Sheets
-# python extract-ycsb-results.py <results-dir>
+# Extracts results for a benchmark done using different number of threads for
+# "Raft Read Scalability - YCSB Benchmarks" Google Sheet
+# python extract-ycsb-results.py <results-dir0> <results-dir1> <results-dir2>
 #
 import sys
+import numpy
 
 DIRS = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]
 
-def extract(param1, param2):
+def extract(dir, param1, param2):
 	result = []
 
 	for d in DIRS:
-		file = sys.argv[1] + "/" + str(d) + "/ycsb-results"
+		file = dir + "/" + str(d) + "/ycsb-results"
+		found = False
 		for line in open(file):
 			vals = line.split(', ')
 			
 			if len(vals) > 2:
 				if (vals[0] == param1) and (vals[1] == param2):
-					result.append(vals[2].rstrip())
+					found = True
+					result.append(float(vals[2].rstrip()))
+					break
+
+		if found == False:
+			result.append(0)
 
 	return result
 
+def extractAvg(param1, param2):
+	result = [0] * len(DIRS)
+	size = len(sys.argv)
+
+	for i in range(1, size):
+		dir = sys.argv[i]
+		vals = extract(dir, param1, param2)
+		result = [x + y for x, y in zip(result, vals)]
+
+	return [x / 3 for x in result]
+
 def main():
-	print("[OVERALL], Throughput(ops/sec)")
-	result = extract('[OVERALL]', 'Throughput(ops/sec)')
-	print("\t".join(result))
-
-	print("[UPDATE], AverageLatency(us)")
-	result = extract('[UPDATE]', 'AverageLatency(us)')
-	print("\t".join(result))
-	print("[UPDATE], 95thPercentileLatency(us)")
-	result = extract('[UPDATE]', '95thPercentileLatency(us)')
-	print("\t".join(result))
-
-	print("[READ], AverageLatency(us)")
-	result = extract('[READ]', 'AverageLatency(us)')
-	print("\t".join(result))
-	print("[READ], 95thPercentileLatency(us)")
-	result = extract('[READ]', '95thPercentileLatency(us)')
-	print("\t".join(result))
+	result = []
+	result.append(extractAvg('[OVERALL]', 'Throughput(ops/sec)'))
+	result.append(extractAvg('[UPDATE]', 'AverageLatency(us)'))
+	result.append(extractAvg('[UPDATE]', '95thPercentileLatency(us)'))
+	result.append(extractAvg('[UPDATE]', '99thPercentileLatency(us)'))
+	result.append(extractAvg('[READ]', 'AverageLatency(us)'))
+	result.append(extractAvg('[READ]', '95thPercentileLatency(us)'))
+	result.append(extractAvg('[READ]', '99thPercentileLatency(us)'))
+	result.append(extractAvg('[UPDATE-FAILED]', 'Operations'))
+	
+	nparr = numpy.array(result)
+	nparr = numpy.transpose(nparr)
+	numpy.savetxt('output.txt', nparr, fmt='%f', delimiter='\t')
 
 if __name__ == '__main__':
 	main()
