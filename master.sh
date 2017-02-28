@@ -1,6 +1,9 @@
 #!/bin/bash
 #
 # Usage: ./master.sh
+# Uses:
+#		local:	init-test-db.sh, run-benchmark.sh
+#		remote:	startup.sh, cleanup.sh
 #
 
 benchmark_dir_prefix="02.26.17"
