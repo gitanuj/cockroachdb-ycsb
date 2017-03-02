@@ -19,7 +19,7 @@ def extract(index):
 		for machine in MACHINES:
 			for parentDir in parentDirs:
 				file = parentDir + "/" + str(childDir) + "/" + machine + "/data.dump"
-				sum += numpy.sum(numpy.loadtxt(file, dtype=int, delimiter=', ', usecols=(index + 1)))
+				sum += numpy.sum(numpy.loadtxt(file, dtype=int, delimiter=',', usecols=(index + 1)))
 		result[i] = sum / (len(MACHINES) * len(parentDirs))
 
 	return result
