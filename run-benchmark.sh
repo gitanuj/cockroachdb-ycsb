@@ -4,15 +4,10 @@
 # Runs a ycsb benchmark for different num of threads
 #
 
+source ./env-vars.sh
+
 benchmarks_dir="$1"
 workload="$2"
-
-num_threads=( 1 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 )
-all_machines=( "dsl0" "dsl1" "dsl2" "dsl3" )
-crdb_machines=( "dsl0" "dsl1" "dsl2" )
-wdir="~/tanuj"
-ycsb_machine="dsl3"
-ycsb_wdir="~/tanuj/ycsb-jdbc-binding-0.11.0"
 
 # $1: ssh addr
 # $2: remote path
@@ -30,7 +25,14 @@ function fetchUsingSsh {
 
 # start record-raft-leaders.py
 echo "Starting record-raft-leaders.py on $ycsb_machine"
-ssh "$ycsb_machine" "cd $ycsb_wdir; python -u cockroachdb-ycsb/record-raft-leaders.py &> raft-leaders.csv &"
+ssh "$ycsb_machine" "cd $ycsb_wdir; python -u record-raft-leaders.py ${crdb_internal_ips[0]}:$crdb_http_port &> raft-leaders.csv" &
+
+# remove initial data.dump files
+for server in "${crdb_machines[@]}"
+do
+	echo "Removing *.dump from $server"
+	ssh "$server" "cd $crdb_wdir; rm -rf *.dump"
+done
 
 for num in "${num_threads[@]}"
 do
@@ -38,12 +40,12 @@ do
 	for server in "${all_machines[@]}"
 	do
 		echo "Starting nmon on $server"
-		ssh "$server" "cd $wdir; nmon -f -s1 -c 10000"
+		ssh "$server" "cd $nmon_wdir; nmon -f -s1 -c 10000"
 	done
 
 	# start ycsb
 	echo "Running YCSB for $num threads"
-	ssh "$ycsb_machine" "cd $ycsb_wdir; bin/ycsb run jdbc -P cockroachdb-ycsb/$workload -P cockroachdb-ycsb/cockroachdb.properties -s -cp cockroachdb-ycsb/bin/postgresql-9.4.1212.jre7.jar -threads $num &> ycsb-results"
+	ssh "$ycsb_machine" "cd $ycsb_wdir; bin/ycsb run jdbc -P workloads/$workload -P cockroachdb.properties -p db.url=$jdbc_urls -s -cp bin/postgresql-9.4.1212.jre7.jar -threads $num &> ycsb-results"
 	echo "Finished running YCSB"
 
 	path="./benchmarks/$benchmarks_dir/$num"
@@ -57,13 +59,13 @@ do
 	do
 		echo "Stopping nmon on $server"
 		ssh "$server" "kill -USR2 \$(ps -ef | grep 'nmon' | grep -v grep | awk '{ print \$2 }')"
-		fetchUsingSsh "$server" "$wdir/*.nmon" "$path/$server"
+		fetchUsingSsh "$server" "$nmon_wdir/*.nmon" "$path/$server"
 	done
 
 	# fetch data.dump
 	for server in "${crdb_machines[@]}"
 	do
-		fetchUsingSsh "$server" "$wdir/data.dump" "$path/$server"
+		fetchUsingSsh "$server" "$crdb_wdir/data.dump" "$path/$server"
 	done
 
 	echo ""

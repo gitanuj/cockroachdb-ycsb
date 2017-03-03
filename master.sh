@@ -1,21 +1,10 @@
 #!/bin/bash
 #
-# Usage: ./master.sh
-# Uses:
-#		local:	init-test-db.sh, run-benchmark.sh
-#		remote:	startup.sh, cleanup.sh
+# Usage: ./master.sh <arg>
+# If "clean" is supplied as arg, only cleanup is done
 #
 
-benchmark_dir_prefix="02.26.17"
-read_types=( "0" "1" "2" "3" )
-workloads=( "uniform" "zipfian" )
-repetitions=3
-
-all_machines=( "dsl0" "dsl1" "dsl2" "dsl3" )
-crdb_machines=( "dsl0" "dsl1" "dsl2" )
-wdir="~/tanuj"
-ycsb_machine="dsl3"
-ycsb_wdir="~/tanuj/ycsb-jdbc-binding-0.11.0"
+source ./env-vars.sh
 
 function cleanup {
 	echo "Cleaning up YCSB client"
@@ -24,7 +13,7 @@ function cleanup {
 	echo "Cleaning up crdb servers"
 	for server in "${crdb_machines[@]}"
 	do
-		ssh $server "cd $wdir; ./cleanup.sh"
+		ssh $server "cd $crdb_wdir; ./cleanup.sh"
 	done
 }
 
@@ -36,38 +25,44 @@ function run {
 	workload=$2
 	count=$3
 
-	echo "Run started [read_type: $read_type, workload: $workload, count: $count]"
+	printf "\n\n\n"
+	echo "!!!RUN STARTED [read_type: $read_type, workload: $workload, count: $count]"
 
 	benchmark_dir="$benchmark_dir_prefix.$read_type.$workload.$count"
-	
-	# setup YCSB client
-	echo "Setting up YCSB client"
-	ssh $ycsb_machine "cd $ycsb_wdir; ./startup.sh"
 
 	# setup crdb servers
 	echo "Setting up crdb servers"
-	for server in "${crdb_machines[@]}"
+	for i in "${!crdb_machines[@]}"
 	do
-		ssh $server "cd $wdir; export COCKROACH_READ_TYPE=$read_type; ./startup.sh" &
+		if [ $i == 0 ]; then
+			ssh ${crdb_machines[$i]} "cd $crdb_wdir; export COCKROACH_READ_TYPE=$read_type; ./cockroach start --background --insecure --host=${crdb_internal_ips[i]} --port=$crdb_port --http-port=$crdb_http_port" &
+		else
+			ssh ${crdb_machines[$i]} "cd $crdb_wdir; export COCKROACH_READ_TYPE=$read_type; ./cockroach start --background --insecure --host=${crdb_internal_ips[i]} --port=$crdb_port --http-port=$crdb_http_port --join=${crdb_internal_ips[0]}:$crdb_port" &
+		fi
 	done
 	sleep 10
 
 	# init db
-	"./init-test-db.sh"
+	cockroach sql --url="postgresql://root@${crdb_ips[0]}:$crdb_port?sslmode=disable" --execute="create database $db_name"
+	java -cp ycsb-client-files/lib/jdbc-binding-0.12.0.jar:ycsb-client-files/bin/postgresql-9.4.1212.jre7.jar com.yahoo.ycsb.db.JdbcDBCreateTable -P ycsb-client-files/cockroachdb.properties -n usertable -p db.url=jdbc:postgresql://${crdb_ips[0]}:$crdb_port/$db_name
 
 	# load workload
 	echo "Loading $workload workload"
-	ssh "$ycsb_machine" "cd $ycsb_wdir; bin/ycsb load jdbc -P cockroachdb-ycsb/$workload -P cockroachdb-ycsb/cockroachdb.properties -s -cp cockroachdb-ycsb/bin/postgresql-9.4.1212.jre7.jar -threads 20"
+	ssh "$ycsb_machine" "cd $ycsb_wdir; bin/ycsb load jdbc -P workloads/$workload -P cockroachdb.properties -p db.url=$jdbc_urls -s -cp bin/postgresql-9.4.1212.jre7.jar -threads 20"
 	sleep 5
 
 	# run benchmark
 	"./run-benchmark.sh" "$benchmark_dir" "$workload"
 
-	echo "Run finished!"
-	echo ""
+	echo "RUN FINISHED!!!"
+	printf "\n\n\n"
 }
 
-# main
+if [[ $# == 1 ]] && [[ $1 == "clean" ]]; then
+	cleanup
+	exit 0
+fi
+
 for read_type in "${read_types[@]}"
 do
 	for workload in "${workloads[@]}"

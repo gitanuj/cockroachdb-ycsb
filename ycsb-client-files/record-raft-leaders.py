@@ -1,9 +1,10 @@
 #
-# python record-raft-status.py <num_of_recordings>
+# python record-raft-status.py <crdb_ip:http_port>
 #
-import requests, json, time
+import requests, json, time, sys
 
-URL = "http://128.111.44.237:8081/_status/raft"
+REMOTE_ADDR = sys.argv[1]
+URL = "http://" + REMOTE_ADDR + "/_status/raft"
 
 def fetch_status():
 	data = None
