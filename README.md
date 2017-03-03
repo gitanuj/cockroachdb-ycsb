@@ -9,5 +9,5 @@
 2. Copy over contents from `ycsb-client-files`
 
 # Steps
-1. Update vars in env-vars.sh
-2. Execute ./master.sh
+1. Update vars in `env-vars.sh`
+2. Execute `master.sh`
