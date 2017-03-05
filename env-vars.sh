@@ -1,22 +1,22 @@
 #!/bin/bash
 
 # benchmark vars
-benchmark_dir_prefix="03.03.2017"
-read_types=( "0" "1" "2" "3" )
-workloads=( "uniform" "zipfian" )
-repetitions=3
+benchmark_dir_prefix="03.04.2017.ec2minirun"
+read_types=( "0" "1" )
+workloads=( "uniform" )
+repetitions=1
 num_threads=( 1 5 15 20 25 30 35 40 45 50 55 60 65 70 75 80 )
 
 
 # remote addrs
-all_machines=( "dsl2" "dsl3" )
+all_machines=( "c0" "c1" "c2" "c3" "c4" "y0" )
 all_ips=( "128.111.44.238" "128.111.44.163" )
 
-crdb_machines=( "dsl2" )
+crdb_machines=( "c0" "c1" "c2" "c3" "c4" )
 crdb_ips=( "128.111.44.238" )
 crdb_internal_ips=( "128.111.44.238" )
 
-ycsb_machine="dsl3"
+ycsb_machine="y0"
 ycsb_ip="128.111.44.163"
 
 

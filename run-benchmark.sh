@@ -24,8 +24,8 @@ function fetchUsingSsh {
 }
 
 # start record-raft-leaders.py
-echo "Starting record-raft-leaders.py on $ycsb_machine"
-ssh "$ycsb_machine" "cd $ycsb_wdir; python -u record-raft-leaders.py ${crdb_internal_ips[0]}:$crdb_http_port &> raft-leaders.csv" &
+# echo "Starting record-raft-leaders.py on $ycsb_machine"
+# ssh "$ycsb_machine" "cd $ycsb_wdir; python -u record-raft-leaders.py ${crdb_internal_ips[0]}:$crdb_http_port &> raft-leaders.csv" &
 
 # remove initial data.dump files
 for server in "${crdb_machines[@]}"
@@ -34,6 +34,7 @@ do
 	ssh "$server" "cd $crdb_wdir; rm -rf *.dump"
 done
 
+# run benchmark for diff num of threads
 for num in "${num_threads[@]}"
 do
 	# start nmon
@@ -72,9 +73,9 @@ do
 done
 
 # stop record-raft-leaders.csv
-echo "Stopping record-raft-leaders.py on $ycsb_machine"
-ssh "$ycsb_machine" "kill \$(ps -ef | grep 'record-raft-leaders' | grep -v grep | awk '{ print \$2 }')"
+# echo "Stopping record-raft-leaders.py on $ycsb_machine"
+# ssh "$ycsb_machine" "kill \$(ps -ef | grep 'record-raft-leaders' | grep -v grep | awk '{ print \$2 }')"
 
 # fetch raft-leaders.csv
-path="./benchmarks/$benchmarks_dir"
-fetchUsingSsh "$ycsb_machine" "$ycsb_wdir/raft-leaders.csv" "$path"
+# path="./benchmarks/$benchmarks_dir"
+# fetchUsingSsh "$ycsb_machine" "$ycsb_wdir/raft-leaders.csv" "$path"
