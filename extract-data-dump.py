@@ -8,7 +8,7 @@ import sys
 import numpy
 
 DIRS = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]
-MACHINES = ['dsl0', 'dsl1', 'dsl2']
+MACHINES = ['c0', 'c1', 'c3']
 
 def extract(index):
 	parentDirs = sys.argv[1:]
@@ -27,9 +27,9 @@ def extract(index):
 def main():
 	result = []
 
-	result.append(extract(9))
-	result.append(numpy.subtract(extract(4), extract(2)))
-	result.append(numpy.subtract(extract(7), extract(6)))
+	result.append(extract(10))
+	result.append(extract(1))
+	result.append(extract(6))
 
 	nparr = numpy.array(result)
 	nparr = numpy.transpose(nparr)

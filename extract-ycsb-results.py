@@ -37,7 +37,7 @@ def extractAvg(param1, param2):
 		vals = extract(dir, param1, param2)
 		result = [x + y for x, y in zip(result, vals)]
 
-	return [x / 3 for x in result]
+	return [x / (size-1) for x in result]
 
 def main():
 	result = []
