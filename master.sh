@@ -34,16 +34,18 @@ function run {
 	echo "Setting up crdb servers"
 	for i in "${!crdb_machines[@]}"
 	do
+		remote_cmd="cd $crdb_wdir; export COCKROACH_READ_TYPE=$read_type; export COCKROACH_LHFALLBACK_PROB=$lhfallback_prob; ./cockroach start --background --insecure --host=${crdb_internal_ips[i]} --port=$crdb_port --http-port=$crdb_http_port"
 		if [ $i == 0 ]; then
-			ssh ${crdb_machines[$i]} "cd $crdb_wdir; export COCKROACH_READ_TYPE=$read_type; ./cockroach start --background --insecure --host=${crdb_internal_ips[i]} --port=$crdb_port --http-port=$crdb_http_port" &
+			ssh ${crdb_machines[$i]} "$remote_cmd" &
 		else
-			ssh ${crdb_machines[$i]} "cd $crdb_wdir; export COCKROACH_READ_TYPE=$read_type; ./cockroach start --background --insecure --host=${crdb_internal_ips[i]} --port=$crdb_port --http-port=$crdb_http_port --join=${crdb_internal_ips[0]}:$crdb_port" &
+			ssh ${crdb_machines[$i]} "$remote_cmd --join=${crdb_internal_ips[0]}:$crdb_port" &
 		fi
 	done
 	sleep 10
 
 	# init db
-	cockroach sql --url="postgresql://root@${crdb_ips[0]}:$crdb_port?sslmode=disable" --execute="create database $db_name"
+	echo 'num_replicas: $num_replicas' | ./cockroach --url="postgresql://root@${crdb_ips[0]}:$crdb_port?sslmode=disable" zone set .default -f -
+	./cockroach sql --url="postgresql://root@${crdb_ips[0]}:$crdb_port?sslmode=disable" --execute="create database $db_name"
 	java -cp ycsb-client-files/lib/jdbc-binding-0.12.0.jar:ycsb-client-files/bin/postgresql-9.4.1212.jre7.jar com.yahoo.ycsb.db.JdbcDBCreateTable -P ycsb-client-files/cockroachdb.properties -n usertable -p db.url=jdbc:postgresql://${crdb_ips[0]}:$crdb_port/$db_name
 
 	# load workload
