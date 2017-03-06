@@ -47,7 +47,7 @@ function run {
 	ssh ${crdb_machines[0]} "cd $crdb_wdir; echo 'num_replicas: $num_replicas' | ./cockroach --url='${pg_urls[0]}' zone set .default -f -"
 	ssh ${crdb_machines[0]} "cd $crdb_wdir; echo 'range_max_bytes: $range_max_bytes' | ./cockroach --url='${pg_urls[0]}' zone set .default -f -"
 	ssh ${crdb_machines[0]} "cd $crdb_wdir; ./cockroach sql --url='${pg_urls[0]}' --execute='create database $db_name'"
-	ssh $ycsb_machine "cd $ycsb_wdir; java -cp lib/jdbc-binding-0.12.0.jar:bin/postgresql-9.4.1212.jre7.jar com.yahoo.ycsb.db.JdbcDBCreateTable -P cockroachdb.properties -n usertable -p db.url='${jdbc_urls[0]}'"
+	ssh $ycsb_machine "cd $ycsb_wdir; $cmd_ycsb_create_table"
 
 	# load workload
 	echo "Loading $workload workload"

@@ -62,8 +62,11 @@ done
 jdbc_urls=()
 for i in "${!crdb_ips[@]}"
 do
-	jdbc_urls+=("jdbc:postgresql://${crdb_ips[$i]}:$crdb_port/$db_name")
+	jdbc_urls+=("jdbc:postgresql://${crdb_ips[$i]}:$crdb_port/$db_name?loglevel=1")
 done
+
+postgresql_jar="postgresql-9.4.1212.jre7.jar"
+jdbc_binding_jar="ycsb/lib/jdbc-binding-0.13.0-SNAPSHOT.jar"
 
 ################
 ### Commands ###
@@ -77,6 +80,7 @@ cmd_rm_crdb_files="rm -rf cockroach-data; rm -rf *.dump"
 cmd_rm_nmon_files="rm -rf *.nmon"
 
 cmd_setup_crdb_env_vars="export COCKROACH_READ_TYPE=$read_type; export COCKROACH_LHFALLBACK_PROB=$lhfallback_prob"
+cmd_ycsb_create_table="java -cp $jdbc_binding_jar:$postgresql_jar com.yahoo.ycsb.db.JdbcDBCreateTable -P cockroachdb.properties -n usertable -p db.url='${jdbc_urls[0]}'"
 
 ########################
 ### common functions ###
@@ -115,5 +119,5 @@ function echoYcsbCmd {
 	workload="$2"
 	threads="$3"
 
-	echo "bin/ycsb $loadOrRun jdbc -P $workload -P cockroachdb.properties -p db.url='`joinBy , ${jdbc_urls[@]}`' -s -cp bin/postgresql-9.4.1212.jre7.jar -threads $threads"
+	echo "ycsb/bin/ycsb $loadOrRun jdbc -P $workload -P cockroachdb.properties -p db.url='`joinBy , ${jdbc_urls[@]}`' -s -cp $postgresql_jar -threads $threads"
 }
