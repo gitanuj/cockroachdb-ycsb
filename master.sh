@@ -8,12 +8,12 @@ source "./common.sh"
 
 function cleanup {
 	echo "Cleaning up YCSB client"
-	ssh $ycsb_machine "cd $ycsb_wdir; ./cleanup.sh"
+	ssh $ycsb_machine "cd $ycsb_wdir; $cmd_kill_nmon; $cmd_rm_nmon_files"
 
 	echo "Cleaning up crdb servers"
 	for server in "${crdb_machines[@]}"
 	do
-		ssh $server "cd $crdb_wdir; ./cleanup.sh"
+		ssh $server "cd $crdb_wdir; $cmd_kill_crdb; $cmd_rm_crdb_files; $cmd_kill_nmon; $cmd_rm_nmon_files"
 	done
 }
 
@@ -34,7 +34,7 @@ function run {
 	echo "Setting up crdb servers"
 	for i in "${!crdb_machines[@]}"
 	do
-		remote_cmd="cd $crdb_wdir; export COCKROACH_READ_TYPE=$read_type; export COCKROACH_LHFALLBACK_PROB=$lhfallback_prob; ./cockroach start --background --insecure --host=${crdb_internal_ips[i]} --port=$crdb_port --http-port=$crdb_http_port"
+		remote_cmd="cd $crdb_wdir; $cmd_setup_crdb_env_vars; ./cockroach start --background --insecure --host=${crdb_internal_ips[i]} --port=$crdb_port --http-port=$crdb_http_port"
 		if [ $i == 0 ]; then
 			ssh ${crdb_machines[$i]} "$remote_cmd" &
 		else
@@ -44,18 +44,18 @@ function run {
 	sleep 10
 
 	# init db
-	echo "num_replicas: $num_replicas" | ./cockroach --url="postgresql://root@${crdb_ips[0]}:$crdb_port?sslmode=disable" zone set .default -f -
-	echo "range_max_bytes: $range_max_bytes" | ./cockroach --url="postgresql://root@${crdb_ips[0]}:$crdb_port?sslmode=disable" zone set .default -f -
-	./cockroach sql --url="postgresql://root@${crdb_ips[0]}:$crdb_port?sslmode=disable" --execute="create database $db_name"
-	java -cp ycsb-client-files/lib/jdbc-binding-0.12.0.jar:ycsb-client-files/bin/postgresql-9.4.1212.jre7.jar com.yahoo.ycsb.db.JdbcDBCreateTable -P ycsb-client-files/cockroachdb.properties -n usertable -p db.url=jdbc:postgresql://${crdb_ips[0]}:$crdb_port/$db_name
+	ssh ${crdb_machines[0]} "cd $crdb_wdir; echo 'num_replicas: $num_replicas' | ./cockroach --url='${pg_urls[0]}' zone set .default -f -"
+	ssh ${crdb_machines[0]} "cd $crdb_wdir; echo 'range_max_bytes: $range_max_bytes' | ./cockroach --url='${pg_urls[0]}' zone set .default -f -"
+	ssh ${crdb_machines[0]} "cd $crdb_wdir; ./cockroach sql --url='${pg_urls[0]}' --execute='create database $db_name'"
+	ssh $ycsb_machine "cd $ycsb_wdir; java -cp lib/jdbc-binding-0.12.0.jar:bin/postgresql-9.4.1212.jre7.jar com.yahoo.ycsb.db.JdbcDBCreateTable -P cockroachdb.properties -n usertable -p db.url='${jdbc_urls[0]}'"
 
 	# load workload
 	echo "Loading $workload workload"
-	ssh $ycsb_machine "cd $ycsb_wdir; bin/ycsb load jdbc -P workloads/$workload -P cockroachdb.properties -p db.url=$jdbc_urls -s -cp bin/postgresql-9.4.1212.jre7.jar -threads 20"
+	ssh $ycsb_machine "cd $ycsb_wdir; `echoYcsbCmd load workloads/$workload 20`"
 
 	# warmup
 	echo "Warming up using $workload workload"
-	ssh $ycsb_machine "cd $ycsb_wdir; bin/ycsb run jdbc -P workloads/$workload -P cockroachdb.properties -p db.url=$jdbc_urls -s -cp bin/postgresql-9.4.1212.jre7.jar -threads 20"
+	ssh $ycsb_machine "cd $ycsb_wdir; `echoYcsbCmd run workloads/$workload 20`"
 	sleep 5
 
 	# run benchmark
@@ -64,7 +64,7 @@ function run {
 	# fetch db logs
 	for i in "${!crdb_machines[@]}"
 	do
-		fetchUsingSsh "${crdb_names[$i]}" "${crdb_machines[$i]}" "$crdb_wdir/cockroach-data/logs/*" "$benchmark_dir/logs/${crdb_names[$i]}"
+		fetchUsingSsh "${crdb_names[$i]}" "${crdb_machines[$i]}" "$crdb_wdir/cockroach-data/logs/*" "benchmarks/$benchmark_dir/logs/${crdb_names[$i]}"
 	done
 
 	echo "RUN FINISHED!!!"
@@ -89,5 +89,7 @@ do
 done
 cleanup
 
-echo "Terminating EC2 instances..."
-python "ec2.py" "stop" "${all_ec2_ids[@]}"
+if [[ ! -z ${all_ec2_ids[@]} ]]; then
+	echo "Terminating EC2 instances..."
+	python "ec2.py" "stop" "${all_ec2_ids[@]}"	
+fi

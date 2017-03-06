@@ -32,7 +32,7 @@ do
 
 	# start ycsb
 	echo "Running YCSB for $num threads"
-	ssh $ycsb_machine "cd $ycsb_wdir; bin/ycsb run jdbc -P workloads/$workload -P cockroachdb.properties -p db.url=$jdbc_urls -s -cp bin/postgresql-9.4.1212.jre7.jar -threads $num &> ycsb-results"
+	ssh $ycsb_machine "cd $ycsb_wdir; `echoYcsbCmd run workloads/$workload $num` &> ycsb-results"
 	echo "Finished running YCSB"
 
 	path="./benchmarks/$benchmarks_dir/$num"
@@ -45,7 +45,7 @@ do
 	for i in "${!all_machines[@]}"
 	do
 		echo "Stopping nmon on ${all_names[i]}"
-		ssh ${all_machines[$i]} "kill -USR2 \$(ps -ef | grep 'nmon' | grep -v grep | awk '{ print \$2 }')"
+		ssh ${all_machines[$i]} "$cmd_stop_nmon"
 		fetchUsingSsh "${all_names[$i]}" "${all_machines[$i]}" "$nmon_wdir/*.nmon" "$path/${all_names[$i]}"
 	done
 
