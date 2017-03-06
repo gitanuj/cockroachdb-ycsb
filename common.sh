@@ -46,6 +46,7 @@ ycsb_machine=${all_machines[$len_all-1]}
 ycsb_ip=${all_ips[$len_all-1]}
 
 num_replicas=$(($len_all-1))
+range_max_bytes=$((10*64*1024*1024))
 lhfallback_prob=`go run lhfallback-prob.go $num_replicas`
 
 for i in "${!crdb_ips[@]}"
