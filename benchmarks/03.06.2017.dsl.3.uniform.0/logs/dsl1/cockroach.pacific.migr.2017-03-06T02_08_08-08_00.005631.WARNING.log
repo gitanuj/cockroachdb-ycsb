@@ -1,0 +1,14 @@
+W170306 02:08:08.026836 10 util/log/clog.go:1003  [config] file created at: 2017/03/06 02:08:08
+W170306 02:08:08.026836 10 util/log/clog.go:1003  [config] running on machine: pacific
+W170306 02:08:08.026836 10 util/log/clog.go:1003  [config] binary: CockroachDB c154fda (linux amd64, built 2017/03/06 08:18:10, go1.7.1)
+W170306 02:08:08.026836 10 util/log/clog.go:1003  [config] arguments: [./cockroach start --insecure --host=128.111.44.241 --port=26267 --http-port=8081 --join=128.111.44.237:26267]
+W170306 02:08:08.026836 10 util/log/clog.go:1003  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg
+W170306 02:08:08.026836 10 server/server.go:157  [n?] running in insecure mode, this is strongly discouraged. See --insecure.
+W170306 02:08:08.027158 10 gossip/gossip.go:1138  [n?] no incoming or outgoing connections
+W170306 02:08:08.030085 10 server/config.go:322  soft open file descriptor limit 4096 is under the recommended limit 15000; this may decrease performance
+please see https://www.cockroachlabs.com/docs/recommended-production-settings.html for more details
+W170306 02:08:08.030909 29 gossip/client.go:119  [n?] failed to start gossip client to 128.111.44.237:26267: rpc error: code = 14 desc = grpc: the connection is unavailable
+W170306 02:17:53.425910 1072003 storage/intent_resolver.go:338  [n3,s3,r7/3:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=da088936 key=/Table/51/1/"user5145289391664587620"/0 rw=true pri=0.03134296 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488795473.266952901,5 orig=1488795473.245963597,0 max=1488795473.246864927,14 wto=false rop=false
+W170306 02:17:53.509191 1073096 storage/intent_resolver.go:338  [n3,s3,r7/3:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=da088936 key=/Table/51/1/"user5145289391664587620"/0 rw=true pri=0.03134296 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488795473.266952901,5 orig=1488795473.245963597,0 max=1488795473.246864927,14 wto=false rop=false
+W170306 02:17:53.698668 1075000 storage/intent_resolver.go:338  [n3,s3,r7/3:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=da088936 key=/Table/51/1/"user5145289391664587620"/0 rw=true pri=0.03134296 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488795473.266952901,5 orig=1488795473.245963597,0 max=1488795473.246864927,14 wto=false rop=false
+W170306 02:17:54.419477 1081637 storage/intent_resolver.go:338  [n3,s3,r7/3:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=16954de5 key=/Table/51/1/"user4207976167479164017"/0 rw=true pri=0.00018259 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488795474.360247958,1 orig=1488795474.347744270,0 max=1488795474.363889488,29 wto=false rop=false

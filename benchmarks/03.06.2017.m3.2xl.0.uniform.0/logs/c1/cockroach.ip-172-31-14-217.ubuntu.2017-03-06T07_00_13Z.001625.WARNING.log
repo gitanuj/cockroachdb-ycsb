@@ -1,0 +1,167 @@
+W170306 07:00:13.969392 8 util/log/clog.go:1003  [config] file created at: 2017/03/06 07:00:13
+W170306 07:00:13.969392 8 util/log/clog.go:1003  [config] running on machine: ip-172-31-14-217
+W170306 07:00:13.969392 8 util/log/clog.go:1003  [config] binary: CockroachDB c154fda-dirty (linux amd64, built 2017/03/06 04:25:34, go1.8)
+W170306 07:00:13.969392 8 util/log/clog.go:1003  [config] arguments: [./cockroach start --insecure --host=172.31.14.217 --port=26267 --http-port=8081 --join=172.31.11.34:26267]
+W170306 07:00:13.969392 8 util/log/clog.go:1003  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg
+W170306 07:00:13.969390 8 server/server.go:157  [n?] running in insecure mode, this is strongly discouraged. See --insecure.
+W170306 07:00:13.969704 8 gossip/gossip.go:1138  [n?] no incoming or outgoing connections
+W170306 07:00:36.383649 148 storage/engine/rocksdb.go:1057  batch [2/699/0] commit took 1.407214026s (>500ms):
+goroutine 148 [running]:
+runtime/debug.Stack(0x1807660, 0x24910e0, 0xc420014258)
+	/usr/local/go/src/runtime/debug/stack.go:24 +0x79
+github.com/cockroachdb/cockroach/pkg/storage/engine.(*rocksDBBatch).Commit(0xc4214eda40, 0x7f0efc8d5080, 0xc420dc6cf0)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/engine/rocksdb.go:1057 +0x169
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).handleRaftReadyRaftMuLocked(0xc4201c8600, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/replica.go:2679 +0x4c2
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRaftRequest(0xc4201ce000, 0x7f0efc8d5080, 0xc420dc6ba0, 0xc4211c8a70, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:3111 +0xc45
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRequestQueue(0xc4201ce000, 0x7)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:3344 +0x169
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc4202ee160, 0xc420354090)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:241 +0x260
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2()
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:181 +0x33
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc420354090, 0xc4204641c0)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0x7d
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:197 +0x66
+W170306 07:00:36.383657 150 storage/engine/rocksdb.go:1057  batch [2/604/0] commit took 734.677912ms (>500ms):
+goroutine 150 [running]:
+runtime/debug.Stack(0x1807660, 0x24910e0, 0xc420014258)
+	/usr/local/go/src/runtime/debug/stack.go:24 +0x79
+github.com/cockroachdb/cockroach/pkg/storage/engine.(*rocksDBBatch).Commit(0xc42100a8c0, 0x7f0efc8d5080, 0xc420d83200)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/engine/rocksdb.go:1057 +0x169
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).handleRaftReadyRaftMuLocked(0xc4201c8300, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/replica.go:2679 +0x4c2
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRaftRequest(0xc4201ce000, 0x7f0efc8d5080, 0xc420d83080, 0xc420e7c000, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:3111 +0xc45
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRequestQueue(0xc4201ce000, 0x1)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:3344 +0x169
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc4202ee160, 0xc420354090)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:241 +0x260
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2()
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:181 +0x33
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc420354090, 0xc420464220)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0x7d
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:197 +0x66
+W170306 07:00:36.383777 148 storage/replica.go:564  [n5,s5,r7/5:/{Table/51-Max},@c4201c8600] raftMu: mutex held by github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRaftRequest for 1.407372056s (>500ms):
+goroutine 148 [running]:
+runtime/debug.Stack(0x20cdc98, 0x20cdcd8, 0x48)
+	/usr/local/go/src/runtime/debug/stack.go:24 +0x79
+github.com/cockroachdb/cockroach/pkg/util/syncutil.ThresholdLogger.func1(0x53e2cb18)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/syncutil/timedmutex.go:67 +0xe1
+github.com/cockroachdb/cockroach/pkg/util/syncutil.(*TimedMutex).Unlock(0xc4201c8678)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/syncutil/timedmutex.go:97 +0xa1
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRaftRequest(0xc4201ce000, 0x7f0efc8d5080, 0xc420dc6ba0, 0xc4211c8a70, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:3116 +0xc69
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRequestQueue(0xc4201ce000, 0x7)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:3344 +0x169
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc4202ee160, 0xc420354090)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:241 +0x260
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2()
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:181 +0x33
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc420354090, 0xc4204641c0)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0x7d
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:197 +0x66
+W170306 07:00:36.383979 150 storage/replica.go:564  [n5,s5,r1/5:/{Min-Table/11},@c4201c8300] raftMu: mutex held by github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRaftRequest for 734.86816ms (>500ms):
+goroutine 150 [running]:
+runtime/debug.Stack(0x20cdc98, 0x20cdcd8, 0x48)
+	/usr/local/go/src/runtime/debug/stack.go:24 +0x79
+github.com/cockroachdb/cockroach/pkg/util/syncutil.ThresholdLogger.func1(0x2bcd32c0)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/syncutil/timedmutex.go:67 +0xe1
+github.com/cockroachdb/cockroach/pkg/util/syncutil.(*TimedMutex).Unlock(0xc4201c8378)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/syncutil/timedmutex.go:97 +0xa1
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRaftRequest(0xc4201ce000, 0x7f0efc8d5080, 0xc420d83080, 0xc420e7c000, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:3116 +0xc69
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRequestQueue(0xc4201ce000, 0x1)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:3344 +0x169
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc4202ee160, 0xc420354090)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:241 +0x260
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2()
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:181 +0x33
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc420354090, 0xc420464220)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0x7d
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:197 +0x66
+W170306 07:01:08.256622 153 storage/engine/rocksdb.go:1057  batch [1/51/0] commit took 1.207903629s (>500ms):
+goroutine 153 [running]:
+runtime/debug.Stack(0x1807660, 0x24910e0, 0xc420014258)
+	/usr/local/go/src/runtime/debug/stack.go:24 +0x79
+github.com/cockroachdb/cockroach/pkg/storage/engine.(*rocksDBBatch).Commit(0xc420e84380, 0xc4216921b0, 0x249b320)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/engine/rocksdb.go:1057 +0x169
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).handleRaftReadyRaftMuLocked(0xc4201c8600, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/replica.go:2679 +0x4c2
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRaftRequest(0xc4201ce000, 0x7f0efc8d5080, 0xc421692090, 0xc420308000, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:3111 +0xc45
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRequestQueue(0xc4201ce000, 0x7)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:3344 +0x169
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc4202ee160, 0xc420354090)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:241 +0x260
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2()
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:181 +0x33
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc420354090, 0xc420464280)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0x7d
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:197 +0x66
+W170306 07:01:08.256672 157 storage/engine/rocksdb.go:1057  batch [2/604/0] commit took 1.103237085s (>500ms):
+goroutine 157 [running]:
+runtime/debug.Stack(0x1807660, 0x24910e0, 0xc420014258)
+	/usr/local/go/src/runtime/debug/stack.go:24 +0x79
+github.com/cockroachdb/cockroach/pkg/storage/engine.(*rocksDBBatch).Commit(0xc4215a9a40, 0x7f0efc8d5080, 0xc4219b6960)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/engine/rocksdb.go:1057 +0x169
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).handleRaftReadyRaftMuLocked(0xc4201c8300, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/replica.go:2679 +0x4c2
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRaftRequest(0xc4201ce000, 0x7f0efc8d5080, 0xc4219b6810, 0xc4220d3800, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:3111 +0xc45
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRequestQueue(0xc4201ce000, 0x1)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:3344 +0x169
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc4202ee160, 0xc420354090)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:241 +0x260
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2()
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:181 +0x33
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc420354090, 0xc420464300)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0x7d
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:197 +0x66
+W170306 07:01:08.256758 157 storage/replica.go:564  [n5,s5,r1/5:/{Min-Table/11},@c4201c8300] raftMu: mutex held by github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRaftRequest for 1.103413064s (>500ms):
+goroutine 157 [running]:
+runtime/debug.Stack(0x20cdc98, 0x20cdcd8, 0x48)
+	/usr/local/go/src/runtime/debug/stack.go:24 +0x79
+github.com/cockroachdb/cockroach/pkg/util/syncutil.ThresholdLogger.func1(0x41c4bf48)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/syncutil/timedmutex.go:67 +0xe1
+github.com/cockroachdb/cockroach/pkg/util/syncutil.(*TimedMutex).Unlock(0xc4201c8378)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/syncutil/timedmutex.go:97 +0xa1
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRaftRequest(0xc4201ce000, 0x7f0efc8d5080, 0xc4219b6810, 0xc4220d3800, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:3116 +0xc69
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRequestQueue(0xc4201ce000, 0x1)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:3344 +0x169
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc4202ee160, 0xc420354090)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:241 +0x260
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2()
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:181 +0x33
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc420354090, 0xc420464300)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0x7d
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:197 +0x66
+W170306 07:01:08.256964 153 storage/replica.go:564  [n5,s5,r7/5:/{Table/51-Max},@c4201c8600] raftMu: mutex held by github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRaftRequest for 1.208348654s (>500ms):
+goroutine 153 [running]:
+runtime/debug.Stack(0x20cdc98, 0x20cdcd8, 0x48)
+	/usr/local/go/src/runtime/debug/stack.go:24 +0x79
+github.com/cockroachdb/cockroach/pkg/util/syncutil.ThresholdLogger.func1(0x4805efee)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/syncutil/timedmutex.go:67 +0xe1
+github.com/cockroachdb/cockroach/pkg/util/syncutil.(*TimedMutex).Unlock(0xc4201c8678)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/syncutil/timedmutex.go:97 +0xa1
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRaftRequest(0xc4201ce000, 0x7f0efc8d5080, 0xc421692090, 0xc420308000, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:3116 +0xc69
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).processRequestQueue(0xc4201ce000, 0x7)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:3344 +0x169
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).worker(0xc4202ee160, 0xc420354090)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:241 +0x260
+github.com/cockroachdb/cockroach/pkg/storage.(*raftScheduler).Start.func2()
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/scheduler.go:181 +0x33
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker.func1(0xc420354090, 0xc420464280)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:196 +0x7d
+created by github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunWorker
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:197 +0x66
