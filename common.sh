@@ -62,7 +62,7 @@ done
 jdbc_urls=()
 for i in "${!crdb_ips[@]}"
 do
-	jdbc_urls+=("jdbc:postgresql://${crdb_ips[$i]}:$crdb_port/$db_name?loglevel=1")
+	jdbc_urls+=("jdbc:postgresql://${crdb_ips[$i]}:$crdb_port/$db_name")
 done
 
 postgresql_jar="postgresql-9.4.1212.jre7.jar"
@@ -79,7 +79,6 @@ cmd_stop_nmon="kill -USR2 \$(ps -ef | grep 'nmon' | grep -v grep | awk '{ print 
 cmd_rm_crdb_files="rm -rf cockroach-data; rm -rf *.dump"
 cmd_rm_nmon_files="rm -rf *.nmon"
 
-cmd_setup_crdb_env_vars="export COCKROACH_READ_TYPE=$read_type; export COCKROACH_LHFALLBACK_PROB=$lhfallback_prob"
 cmd_ycsb_create_table="java -cp $jdbc_binding_jar:$postgresql_jar com.yahoo.ycsb.db.JdbcDBCreateTable -P cockroachdb.properties -n usertable -p db.url='${jdbc_urls[0]}'"
 
 ########################
@@ -109,6 +108,15 @@ function joinBy {
 	local IFS="$delimiter"
 	shift
 	echo "$*"
+}
+
+# $1: read type
+# $2: lhfallback prob
+function echoCrdbEnvVars {
+	read_type=$1
+	lhfallback_prob=$2
+
+	echo "export COCKROACH_READ_TYPE=$read_type; export COCKROACH_LHFALLBACK_PROB=$lhfallback_prob"
 }
 
 # $1: load or run
