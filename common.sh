@@ -6,7 +6,7 @@
 
 benchmark_dir_prefix="03.06.2017.dsl"
 read_types=( "0" "1" "2" "3" )
-workloads=( "zipfian" )
+workloads=( "uniform75" "uniform80" "uniform85" "uniform90" "uniform99" )
 repetitions=3
 num_threads=( 1 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 )
 
