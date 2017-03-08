@@ -34,7 +34,7 @@ function run {
 	echo "Setting up crdb servers"
 	for i in "${!crdb_machines[@]}"
 	do
-		remote_cmd="cd $crdb_wdir; `echoCrdbEnvVars $read_type $lhfallback_prob`; ./cockroach start --background --insecure --host=${crdb_internal_ips[i]} --port=$crdb_port --http-port=$crdb_http_port"
+		remote_cmd="cd $crdb_wdir; `echoCrdbEnvVars $read_type $lhfallback_prob`; `echoCrdbStartCmd ${crdb_internal_ips[$i]}`"
 		if [ $i == 0 ]; then
 			ssh ${crdb_machines[$i]} "$remote_cmd" &
 		else

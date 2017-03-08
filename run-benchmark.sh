@@ -9,10 +9,6 @@ source "./common.sh"
 benchmarks_dir="$1"
 workload="$2"
 
-# start record-raft-leaders.py
-# echo "Starting record-raft-leaders.py on $ycsb_name"
-# ssh $ycsb_machine "cd $ycsb_wdir; python -u record-raft-leaders.py ${crdb_internal_ips[0]}:$crdb_http_port &> raft-leaders.csv" &
-
 # remove initial data.dump files
 for i in "${!crdb_machines[@]}"
 do
@@ -57,11 +53,3 @@ do
 
 	echo ""
 done
-
-# stop record-raft-leaders.csv
-# echo "Stopping record-raft-leaders.py on $ycsb_name"
-# ssh $ycsb_machine "kill \$(ps -ef | grep 'record-raft-leaders' | grep -v grep | awk '{ print \$2 }')"
-
-# fetch raft-leaders.csv
-# path="./benchmarks/$benchmarks_dir"
-# fetchUsingSsh "$ycsb_name" "$ycsb_machine" "$ycsb_wdir/raft-leaders.csv" "$path"

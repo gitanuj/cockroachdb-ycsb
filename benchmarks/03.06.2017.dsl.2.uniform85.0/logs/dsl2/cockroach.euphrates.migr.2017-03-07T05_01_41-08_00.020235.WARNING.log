@@ -1,0 +1,11 @@
+W170307 05:01:41.566446 10 util/log/clog.go:1003  [config] file created at: 2017/03/07 05:01:41
+W170307 05:01:41.566446 10 util/log/clog.go:1003  [config] running on machine: euphrates
+W170307 05:01:41.566446 10 util/log/clog.go:1003  [config] binary: CockroachDB c154fda (linux amd64, built 2017/03/06 08:18:10, go1.7.1)
+W170307 05:01:41.566446 10 util/log/clog.go:1003  [config] arguments: [./cockroach start --insecure --host=128.111.44.238 --port=26267 --http-port=8081 --join=128.111.44.237:26267]
+W170307 05:01:41.566446 10 util/log/clog.go:1003  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg
+W170307 05:01:41.566446 10 server/server.go:157  [n?] running in insecure mode, this is strongly discouraged. See --insecure.
+W170307 05:01:41.566612 10 gossip/gossip.go:1138  [n?] no incoming or outgoing connections
+W170307 05:01:41.569099 10 server/config.go:322  soft open file descriptor limit 4096 is under the recommended limit 15000; this may decrease performance
+please see https://www.cockroachlabs.com/docs/recommended-production-settings.html for more details
+W170307 05:01:41.572308 19 gossip/client.go:119  [n?] failed to start gossip client to 128.111.44.237:26267: rpc error: code = 14 desc = grpc: the connection is unavailable
+W170307 05:12:21.998072 1032472 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=82ff3d3c key=/Table/51/1/"user7681374656294929317"/0 rw=true pri=0.00209706 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488892341.983092669,11 orig=1488892341.981240661,12 max=1488892341.990139701,10 wto=false rop=false

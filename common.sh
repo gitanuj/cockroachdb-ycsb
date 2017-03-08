@@ -4,9 +4,9 @@
 ### custom variables ###
 ########################
 
-benchmark_dir_prefix="03.06.2017.dsl"
+benchmark_dir_prefix="03.07.2017.dsl"
 read_types=( "0" "1" "2" "3" )
-workloads=( "uniform75" "uniform80" "uniform85" "uniform90" "uniform99" )
+workloads=( "uniform95" )
 repetitions=3
 num_threads=( 1 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 )
 
@@ -128,4 +128,11 @@ function echoYcsbCmd {
 	threads="$3"
 
 	echo "ycsb/bin/ycsb $loadOrRun jdbc -P $workload -P cockroachdb.properties -p db.url='`joinBy , ${jdbc_urls[@]}`' -s -cp $postgresql_jar -threads $threads"
+}
+
+# $1: host
+function echoCrdbStartCmd {
+	host=$1
+
+	echo "./cockroach start --background --insecure --host=$host --port=$crdb_port --http-port=$crdb_http_port"
 }

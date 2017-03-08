@@ -1,0 +1,37 @@
+W170307 05:28:33.148215 51 util/log/clog.go:1003  [config] file created at: 2017/03/07 05:28:33
+W170307 05:28:33.148215 51 util/log/clog.go:1003  [config] running on machine: gediz
+W170307 05:28:33.148215 51 util/log/clog.go:1003  [config] binary: CockroachDB c154fda (linux amd64, built 2017/03/06 08:18:10, go1.7.1)
+W170307 05:28:33.148215 51 util/log/clog.go:1003  [config] arguments: [./cockroach start --insecure --host=128.111.44.237 --port=26267 --http-port=8081]
+W170307 05:28:33.148215 51 util/log/clog.go:1003  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg
+W170307 05:28:33.148215 51 server/server.go:157  [n?] running in insecure mode, this is strongly discouraged. See --insecure.
+E170307 05:28:33.409089 132 storage/queue.go:599  [split,n1,s1,r1/1:/{Min-Table/11},@c420326000] unable to split [n1,s1,r1/1:/{Min-Table/11}] at key "/Table/12/0": key range /Table/12/0-/Table/12/0 outside of bounds of range /Min-/Max
+E170307 05:28:33.409371 133 storage/queue.go:610  [replicate,n1,s1,r1/1:/{Min-Table/11},@c420326000] purgatory: 0 of 1 store with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:33.409552 113 storage/queue.go:610  [replicate,n1,s1,r1/1:/{Min-Table/11},@c420326000] purgatory: 0 of 1 store with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:33.416554 133 storage/queue.go:610  [replicate,n1,s1,r2/1:/Table/1{1-2},@c4201e8600] purgatory: 0 of 1 store with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:33.416570 132 storage/queue.go:599  [split,n1,s1,r2/1:/Table/1{1-2},@c4201e8600] unable to split [n1,s1,r2/1:/Table/1{1-2}] at key "/Table/13/0": key range /Table/13/0-/Table/13/0 outside of bounds of range /Table/11-/Max
+E170307 05:28:33.416735 113 storage/queue.go:610  [replicate,n1,s1,r1/1:/{Min-Table/11},@c420326000] purgatory: 0 of 1 store with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:33.425683 113 storage/queue.go:610  [replicate,n1,s1,r2/1:/Table/1{1-2},@c4201e8600] purgatory: 0 of 1 store with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:33.425785 113 storage/queue.go:610  [replicate,n1,s1,r1/1:/{Min-Table/11},@c420326000] purgatory: 0 of 1 store with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:33.425926 133 storage/queue.go:610  [replicate,n1,s1,r3/1:/Table/1{2-3},@c420c00000] purgatory: 0 of 1 store with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:33.425957 132 storage/queue.go:599  [split,n1,s1,r3/1:/Table/1{2-3},@c420c00000] unable to split [n1,s1,r3/1:/Table/1{2-3}] at key "/Table/14/0": key range /Table/14/0-/Table/14/0 outside of bounds of range /Table/12-/Max
+E170307 05:28:33.435279 133 storage/queue.go:610  [replicate,n1,s1,r4/1:/Table/1{3-4},@c420cfe300] purgatory: 0 of 1 store with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:33.435397 113 storage/queue.go:610  [replicate,n1,s1,r2/1:/Table/1{1-2},@c4201e8600] purgatory: 0 of 1 store with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:33.435518 133 storage/queue.go:610  [replicate,n1,s1,r5/1:/{Table/14-Max},@c420c00c00] purgatory: 0 of 1 store with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:33.435636 113 storage/queue.go:610  [replicate,n1,s1,r1/1:/{Min-Table/11},@c420326000] purgatory: 0 of 1 store with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:33.435743 113 storage/queue.go:610  [replicate,n1,s1,r3/1:/Table/1{2-3},@c420c00000] purgatory: 0 of 1 store with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:35.127886 113 storage/queue.go:610  [replicate,n1,s1,r2/1:/Table/1{1-2},@c4201e8600] purgatory: 0 of 1 store with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:35.127993 113 storage/queue.go:610  [replicate,n1,s1,r5/1:/{Table/14-Max},@c420c00c00] purgatory: 0 of 1 store with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:35.128085 113 storage/queue.go:610  [replicate,n1,s1,r1/1:/{Min-Table/11},@c420326000] purgatory: 0 of 1 store with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:35.128218 113 storage/queue.go:610  [replicate,n1,s1,r3/1:/Table/1{2-3},@c420c00000] purgatory: 0 of 1 store with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:35.128312 113 storage/queue.go:610  [replicate,n1,s1,r4/1:/Table/1{3-4},@c420cfe300] purgatory: 0 of 1 store with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:35.186571 133 storage/queue.go:610  [replicate,n1,s1,r2/1:/Table/1{1-2},@c4201e8600] purgatory: 0 of 2 stores with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:35.186680 415 storage/queue.go:610  [replicate,n1,s1,r2/1:/Table/1{1-2},@c4201e8600] purgatory: 0 of 2 stores with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:35.186733 133 storage/queue.go:610  [replicate,n1,s1,r5/1:/{Table/14-Max},@c420c00c00] purgatory: 0 of 2 stores with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:35.186936 133 storage/queue.go:610  [replicate,n1,s1,r4/1:/Table/1{3-4},@c420cfe300] purgatory: 0 of 2 stores with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:35.187139 133 storage/queue.go:610  [replicate,n1,s1,r3/1:/Table/1{2-3},@c420c00000] purgatory: 0 of 2 stores with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:35.187319 133 storage/queue.go:610  [replicate,n1,s1,r1/1:/{Min-Table/11},@c420326000] purgatory: 0 of 2 stores with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:36.069956 415 storage/queue.go:610  [replicate,n1,s1,r3/1:/Table/1{2-3},@c420c00000] purgatory: 0 of 2 stores with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:36.070151 415 storage/queue.go:610  [replicate,n1,s1,r1/1:/{Min-Table/11},@c420326000] purgatory: 0 of 2 stores with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:36.070270 415 storage/queue.go:610  [replicate,n1,s1,r2/1:/Table/1{1-2},@c4201e8600] purgatory: 0 of 2 stores with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:36.070379 415 storage/queue.go:610  [replicate,n1,s1,r5/1:/{Table/14-Max},@c420c00c00] purgatory: 0 of 2 stores with an attribute matching []; likely not enough nodes in cluster
+E170307 05:28:36.070476 415 storage/queue.go:610  [replicate,n1,s1,r4/1:/Table/1{3-4},@c420cfe300] purgatory: 0 of 2 stores with an attribute matching []; likely not enough nodes in cluster

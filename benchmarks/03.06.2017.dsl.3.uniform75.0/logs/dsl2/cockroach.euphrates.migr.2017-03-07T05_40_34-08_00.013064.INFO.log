@@ -1,0 +1,236 @@
+I170307 05:40:34.242285 1 util/log/clog.go:1003  [config] file created at: 2017/03/07 05:40:34
+I170307 05:40:34.242285 1 util/log/clog.go:1003  [config] running on machine: euphrates
+I170307 05:40:34.242285 1 util/log/clog.go:1003  [config] binary: CockroachDB c154fda (linux amd64, built 2017/03/06 08:18:10, go1.7.1)
+I170307 05:40:34.242285 1 util/log/clog.go:1003  [config] arguments: [./cockroach start --insecure --host=128.111.44.238 --port=26267 --http-port=8081 --join=128.111.44.237:26267]
+I170307 05:40:34.242285 1 util/log/clog.go:1003  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg
+I170307 05:40:34.242284 1 cli/start.go:323  CockroachDB c154fda (linux amd64, built 2017/03/06 08:18:10, go1.7.1)
+I170307 05:40:34.342716 21 cli/start.go:354  starting cockroach node
+W170307 05:40:34.342829 21 server/server.go:157  [n?] running in insecure mode, this is strongly discouraged. See --insecure.
+W170307 05:40:34.343130 21 gossip/gossip.go:1138  [n?] no incoming or outgoing connections
+W170307 05:40:34.345992 21 server/config.go:322  soft open file descriptor limit 4096 is under the recommended limit 15000; this may decrease performance
+please see https://www.cockroachlabs.com/docs/recommended-production-settings.html for more details
+I170307 05:40:34.346033 21 storage/engine/rocksdb.go:326  opening rocksdb instance at "cockroach-data"
+I170307 05:40:34.346480 39 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 128.111.44.237:26267: getsockopt: connection refused"; Reconnecting to {128.111.44.237:26267 <nil>}
+W170307 05:40:34.346555 37 gossip/client.go:119  [n?] failed to start gossip client to 128.111.44.237:26267: rpc error: code = 14 desc = grpc: the connection is unavailable
+I170307 05:40:34.528582 21 server/config.go:456  1 storage engine initialized
+I170307 05:40:34.529000 21 server/node.go:426  [n?] store [n0,s0] not bootstrapped
+I170307 05:40:34.529025 21 storage/stores.go:296  [n?] read 0 node addresses from persistent storage
+I170307 05:40:34.529095 21 server/node.go:571  [n?] connecting to gossip network to verify cluster ID...
+I170307 05:40:36.346503 64 gossip/client.go:125  [n?] started gossip client to 128.111.44.237:26267
+I170307 05:40:36.347760 21 server/node.go:595  [n?] node connected via gossip and verified as part of cluster "7c49ab81-3145-4f84-9310-729ad4d04318"
+I170307 05:40:36.347929 84 storage/stores.go:312  [n?] wrote 1 node addresses to persistent storage
+I170307 05:40:36.350266 21 kv/dist_sender.go:369  [n?] unable to determine this node's attributes for replica selection; node is most likely bootstrapping
+I170307 05:40:36.351661 21 server/node.go:317  [n?] new node allocated ID 2
+I170307 05:40:36.351820 21 gossip/gossip.go:292  [n2] NodeDescriptor set to node_id:2 address:<network_field:"tcp" address_field:"128.111.44.238:26267" > attrs:<> locality:<> 
+I170307 05:40:36.351949 21 server/node.go:374  [n2] node=2: started with [[]=cockroach-data] engine(s) and attributes []
+I170307 05:40:36.352015 21 sql/executor.go:322  [n2] creating distSQLPlanner with address {tcp 128.111.44.238:26267}
+I170307 05:40:36.356715 44 server/node.go:552  [n2] bootstrapped store [n2,s2]
+I170307 05:40:36.357925 21 server/server.go:632  [n2] starting http server at 128.111.44.238:8081
+I170307 05:40:36.357963 21 server/server.go:633  [n2] starting grpc/postgres server at 128.111.44.238:26267
+I170307 05:40:36.358005 21 server/server.go:634  [n2] advertising CockroachDB node at 128.111.44.238:26267
+I170307 05:40:36.359339 21 server/server.go:689  [n2] done ensuring all necessary migrations have run
+I170307 05:40:36.359370 21 server/server.go:691  [n2] serving sql connections
+I170307 05:40:36.363741 47 sql/event_log.go:95  [n2] Event: "node_join", target: 2, info: {Descriptor:{NodeID:2 Address:{NetworkField:tcp AddressField:128.111.44.238:26267} Attrs: Locality:} ClusterID:7c49ab81-3145-4f84-9310-729ad4d04318 StartedAt:1488894036351912317}
+I170307 05:40:36.363916 194 storage/replica_raftstorage.go:575  [n2,s2,r5/?:{-},@c42032c900] applying preemptive snapshot at index 13 (id=b22b8590, encoded size=973, 1 rocksdb batches, 3 log entries)
+I170307 05:40:36.364292 194 storage/replica_raftstorage.go:583  [n2,s2,r5/?:/{Table/14-Max},@c42032c900] applied preemptive snapshot in 0ms [clear=0ms batch=0ms entries=0ms commit=0ms]
+I170307 05:40:36.370149 212 storage/replica_raftstorage.go:575  [n2,s2,r4/?:{-},@c420930900] applying preemptive snapshot at index 20 (id=189c37c3, encoded size=7733, 1 rocksdb batches, 10 log entries)
+I170307 05:40:36.370536 212 storage/replica_raftstorage.go:583  [n2,s2,r4/?:/Table/1{3-4},@c420930900] applied preemptive snapshot in 0ms [clear=0ms batch=0ms entries=0ms commit=0ms]
+I170307 05:40:36.371104 123 storage/raft_transport.go:437  [n2] raft transport stream to node 1 established
+I170307 05:40:36.378048 127 storage/replica_raftstorage.go:575  [n2,s2,r2/?:{-},@c4201f2000] applying preemptive snapshot at index 21 (id=626419e1, encoded size=5491, 1 rocksdb batches, 11 log entries)
+I170307 05:40:36.378489 127 storage/replica_raftstorage.go:583  [n2,s2,r2/?:/Table/1{1-2},@c4201f2000] applied preemptive snapshot in 0ms [clear=0ms batch=0ms entries=0ms commit=0ms]
+I170307 05:40:36.392543 215 storage/replica_raftstorage.go:575  [n2,s2,r1/?:{-},@c420954300] applying preemptive snapshot at index 59 (id=1d811dc1, encoded size=203052, 1 rocksdb batches, 49 log entries)
+I170307 05:40:36.393643 215 storage/replica_raftstorage.go:583  [n2,s2,r1/?:/{Min-Table/11},@c420954300] applied preemptive snapshot in 1ms [clear=0ms batch=0ms entries=0ms commit=1ms]
+I170307 05:40:36.399674 218 storage/replica_raftstorage.go:575  [n2,s2,r3/?:{-},@c4201f2600] applying preemptive snapshot at index 21 (id=e6217df6, encoded size=7032, 1 rocksdb batches, 11 log entries)
+I170307 05:40:36.400068 218 storage/replica_raftstorage.go:583  [n2,s2,r3/?:/Table/1{2-3},@c4201f2600] applied preemptive snapshot in 0ms [clear=0ms batch=0ms entries=0ms commit=0ms]
+I170307 05:40:37.256403 80 storage/stores.go:312  [n2] wrote 2 node addresses to persistent storage
+I170307 05:40:46.352576 45 storage/store.go:3943  [n2,s2] sstables (read amplification = 0):
+I170307 05:40:46.352865 48 server/status/runtime.go:228  runtime stats: 106 MiB RSS, 94 goroutines, 8.4 MiB/2.5 MiB/18 MiB GO alloc/idle/total, 7.1 MiB/11 MiB CGO alloc/total, 0.00cgo/sec, 0.00/0.00 %(u/s)time, 0.00 %gc (5x)
+I170307 05:40:56.352724 48 server/status/runtime.go:228  runtime stats: 140 MiB RSS, 114 goroutines, 9.5 MiB/6.8 MiB/28 MiB GO alloc/idle/total, 20 MiB/35 MiB CGO alloc/total, 46200.41cgo/sec, 1.32/0.20 %(u/s)time, 0.01 %gc (127x)
+I170307 05:41:05.262390 60 gossip/gossip.go:1152  [n2] node has connected to cluster via gossip
+I170307 05:41:05.262569 60 storage/stores.go:312  [n2] wrote 2 node addresses to persistent storage
+I170307 05:41:06.352915 48 server/status/runtime.go:228  runtime stats: 174 MiB RSS, 116 goroutines, 19 MiB/3.1 MiB/32 MiB GO alloc/idle/total, 41 MiB/69 MiB CGO alloc/total, 50894.39cgo/sec, 1.51/0.22 %(u/s)time, 0.00 %gc (109x)
+I170307 05:41:16.352879 48 server/status/runtime.go:228  runtime stats: 226 MiB RSS, 117 goroutines, 20 MiB/4.4 MiB/35 MiB GO alloc/idle/total, 90 MiB/123 MiB CGO alloc/total, 49700.11cgo/sec, 1.50/0.22 %(u/s)time, 0.00 %gc (90x)
+I170307 05:41:26.352950 48 server/status/runtime.go:228  runtime stats: 291 MiB RSS, 115 goroutines, 24 MiB/4.9 MiB/41 MiB GO alloc/idle/total, 135 MiB/175 MiB CGO alloc/total, 45617.76cgo/sec, 1.75/0.24 %(u/s)time, 0.00 %gc (83x)
+I170307 05:41:36.352479 46 gossip/gossip.go:437  [n2] gossip status (ok, 3 nodes)
+gossip client (1/3 cur/max conns)
+  1: 128.111.44.237:26267 (1m0s: infos 10/264 sent/received, bytes 1824B/50587B sent/received)
+gossip server (0/3 cur/max conns, infos 10/264 sent/received, bytes 1824B/50587B sent/received)
+I170307 05:41:36.352810 48 server/status/runtime.go:228  runtime stats: 339 MiB RSS, 120 goroutines, 25 MiB/8.3 MiB/50 MiB GO alloc/idle/total, 170 MiB/217 MiB CGO alloc/total, 53270.71cgo/sec, 3.03/0.42 %(u/s)time, 0.01 %gc (104x)
+I170307 05:41:46.352984 48 server/status/runtime.go:228  runtime stats: 365 MiB RSS, 90 goroutines, 35 MiB/8.3 MiB/56 MiB GO alloc/idle/total, 182 MiB/237 MiB CGO alloc/total, 27977.43cgo/sec, 1.62/0.21 %(u/s)time, 0.00 %gc (44x)
+I170307 05:41:56.352986 48 server/status/runtime.go:228  runtime stats: 373 MiB RSS, 91 goroutines, 30 MiB/16 MiB/60 MiB GO alloc/idle/total, 184 MiB/240 MiB CGO alloc/total, 1814.60cgo/sec, 0.19/0.05 %(u/s)time, 0.00 %gc (3x)
+I170307 05:42:06.352970 48 server/status/runtime.go:228  runtime stats: 373 MiB RSS, 92 goroutines, 30 MiB/16 MiB/60 MiB GO alloc/idle/total, 185 MiB/240 MiB CGO alloc/total, 4410.31cgo/sec, 0.39/0.08 %(u/s)time, 0.00 %gc (7x)
+I170307 05:42:16.352968 48 server/status/runtime.go:228  runtime stats: 375 MiB RSS, 91 goroutines, 26 MiB/19 MiB/60 MiB GO alloc/idle/total, 188 MiB/242 MiB CGO alloc/total, 4572.51cgo/sec, 0.38/0.08 %(u/s)time, 0.00 %gc (8x)
+I170307 05:42:26.352914 48 server/status/runtime.go:228  runtime stats: 379 MiB RSS, 91 goroutines, 21 MiB/21 MiB/60 MiB GO alloc/idle/total, 190 MiB/244 MiB CGO alloc/total, 4512.61cgo/sec, 0.39/0.08 %(u/s)time, 0.00 %gc (9x)
+I170307 05:42:36.352528 46 gossip/gossip.go:437  [n2] gossip status (ok, 3 nodes)
+gossip client (1/3 cur/max conns)
+  1: 128.111.44.237:26267 (2m0s: infos 12/491 sent/received, bytes 2166B/73130B sent/received)
+gossip server (0/3 cur/max conns, infos 12/491 sent/received, bytes 2166B/73130B sent/received)
+I170307 05:42:36.352999 48 server/status/runtime.go:228  runtime stats: 380 MiB RSS, 92 goroutines, 20 MiB/20 MiB/60 MiB GO alloc/idle/total, 190 MiB/244 MiB CGO alloc/total, 4491.37cgo/sec, 0.40/0.09 %(u/s)time, 0.00 %gc (11x)
+I170307 05:42:46.352958 48 server/status/runtime.go:228  runtime stats: 387 MiB RSS, 92 goroutines, 13 MiB/28 MiB/60 MiB GO alloc/idle/total, 204 MiB/259 MiB CGO alloc/total, 4465.81cgo/sec, 0.40/0.08 %(u/s)time, 0.00 %gc (16x)
+I170307 05:42:56.352933 48 server/status/runtime.go:228  runtime stats: 391 MiB RSS, 91 goroutines, 12 MiB/29 MiB/60 MiB GO alloc/idle/total, 206 MiB/261 MiB CGO alloc/total, 4537.91cgo/sec, 0.36/0.07 %(u/s)time, 0.00 %gc (17x)
+I170307 05:43:06.352846 48 server/status/runtime.go:228  runtime stats: 392 MiB RSS, 92 goroutines, 12 MiB/30 MiB/60 MiB GO alloc/idle/total, 207 MiB/261 MiB CGO alloc/total, 4532.24cgo/sec, 0.36/0.07 %(u/s)time, 0.00 %gc (16x)
+I170307 05:43:16.352968 48 server/status/runtime.go:228  runtime stats: 396 MiB RSS, 91 goroutines, 18 MiB/28 MiB/60 MiB GO alloc/idle/total, 209 MiB/264 MiB CGO alloc/total, 4525.75cgo/sec, 0.36/0.06 %(u/s)time, 0.00 %gc (15x)
+I170307 05:43:26.352890 48 server/status/runtime.go:228  runtime stats: 398 MiB RSS, 91 goroutines, 9.6 MiB/34 MiB/61 MiB GO alloc/idle/total, 205 MiB/265 MiB CGO alloc/total, 4563.74cgo/sec, 0.36/0.07 %(u/s)time, 0.00 %gc (17x)
+I170307 05:43:36.352426 46 gossip/gossip.go:437  [n2] gossip status (ok, 3 nodes)
+gossip client (1/3 cur/max conns)
+  1: 128.111.44.237:26267 (3m0s: infos 14/717 sent/received, bytes 2508B/95550B sent/received)
+gossip server (0/3 cur/max conns, infos 14/717 sent/received, bytes 2508B/95550B sent/received)
+I170307 05:43:36.352886 48 server/status/runtime.go:228  runtime stats: 399 MiB RSS, 92 goroutines, 9.9 MiB/36 MiB/61 MiB GO alloc/idle/total, 205 MiB/265 MiB CGO alloc/total, 4495.00cgo/sec, 0.36/0.08 %(u/s)time, 0.00 %gc (17x)
+I170307 05:43:46.352959 48 server/status/runtime.go:228  runtime stats: 401 MiB RSS, 91 goroutines, 14 MiB/34 MiB/61 MiB GO alloc/idle/total, 208 MiB/267 MiB CGO alloc/total, 4501.78cgo/sec, 0.35/0.08 %(u/s)time, 0.00 %gc (16x)
+I170307 05:43:56.352984 48 server/status/runtime.go:228  runtime stats: 403 MiB RSS, 91 goroutines, 14 MiB/34 MiB/61 MiB GO alloc/idle/total, 209 MiB/268 MiB CGO alloc/total, 4461.68cgo/sec, 0.35/0.07 %(u/s)time, 0.00 %gc (16x)
+I170307 05:44:06.352921 48 server/status/runtime.go:228  runtime stats: 405 MiB RSS, 91 goroutines, 13 MiB/34 MiB/61 MiB GO alloc/idle/total, 210 MiB/270 MiB CGO alloc/total, 4473.52cgo/sec, 0.36/0.07 %(u/s)time, 0.00 %gc (16x)
+I170307 05:44:16.352893 48 server/status/runtime.go:228  runtime stats: 408 MiB RSS, 92 goroutines, 13 MiB/34 MiB/61 MiB GO alloc/idle/total, 206 MiB/272 MiB CGO alloc/total, 4525.51cgo/sec, 0.37/0.07 %(u/s)time, 0.00 %gc (16x)
+I170307 05:44:26.352950 48 server/status/runtime.go:228  runtime stats: 410 MiB RSS, 92 goroutines, 16 MiB/32 MiB/61 MiB GO alloc/idle/total, 208 MiB/271 MiB CGO alloc/total, 4410.18cgo/sec, 0.35/0.07 %(u/s)time, 0.00 %gc (15x)
+I170307 05:44:36.352502 46 gossip/gossip.go:437  [n2] gossip status (ok, 3 nodes)
+gossip client (1/3 cur/max conns)
+  1: 128.111.44.237:26267 (4m0s: infos 16/942 sent/received, bytes 2850B/117877B sent/received)
+gossip server (0/3 cur/max conns, infos 16/942 sent/received, bytes 2850B/117877B sent/received)
+I170307 05:44:36.352927 48 server/status/runtime.go:228  runtime stats: 410 MiB RSS, 91 goroutines, 15 MiB/34 MiB/61 MiB GO alloc/idle/total, 209 MiB/272 MiB CGO alloc/total, 4527.70cgo/sec, 0.37/0.06 %(u/s)time, 0.00 %gc (17x)
+I170307 05:44:46.352915 48 server/status/runtime.go:228  runtime stats: 412 MiB RSS, 91 goroutines, 14 MiB/34 MiB/61 MiB GO alloc/idle/total, 212 MiB/273 MiB CGO alloc/total, 4464.01cgo/sec, 0.36/0.07 %(u/s)time, 0.00 %gc (17x)
+I170307 05:44:56.352954 48 server/status/runtime.go:228  runtime stats: 414 MiB RSS, 91 goroutines, 11 MiB/35 MiB/61 MiB GO alloc/idle/total, 212 MiB/274 MiB CGO alloc/total, 4443.28cgo/sec, 0.35/0.07 %(u/s)time, 0.00 %gc (17x)
+I170307 05:45:06.352836 48 server/status/runtime.go:228  runtime stats: 417 MiB RSS, 92 goroutines, 11 MiB/35 MiB/61 MiB GO alloc/idle/total, 225 MiB/286 MiB CGO alloc/total, 4507.05cgo/sec, 0.37/0.08 %(u/s)time, 0.00 %gc (16x)
+I170307 05:45:16.352891 48 server/status/runtime.go:228  runtime stats: 423 MiB RSS, 91 goroutines, 10 MiB/35 MiB/61 MiB GO alloc/idle/total, 230 MiB/290 MiB CGO alloc/total, 4395.48cgo/sec, 0.34/0.09 %(u/s)time, 0.00 %gc (16x)
+I170307 05:45:26.352902 48 server/status/runtime.go:228  runtime stats: 423 MiB RSS, 91 goroutines, 10 MiB/35 MiB/61 MiB GO alloc/idle/total, 232 MiB/291 MiB CGO alloc/total, 4568.79cgo/sec, 0.36/0.07 %(u/s)time, 0.00 %gc (16x)
+I170307 05:45:36.352535 46 gossip/gossip.go:437  [n2] gossip status (ok, 3 nodes)
+gossip client (1/3 cur/max conns)
+  1: 128.111.44.237:26267 (5m0s: infos 18/1159 sent/received, bytes 3192B/139430B sent/received)
+gossip server (0/3 cur/max conns, infos 18/1159 sent/received, bytes 3192B/139430B sent/received)
+I170307 05:45:36.352953 48 server/status/runtime.go:228  runtime stats: 425 MiB RSS, 92 goroutines, 15 MiB/33 MiB/61 MiB GO alloc/idle/total, 233 MiB/292 MiB CGO alloc/total, 4500.28cgo/sec, 0.35/0.07 %(u/s)time, 0.00 %gc (15x)
+I170307 05:45:46.352991 48 server/status/runtime.go:228  runtime stats: 429 MiB RSS, 93 goroutines, 16 MiB/33 MiB/61 MiB GO alloc/idle/total, 236 MiB/294 MiB CGO alloc/total, 4578.99cgo/sec, 0.36/0.07 %(u/s)time, 0.00 %gc (17x)
+I170307 05:45:56.352885 48 server/status/runtime.go:228  runtime stats: 432 MiB RSS, 91 goroutines, 14 MiB/35 MiB/61 MiB GO alloc/idle/total, 231 MiB/297 MiB CGO alloc/total, 4571.04cgo/sec, 0.35/0.08 %(u/s)time, 0.00 %gc (17x)
+I170307 05:46:06.352906 48 server/status/runtime.go:228  runtime stats: 432 MiB RSS, 90 goroutines, 10 MiB/36 MiB/61 MiB GO alloc/idle/total, 232 MiB/298 MiB CGO alloc/total, 1971.60cgo/sec, 0.16/0.03 %(u/s)time, 0.00 %gc (8x)
+I170307 05:46:16.352908 48 server/status/runtime.go:228  runtime stats: 432 MiB RSS, 90 goroutines, 10 MiB/36 MiB/61 MiB GO alloc/idle/total, 232 MiB/298 MiB CGO alloc/total, 74.90cgo/sec, 0.02/0.01 %(u/s)time, 0.00 %gc (1x)
+I170307 05:46:26.352882 48 server/status/runtime.go:228  runtime stats: 436 MiB RSS, 96 goroutines, 16 MiB/32 MiB/61 MiB GO alloc/idle/total, 237 MiB/301 MiB CGO alloc/total, 15848.27cgo/sec, 0.96/0.19 %(u/s)time, 0.00 %gc (53x)
+I170307 05:46:36.352469 46 gossip/gossip.go:437  [n2] gossip status (ok, 3 nodes)
+gossip client (1/3 cur/max conns)
+  1: 128.111.44.237:26267 (6m0s: infos 20/1384 sent/received, bytes 3534B/161711B sent/received)
+gossip server (0/3 cur/max conns, infos 20/1384 sent/received, bytes 3534B/161711B sent/received)
+I170307 05:46:36.352955 48 server/status/runtime.go:228  runtime stats: 438 MiB RSS, 95 goroutines, 16 MiB/31 MiB/61 MiB GO alloc/idle/total, 237 MiB/304 MiB CGO alloc/total, 24220.68cgo/sec, 1.48/0.28 %(u/s)time, 0.00 %gc (71x)
+I170307 05:46:46.352865 48 server/status/runtime.go:228  runtime stats: 458 MiB RSS, 96 goroutines, 16 MiB/30 MiB/61 MiB GO alloc/idle/total, 262 MiB/325 MiB CGO alloc/total, 24822.74cgo/sec, 1.52/0.26 %(u/s)time, 0.00 %gc (63x)
+I170307 05:46:56.352972 48 server/status/runtime.go:228  runtime stats: 469 MiB RSS, 95 goroutines, 20 MiB/28 MiB/61 MiB GO alloc/idle/total, 265 MiB/332 MiB CGO alloc/total, 24179.22cgo/sec, 1.48/0.28 %(u/s)time, 0.00 %gc (58x)
+I170307 05:47:06.352952 48 server/status/runtime.go:228  runtime stats: 472 MiB RSS, 90 goroutines, 22 MiB/26 MiB/61 MiB GO alloc/idle/total, 266 MiB/336 MiB CGO alloc/total, 21346.22cgo/sec, 1.37/0.23 %(u/s)time, 0.00 %gc (47x)
+I170307 05:47:16.352998 48 server/status/runtime.go:228  runtime stats: 472 MiB RSS, 90 goroutines, 16 MiB/29 MiB/61 MiB GO alloc/idle/total, 267 MiB/338 MiB CGO alloc/total, 73.10cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (1x)
+I170307 05:47:26.352851 48 server/status/runtime.go:228  runtime stats: 486 MiB RSS, 109 goroutines, 25 MiB/21 MiB/61 MiB GO alloc/idle/total, 282 MiB/356 MiB CGO alloc/total, 13349.31cgo/sec, 0.78/0.12 %(u/s)time, 0.00 %gc (28x)
+I170307 05:47:36.355024 46 gossip/gossip.go:437  [n2] gossip status (ok, 3 nodes)
+gossip client (1/3 cur/max conns)
+  1: 128.111.44.237:26267 (7m0s: infos 22/1618 sent/received, bytes 3876B/184865B sent/received)
+gossip server (0/3 cur/max conns, infos 22/1618 sent/received, bytes 3876B/184865B sent/received)
+I170307 05:47:36.360011 48 server/status/runtime.go:228  runtime stats: 505 MiB RSS, 104 goroutines, 33 MiB/16 MiB/61 MiB GO alloc/idle/total, 296 MiB/373 MiB CGO alloc/total, 42448.28cgo/sec, 2.46/0.35 %(u/s)time, 0.00 %gc (80x)
+I170307 05:47:46.352739 48 server/status/runtime.go:228  runtime stats: 536 MiB RSS, 100 goroutines, 29 MiB/18 MiB/61 MiB GO alloc/idle/total, 326 MiB/402 MiB CGO alloc/total, 42555.95cgo/sec, 2.40/0.37 %(u/s)time, 0.00 %gc (72x)
+I170307 05:47:56.352748 48 server/status/runtime.go:228  runtime stats: 540 MiB RSS, 90 goroutines, 32 MiB/16 MiB/61 MiB GO alloc/idle/total, 330 MiB/406 MiB CGO alloc/total, 8309.59cgo/sec, 0.50/0.10 %(u/s)time, 0.00 %gc (14x)
+I170307 05:48:06.353031 48 server/status/runtime.go:228  runtime stats: 536 MiB RSS, 90 goroutines, 19 MiB/20 MiB/56 MiB GO alloc/idle/total, 330 MiB/407 MiB CGO alloc/total, 75.90cgo/sec, 0.04/0.02 %(u/s)time, 0.00 %gc (1x)
+W170307 05:48:08.377206 409521 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=1c9ca0e2 key=/Table/51/1/"user2804205279755614485"/0 rw=true pri=0.00884715 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894488.369261120,11 orig=1488894488.367830573,4 max=1488894488.368440104,10 wto=false rop=false
+W170307 05:48:08.425699 409746 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=1c9ca0e2 key=/Table/51/1/"user2804205279755614485"/0 rw=true pri=0.00884715 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894488.369261120,11 orig=1488894488.367830573,4 max=1488894488.368440104,10 wto=false rop=false
+W170307 05:48:08.521868 410200 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=1c9ca0e2 key=/Table/51/1/"user2804205279755614485"/0 rw=true pri=0.00884715 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894488.369261120,11 orig=1488894488.367830573,4 max=1488894488.368440104,10 wto=false rop=false
+W170307 05:48:08.740421 411109 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=1c9ca0e2 key=/Table/51/1/"user2804205279755614485"/0 rw=true pri=0.00884715 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894488.369261120,11 orig=1488894488.367830573,4 max=1488894488.368440104,10 wto=false rop=false
+W170307 05:48:09.083533 412513 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=1c9ca0e2 key=/Table/51/1/"user2804205279755614485"/0 rw=true pri=0.00884715 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894488.369261120,11 orig=1488894488.367830573,4 max=1488894488.368440104,10 wto=false rop=false
+W170307 05:48:09.841097 415993 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=1c9ca0e2 key=/Table/51/1/"user2804205279755614485"/0 rw=true pri=0.00884715 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894488.369261120,11 orig=1488894488.367830573,4 max=1488894488.368440104,10 wto=false rop=false
+W170307 05:48:11.279508 422248 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=1c9ca0e2 key=/Table/51/1/"user2804205279755614485"/0 rw=true pri=0.00884715 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894488.369261120,11 orig=1488894488.367830573,4 max=1488894488.368440104,10 wto=false rop=false
+I170307 05:48:16.353009 48 server/status/runtime.go:228  runtime stats: 544 MiB RSS, 110 goroutines, 26 MiB/13 MiB/56 MiB GO alloc/idle/total, 333 MiB/417 MiB CGO alloc/total, 46420.83cgo/sec, 2.63/0.37 %(u/s)time, 0.00 %gc (85x)
+W170307 05:48:26.042578 488313 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=bd864c27 key=/Table/51/1/"user7343409864151972316"/0 rw=true pri=0.00419533 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894505.984631878,1 orig=1488894505.973665128,3 max=1488894505.981379084,0 wto=false rop=false
+W170307 05:48:26.135255 488700 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=bd864c27 key=/Table/51/1/"user7343409864151972316"/0 rw=true pri=0.00419533 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894505.984631878,1 orig=1488894505.973665128,3 max=1488894505.981379084,0 wto=false rop=false
+W170307 05:48:26.325861 489451 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=bd864c27 key=/Table/51/1/"user7343409864151972316"/0 rw=true pri=0.00419533 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894505.984631878,1 orig=1488894505.973665128,3 max=1488894505.981379084,0 wto=false rop=false
+I170307 05:48:26.352938 48 server/status/runtime.go:228  runtime stats: 584 MiB RSS, 108 goroutines, 41 MiB/3.0 MiB/56 MiB GO alloc/idle/total, 366 MiB/454 MiB CGO alloc/total, 49490.17cgo/sec, 2.80/0.38 %(u/s)time, 0.00 %gc (74x)
+W170307 05:48:26.704271 491041 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=bd864c27 key=/Table/51/1/"user7343409864151972316"/0 rw=true pri=0.00419533 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894505.984631878,1 orig=1488894505.973665128,3 max=1488894505.981379084,0 wto=false rop=false
+W170307 05:48:27.493835 492568 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=bd864c27 key=/Table/51/1/"user7343409864151972316"/0 rw=true pri=0.00419533 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894505.984631878,1 orig=1488894505.973665128,3 max=1488894505.981379084,0 wto=false rop=false
+W170307 05:48:28.986082 493116 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=bd864c27 key=/Table/51/1/"user7343409864151972316"/0 rw=true pri=0.00419533 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894505.984631878,1 orig=1488894505.973665128,3 max=1488894505.981379084,0 wto=false rop=false
+W170307 05:48:32.346933 494370 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=bd864c27 key=/Table/51/1/"user7343409864151972316"/0 rw=true pri=0.00419533 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894505.984631878,1 orig=1488894505.973665128,3 max=1488894505.981379084,0 wto=false rop=false
+I170307 05:48:36.352585 46 gossip/gossip.go:437  [n2] gossip status (ok, 3 nodes)
+gossip client (1/3 cur/max conns)
+  1: 128.111.44.237:26267 (8m0s: infos 25/1837 sent/received, bytes 4337B/206632B sent/received)
+gossip server (0/3 cur/max conns, infos 25/1837 sent/received, bytes 4337B/206632B sent/received)
+I170307 05:48:36.352965 48 server/status/runtime.go:228  runtime stats: 587 MiB RSS, 92 goroutines, 38 MiB/11 MiB/61 MiB GO alloc/idle/total, 368 MiB/454 MiB CGO alloc/total, 5542.07cgo/sec, 0.41/0.09 %(u/s)time, 0.00 %gc (8x)
+I170307 05:48:46.352950 48 server/status/runtime.go:228  runtime stats: 586 MiB RSS, 90 goroutines, 17 MiB/20 MiB/61 MiB GO alloc/idle/total, 364 MiB/454 MiB CGO alloc/total, 500.90cgo/sec, 0.11/0.03 %(u/s)time, 0.00 %gc (2x)
+I170307 05:48:56.352915 48 server/status/runtime.go:228  runtime stats: 588 MiB RSS, 115 goroutines, 29 MiB/13 MiB/62 MiB GO alloc/idle/total, 365 MiB/454 MiB CGO alloc/total, 4438.71cgo/sec, 0.28/0.04 %(u/s)time, 0.00 %gc (9x)
+I170307 05:49:06.352763 48 server/status/runtime.go:228  runtime stats: 629 MiB RSS, 111 goroutines, 33 MiB/13 MiB/62 MiB GO alloc/idle/total, 403 MiB/497 MiB CGO alloc/total, 53513.58cgo/sec, 3.10/0.41 %(u/s)time, 0.01 %gc (95x)
+I170307 05:49:16.352904 48 server/status/runtime.go:228  runtime stats: 639 MiB RSS, 90 goroutines, 20 MiB/22 MiB/62 MiB GO alloc/idle/total, 411 MiB/506 MiB CGO alloc/total, 35249.67cgo/sec, 2.14/0.29 %(u/s)time, 0.00 %gc (58x)
+I170307 05:49:26.352659 48 server/status/runtime.go:228  runtime stats: 640 MiB RSS, 90 goroutines, 28 MiB/16 MiB/62 MiB GO alloc/idle/total, 404 MiB/507 MiB CGO alloc/total, 76.90cgo/sec, 0.06/0.04 %(u/s)time, 0.00 %gc (0x)
+I170307 05:49:36.352402 46 gossip/gossip.go:437  [n2] gossip status (ok, 3 nodes)
+gossip client (1/3 cur/max conns)
+  1: 128.111.44.237:26267 (9m0s: infos 27/2064 sent/received, bytes 4679B/229103B sent/received)
+gossip server (0/3 cur/max conns, infos 27/2064 sent/received, bytes 4679B/229103B sent/received)
+I170307 05:49:36.352778 48 server/status/runtime.go:228  runtime stats: 653 MiB RSS, 125 goroutines, 33 MiB/16 MiB/65 MiB GO alloc/idle/total, 413 MiB/518 MiB CGO alloc/total, 25617.31cgo/sec, 1.56/0.20 %(u/s)time, 0.00 %gc (52x)
+W170307 05:49:39.612830 630961 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=aba58b7d key=/Table/51/1/"user6918216105881048904"/0 rw=true pri=0.01808871 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894579.579502419,0 orig=1488894579.579502419,0 max=1488894579.581533169,0 wto=false rop=false
+I170307 05:49:46.352922 48 server/status/runtime.go:228  runtime stats: 703 MiB RSS, 120 goroutines, 35 MiB/13 MiB/65 MiB GO alloc/idle/total, 453 MiB/563 MiB CGO alloc/total, 53901.90cgo/sec, 3.18/0.42 %(u/s)time, 0.00 %gc (90x)
+I170307 05:49:56.352649 48 server/status/runtime.go:228  runtime stats: 709 MiB RSS, 90 goroutines, 25 MiB/21 MiB/65 MiB GO alloc/idle/total, 457 MiB/566 MiB CGO alloc/total, 10029.43cgo/sec, 0.64/0.08 %(u/s)time, 0.00 %gc (15x)
+I170307 05:50:06.352940 48 server/status/runtime.go:228  runtime stats: 709 MiB RSS, 90 goroutines, 32 MiB/14 MiB/65 MiB GO alloc/idle/total, 458 MiB/566 MiB CGO alloc/total, 79.30cgo/sec, 0.05/0.04 %(u/s)time, 0.00 %gc (0x)
+W170307 05:50:12.209657 707134 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=653bbb34 key=/Table/51/1/"user8594462986659663562"/0 rw=true pri=0.02026791 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894612.146219284,6 orig=1488894612.145558921,9 max=1488894612.147805519,12 wto=false rop=false
+W170307 05:50:12.341299 707977 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=653bbb34 key=/Table/51/1/"user8594462986659663562"/0 rw=true pri=0.02026791 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894612.146219284,6 orig=1488894612.145558921,9 max=1488894612.147805519,12 wto=false rop=false
+W170307 05:50:12.784902 710836 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=8c702fdd key=/Table/51/1/"user215237612719705906"/0 rw=true pri=0.00124890 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894612.764548263,9 orig=1488894612.762918765,2 max=1488894612.763557503,0 wto=false rop=false
+W170307 05:50:12.847144 711118 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=8c702fdd key=/Table/51/1/"user215237612719705906"/0 rw=true pri=0.00124890 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894612.764548263,9 orig=1488894612.762918765,2 max=1488894612.763557503,0 wto=false rop=false
+W170307 05:50:12.942042 711637 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=8c702fdd key=/Table/51/1/"user215237612719705906"/0 rw=true pri=0.00124890 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894612.764548263,9 orig=1488894612.762918765,2 max=1488894612.763557503,0 wto=false rop=false
+I170307 05:50:16.353061 48 server/status/runtime.go:228  runtime stats: 760 MiB RSS, 127 goroutines, 36 MiB/15 MiB/71 MiB GO alloc/idle/total, 496 MiB/615 MiB CGO alloc/total, 50971.90cgo/sec, 3.05/0.38 %(u/s)time, 0.00 %gc (88x)
+I170307 05:50:26.353008 48 server/status/runtime.go:228  runtime stats: 764 MiB RSS, 90 goroutines, 40 MiB/17 MiB/71 MiB GO alloc/idle/total, 506 MiB/623 MiB CGO alloc/total, 36589.67cgo/sec, 2.21/0.28 %(u/s)time, 0.00 %gc (57x)
+I170307 05:50:36.352522 46 gossip/gossip.go:437  [n2] gossip status (ok, 3 nodes)
+gossip client (1/3 cur/max conns)
+  1: 128.111.44.237:26267 (10m0s: infos 29/2297 sent/received, bytes 5021B/252138B sent/received)
+gossip server (0/3 cur/max conns, infos 29/2297 sent/received, bytes 5021B/252138B sent/received)
+I170307 05:50:36.352971 48 server/status/runtime.go:228  runtime stats: 764 MiB RSS, 90 goroutines, 25 MiB/26 MiB/71 MiB GO alloc/idle/total, 507 MiB/624 MiB CGO alloc/total, 84.10cgo/sec, 0.05/0.02 %(u/s)time, 0.00 %gc (1x)
+I170307 05:50:46.355997 48 server/status/runtime.go:228  runtime stats: 767 MiB RSS, 135 goroutines, 28 MiB/18 MiB/71 MiB GO alloc/idle/total, 505 MiB/629 MiB CGO alloc/total, 24733.26cgo/sec, 1.57/0.20 %(u/s)time, 0.00 %gc (45x)
+I170307 05:50:56.353199 48 server/status/runtime.go:228  runtime stats: 832 MiB RSS, 139 goroutines, 32 MiB/17 MiB/71 MiB GO alloc/idle/total, 558 MiB/685 MiB CGO alloc/total, 55145.12cgo/sec, 3.36/0.41 %(u/s)time, 0.01 %gc (91x)
+I170307 05:51:06.353054 48 server/status/runtime.go:228  runtime stats: 834 MiB RSS, 90 goroutines, 26 MiB/24 MiB/71 MiB GO alloc/idle/total, 560 MiB/686 MiB CGO alloc/total, 5483.07cgo/sec, 0.35/0.04 %(u/s)time, 0.00 %gc (8x)
+I170307 05:51:16.353006 48 server/status/runtime.go:228  runtime stats: 834 MiB RSS, 90 goroutines, 34 MiB/18 MiB/71 MiB GO alloc/idle/total, 560 MiB/687 MiB CGO alloc/total, 80.90cgo/sec, 0.05/0.03 %(u/s)time, 0.00 %gc (0x)
+I170307 05:51:26.352979 48 server/status/runtime.go:228  runtime stats: 890 MiB RSS, 141 goroutines, 31 MiB/20 MiB/74 MiB GO alloc/idle/total, 612 MiB/741 MiB CGO alloc/total, 55365.06cgo/sec, 3.35/0.40 %(u/s)time, 0.01 %gc (95x)
+W170307 05:51:31.222554 949049 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=ab675d88 key=/Table/51/1/"user8032917365780735940"/0 rw=true pri=0.01732334 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894691.175742172,7 orig=1488894691.174646853,7 max=1488894691.175742172,16 wto=false rop=false
+W170307 05:51:31.254467 949315 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=ab675d88 key=/Table/51/1/"user8032917365780735940"/0 rw=true pri=0.01732334 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894691.175742172,7 orig=1488894691.174646853,7 max=1488894691.175742172,16 wto=false rop=false
+W170307 05:51:31.366632 949802 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=ab675d88 key=/Table/51/1/"user8032917365780735940"/0 rw=true pri=0.01732334 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894691.175742172,7 orig=1488894691.174646853,7 max=1488894691.175742172,16 wto=false rop=false
+W170307 05:51:31.573858 950800 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=ab675d88 key=/Table/51/1/"user8032917365780735940"/0 rw=true pri=0.01732334 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894691.175742172,7 orig=1488894691.174646853,7 max=1488894691.175742172,16 wto=false rop=false
+W170307 05:51:31.948258 952364 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=ab675d88 key=/Table/51/1/"user8032917365780735940"/0 rw=true pri=0.01732334 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894691.175742172,7 orig=1488894691.174646853,7 max=1488894691.175742172,16 wto=false rop=false
+I170307 05:51:36.352590 46 gossip/gossip.go:437  [n2] gossip status (ok, 3 nodes)
+gossip client (1/3 cur/max conns)
+  1: 128.111.44.237:26267 (11m0s: infos 31/2508 sent/received, bytes 5363B/273129B sent/received)
+gossip server (0/3 cur/max conns, infos 31/2508 sent/received, bytes 5363B/273129B sent/received)
+I170307 05:51:36.352989 48 server/status/runtime.go:228  runtime stats: 898 MiB RSS, 90 goroutines, 35 MiB/23 MiB/74 MiB GO alloc/idle/total, 618 MiB/750 MiB CGO alloc/total, 29325.87cgo/sec, 1.82/0.21 %(u/s)time, 0.00 %gc (45x)
+I170307 05:51:46.352952 48 server/status/runtime.go:228  runtime stats: 898 MiB RSS, 90 goroutines, 42 MiB/16 MiB/74 MiB GO alloc/idle/total, 619 MiB/750 MiB CGO alloc/total, 78.20cgo/sec, 0.03/0.02 %(u/s)time, 0.00 %gc (0x)
+I170307 05:51:56.353045 48 server/status/runtime.go:228  runtime stats: 906 MiB RSS, 152 goroutines, 33 MiB/18 MiB/74 MiB GO alloc/idle/total, 623 MiB/756 MiB CGO alloc/total, 23569.63cgo/sec, 1.51/0.20 %(u/s)time, 0.00 %gc (44x)
+I170307 05:52:06.352966 48 server/status/runtime.go:228  runtime stats: 972 MiB RSS, 144 goroutines, 33 MiB/18 MiB/74 MiB GO alloc/idle/total, 681 MiB/822 MiB CGO alloc/total, 55667.97cgo/sec, 3.44/0.41 %(u/s)time, 0.01 %gc (91x)
+I170307 05:52:16.353022 48 server/status/runtime.go:228  runtime stats: 972 MiB RSS, 90 goroutines, 34 MiB/22 MiB/74 MiB GO alloc/idle/total, 682 MiB/823 MiB CGO alloc/total, 4289.89cgo/sec, 0.27/0.04 %(u/s)time, 0.00 %gc (6x)
+I170307 05:52:26.352886 48 server/status/runtime.go:228  runtime stats: 975 MiB RSS, 158 goroutines, 26 MiB/19 MiB/74 MiB GO alloc/idle/total, 685 MiB/825 MiB CGO alloc/total, 6924.05cgo/sec, 0.49/0.08 %(u/s)time, 0.00 %gc (13x)
+I170307 05:52:36.352456 46 gossip/gossip.go:437  [n2] gossip status (ok, 3 nodes)
+gossip client (1/3 cur/max conns)
+  1: 128.111.44.237:26267 (12m0s: infos 33/2720 sent/received, bytes 5705B/294235B sent/received)
+gossip server (0/3 cur/max conns, infos 33/2720 sent/received, bytes 5705B/294235B sent/received)
+I170307 05:52:36.352934 48 server/status/runtime.go:228  runtime stats: 991 MiB RSS, 148 goroutines, 46 MiB/10 MiB/74 MiB GO alloc/idle/total, 695 MiB/843 MiB CGO alloc/total, 55106.46cgo/sec, 3.39/0.41 %(u/s)time, 0.01 %gc (90x)
+I170307 05:52:46.352888 48 server/status/runtime.go:228  runtime stats: 1009 MiB RSS, 90 goroutines, 32 MiB/24 MiB/74 MiB GO alloc/idle/total, 720 MiB/863 MiB CGO alloc/total, 20917.08cgo/sec, 1.34/0.15 %(u/s)time, 0.00 %gc (32x)
+I170307 05:52:56.352935 48 server/status/runtime.go:228  runtime stats: 1011 MiB RSS, 90 goroutines, 39 MiB/17 MiB/74 MiB GO alloc/idle/total, 722 MiB/864 MiB CGO alloc/total, 75.90cgo/sec, 0.03/0.02 %(u/s)time, 0.00 %gc (0x)
+W170307 05:52:59.904447 1150720 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=7b0c982f key=/Table/51/1/"user2308893800529240072"/0 rw=true pri=0.02499800 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894779.811076735,3 orig=1488894779.810850497,0 max=1488894779.815569034,22 wto=false rop=false
+W170307 05:53:00.029802 1151459 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=7b0c982f key=/Table/51/1/"user2308893800529240072"/0 rw=true pri=0.02499800 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894779.811076735,3 orig=1488894779.810850497,0 max=1488894779.815569034,22 wto=false rop=false
+W170307 05:53:00.209044 1152543 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=7b0c982f key=/Table/51/1/"user2308893800529240072"/0 rw=true pri=0.02499800 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894779.811076735,3 orig=1488894779.810850497,0 max=1488894779.815569034,22 wto=false rop=false
+W170307 05:53:00.639210 1155442 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=7b0c982f key=/Table/51/1/"user2308893800529240072"/0 rw=true pri=0.02499800 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894779.811076735,3 orig=1488894779.810850497,0 max=1488894779.815569034,22 wto=false rop=false
+I170307 05:53:06.353197 48 server/status/runtime.go:228  runtime stats: 1.0 GiB RSS, 162 goroutines, 38 MiB/14 MiB/74 MiB GO alloc/idle/total, 760 MiB/911 MiB CGO alloc/total, 48880.58cgo/sec, 3.06/0.39 %(u/s)time, 0.00 %gc (79x)
+I170307 05:53:16.352999 48 server/status/runtime.go:228  runtime stats: 1.0 GiB RSS, 90 goroutines, 32 MiB/22 MiB/74 MiB GO alloc/idle/total, 766 MiB/925 MiB CGO alloc/total, 33326.20cgo/sec, 2.08/0.27 %(u/s)time, 0.00 %gc (50x)
+I170307 05:53:26.352927 48 server/status/runtime.go:228  runtime stats: 1.0 GiB RSS, 90 goroutines, 40 MiB/16 MiB/74 MiB GO alloc/idle/total, 766 MiB/926 MiB CGO alloc/total, 78.20cgo/sec, 0.02/0.01 %(u/s)time, 0.00 %gc (0x)
+I170307 05:53:36.352168 46 gossip/gossip.go:437  [n2] gossip status (ok, 3 nodes)
+gossip client (1/3 cur/max conns)
+  1: 128.111.44.237:26267 (13m0s: infos 35/2939 sent/received, bytes 6047B/315956B sent/received)
+gossip server (0/3 cur/max conns, infos 35/2939 sent/received, bytes 6047B/315956B sent/received)
+I170307 05:53:36.353066 48 server/status/runtime.go:228  runtime stats: 1.1 GiB RSS, 163 goroutines, 46 MiB/9.4 MiB/75 MiB GO alloc/idle/total, 776 MiB/935 MiB CGO alloc/total, 28361.88cgo/sec, 1.83/0.23 %(u/s)time, 0.00 %gc (45x)
+W170307 05:53:42.895287 1301511 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=d3c707a1 key=/Table/51/1/"user4263576649176486838"/0 rw=true pri=0.04482633 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894822.835421859,14 orig=1488894822.831640869,10 max=1488894822.837072889,28 wto=false rop=false
+I170307 05:53:46.353029 48 server/status/runtime.go:228  runtime stats: 1.1 GiB RSS, 90 goroutines, 34 MiB/23 MiB/75 MiB GO alloc/idle/total, 841 MiB/1010 MiB CGO alloc/total, 53964.87cgo/sec, 3.38/0.40 %(u/s)time, 0.00 %gc (82x)
+I170307 05:53:56.352989 48 server/status/runtime.go:228  runtime stats: 1.1 GiB RSS, 90 goroutines, 41 MiB/17 MiB/75 MiB GO alloc/idle/total, 842 MiB/1010 MiB CGO alloc/total, 76.10cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (0x)
+I170307 05:54:06.353242 48 server/status/runtime.go:228  runtime stats: 1.1 GiB RSS, 187 goroutines, 36 MiB/14 MiB/75 MiB GO alloc/idle/total, 846 MiB/1015 MiB CGO alloc/total, 11323.02cgo/sec, 0.77/0.11 %(u/s)time, 0.00 %gc (20x)
+I170307 05:54:16.352869 48 server/status/runtime.go:228  runtime stats: 1.2 GiB RSS, 177 goroutines, 40 MiB/13 MiB/75 MiB GO alloc/idle/total, 858 MiB/1.0 GiB CGO alloc/total, 55679.49cgo/sec, 3.52/0.39 %(u/s)time, 0.01 %gc (87x)
+I170307 05:54:26.353079 48 server/status/runtime.go:228  runtime stats: 1.2 GiB RSS, 90 goroutines, 41 MiB/18 MiB/75 MiB GO alloc/idle/total, 857 MiB/1.0 GiB CGO alloc/total, 14825.57cgo/sec, 0.99/0.12 %(u/s)time, 0.00 %gc (21x)
+I170307 05:54:36.352597 46 gossip/gossip.go:437  [n2] gossip status (ok, 3 nodes)
+gossip client (1/3 cur/max conns)
+  1: 128.111.44.237:26267 (14m0s: infos 37/3150 sent/received, bytes 6389B/336947B sent/received)
+gossip server (0/3 cur/max conns, infos 37/3150 sent/received, bytes 6389B/336947B sent/received)
+I170307 05:54:36.353003 48 server/status/runtime.go:228  runtime stats: 1.2 GiB RSS, 90 goroutines, 25 MiB/28 MiB/75 MiB GO alloc/idle/total, 858 MiB/1.0 GiB CGO alloc/total, 74.30cgo/sec, 0.04/0.02 %(u/s)time, 0.00 %gc (1x)
+I170307 05:54:46.353172 48 server/status/runtime.go:228  runtime stats: 1.2 GiB RSS, 187 goroutines, 38 MiB/12 MiB/75 MiB GO alloc/idle/total, 920 MiB/1.1 GiB CGO alloc/total, 42143.25cgo/sec, 2.63/0.32 %(u/s)time, 0.00 %gc (67x)
+I170307 05:54:56.353036 48 server/status/runtime.go:228  runtime stats: 1.2 GiB RSS, 90 goroutines, 39 MiB/19 MiB/75 MiB GO alloc/idle/total, 934 MiB/1.1 GiB CGO alloc/total, 39117.35cgo/sec, 2.45/0.29 %(u/s)time, 0.00 %gc (58x)
+I170307 05:55:06.352934 48 server/status/runtime.go:228  runtime stats: 1.2 GiB RSS, 90 goroutines, 23 MiB/30 MiB/75 MiB GO alloc/idle/total, 936 MiB/1.1 GiB CGO alloc/total, 77.50cgo/sec, 0.03/0.01 %(u/s)time, 0.00 %gc (1x)
+I170307 05:55:16.353374 48 server/status/runtime.go:228  runtime stats: 1.2 GiB RSS, 184 goroutines, 29 MiB/16 MiB/75 MiB GO alloc/idle/total, 945 MiB/1.1 GiB CGO alloc/total, 39372.97cgo/sec, 2.50/0.30 %(u/s)time, 0.00 %gc (60x)
+W170307 05:55:20.477382 1574695 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=f203946b key=/Table/51/1/"user6299287282629807605"/0 rw=true pri=0.00278549 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894920.376723334,1 orig=1488894920.360822005,0 max=1488894920.377801681,15 wto=false rop=false
+W170307 05:55:20.603685 1575695 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=f203946b key=/Table/51/1/"user6299287282629807605"/0 rw=true pri=0.00278549 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894920.376723334,1 orig=1488894920.360822005,0 max=1488894920.377801681,15 wto=false rop=false
+W170307 05:55:20.844468 1576720 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=f203946b key=/Table/51/1/"user6299287282629807605"/0 rw=true pri=0.00278549 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894920.376723334,1 orig=1488894920.360822005,0 max=1488894920.377801681,15 wto=false rop=false
+W170307 05:55:21.242300 1579229 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=f203946b key=/Table/51/1/"user6299287282629807605"/0 rw=true pri=0.00278549 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894920.376723334,1 orig=1488894920.360822005,0 max=1488894920.377801681,15 wto=false rop=false
+W170307 05:55:22.071381 1585026 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=f203946b key=/Table/51/1/"user6299287282629807605"/0 rw=true pri=0.00278549 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894920.376723334,1 orig=1488894920.360822005,0 max=1488894920.377801681,15 wto=false rop=false
+W170307 05:55:23.672863 1595210 storage/intent_resolver.go:338  [n2,s2,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=f203946b key=/Table/51/1/"user6299287282629807605"/0 rw=true pri=0.00278549 iso=SERIALIZABLE stat=PENDING epo=0 ts=1488894920.376723334,1 orig=1488894920.360822005,0 max=1488894920.377801681,15 wto=false rop=false
+I170307 05:55:26.353001 48 server/status/runtime.go:228  runtime stats: 1.3 GiB RSS, 91 goroutines, 46 MiB/15 MiB/75 MiB GO alloc/idle/total, 1005 MiB/1.2 GiB CGO alloc/total, 41117.41cgo/sec, 2.62/0.31 %(u/s)time, 0.00 %gc (59x)
+I170307 05:55:36.352652 46 gossip/gossip.go:437  [n2] gossip status (ok, 3 nodes)
+gossip client (1/3 cur/max conns)
+  1: 128.111.44.237:26267 (15m0s: infos 39/3362 sent/received, bytes 6731B/358057B sent/received)
+gossip server (0/3 cur/max conns, infos 39/3362 sent/received, bytes 6731B/358057B sent/received)
+I170307 05:55:36.353059 48 server/status/runtime.go:228  runtime stats: 1.3 GiB RSS, 90 goroutines, 39 MiB/20 MiB/75 MiB GO alloc/idle/total, 1008 MiB/1.2 GiB CGO alloc/total, 511.80cgo/sec, 0.04/0.01 %(u/s)time, 0.00 %gc (1x)
+I170307 05:55:46.353315 48 server/status/runtime.go:228  runtime stats: 1.3 GiB RSS, 205 goroutines, 33 MiB/13 MiB/75 MiB GO alloc/idle/total, 1.0 GiB/1.2 GiB CGO alloc/total, 12748.85cgo/sec, 0.85/0.11 %(u/s)time, 0.00 %gc (21x)
+I170307 05:55:56.352961 48 server/status/runtime.go:228  runtime stats: 1.4 GiB RSS, 190 goroutines, 48 MiB/7.8 MiB/76 MiB GO alloc/idle/total, 1.0 GiB/1.2 GiB CGO alloc/total, 55714.78cgo/sec, 3.50/0.41 %(u/s)time, 0.00 %gc (80x)
