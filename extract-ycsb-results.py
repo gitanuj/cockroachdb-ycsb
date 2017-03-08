@@ -1,58 +1,94 @@
 #
-# Extracts results for a benchmark done using different number of threads for
+# Extracts results for benchmarks properly formatted for
 # "Raft Read Scalability - YCSB Benchmarks" Google Sheet
-# python extract-ycsb-results.py <results-dir0> <results-dir1> <results-dir2>
+# python extract-ycsb-results.py
 #
 import sys
-import numpy
+import glob
 
-DIRS = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]
+BENCHMARK_DIR_PREFIX = "03.06.2017.dsl"
+READ_TYPES = [0, 1, 2, 3]
+WORKLOADS = ["uniform95"]
+NUM_THREADS = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]
 
-def extract(dir, param1, param2):
-	result = []
+YCSB_PARAMS = [
+	"[OVERALL], Throughput(ops/sec), ",
+	"[UPDATE], Operations, ",
+	"[UPDATE], AverageLatency(us), ",
+	"[UPDATE], 95thPercentileLatency(us), ",
+	"[UPDATE], 99thPercentileLatency(us), ",
+	"[UPDATE-FAILED], Operations, ",
+	"[READ], Operations, ",
+	"[READ], AverageLatency(us), ",
+	"[READ], 95thPercentileLatency(us), ",
+	"[READ], 99thPercentileLatency(us), ",
+	"[READ-FAILED], Operations, ",
+]
 
-	for d in DIRS:
-		file = dir + "/" + str(d) + "/ycsb-results"
-		found = False
-		for line in open(file):
-			vals = line.split(', ')
-			
-			if len(vals) > 2:
-				if (vals[0] == param1) and (vals[1] == param2):
-					found = True
-					result.append(float(vals[2].rstrip()))
-					break
+def extractYcsbParam(file, param):
+	for line in open(file):
+		if line.startswith(param):
+			result = line[len(param):].rstrip()
+			return float(result)
+	return 0
 
-		if found == False:
-			result.append(0)
+def extractYcsbParams(file):
+	results = dict()
+	for param in YCSB_PARAMS:
+		results[param] = extractYcsbParam(file, param)
+	return results
 
-	return result
+def calcMeanResults(results):
+	meanDict = dict()
+	totalReadings = len(results.keys())
 
-def extractAvg(param1, param2):
-	result = [0] * len(DIRS)
-	size = len(sys.argv)
+	for dir, dirDict in results.items():
+		for numThread, numThreadDict in dirDict.items():
+			meanNumThreadDict = meanDict.get(numThread, dict())
+			for param, paramVal in numThreadDict.items():
+				meanNumThreadDict[param] = meanNumThreadDict.get(param, 0) + paramVal
+			meanDict[numThread] = meanNumThreadDict
 
-	for i in range(1, size):
-		dir = sys.argv[i]
-		vals = extract(dir, param1, param2)
-		result = [x + y for x, y in zip(result, vals)]
+	for numThread, numThreadDict in meanDict.items():
+		for param, paramVal in numThreadDict.items():
+			numThreadDict[param] = numThreadDict[param] / totalReadings
 
-	return [x / (size-1) for x in result]
+	return meanDict
+
+def dumpForGoogleSheet(d, delimiter='\t'):
+	# print headers
+	sys.stdout.write("Threads" + delimiter)
+	for param in YCSB_PARAMS:
+		sys.stdout.write(param.rstrip(', ') + delimiter)
+	sys.stdout.write('\n')
+
+	# print vals
+	for numThread in NUM_THREADS:
+		sys.stdout.write(str(numThread) + delimiter)
+		numThreadDict = d[numThread]
+		for param in YCSB_PARAMS:
+			sys.stdout.write(str(numThreadDict[param]) + delimiter)
+		sys.stdout.write('\n')
+
+	sys.stdout.flush()
 
 def main():
-	result = []
-	result.append(extractAvg('[OVERALL]', 'Throughput(ops/sec)'))
-	result.append(extractAvg('[UPDATE]', 'AverageLatency(us)'))
-	result.append(extractAvg('[UPDATE]', '95thPercentileLatency(us)'))
-	result.append(extractAvg('[UPDATE]', '99thPercentileLatency(us)'))
-	result.append(extractAvg('[READ]', 'AverageLatency(us)'))
-	result.append(extractAvg('[READ]', '95thPercentileLatency(us)'))
-	result.append(extractAvg('[READ]', '99thPercentileLatency(us)'))
-	result.append(extractAvg('[UPDATE-FAILED]', 'Operations'))
-	
-	nparr = numpy.array(result)
-	nparr = numpy.transpose(nparr)
-	numpy.savetxt('output.txt', nparr, fmt='%f', delimiter='\t')
+	for readType in READ_TYPES:
+		for workload in WORKLOADS:
+			path = "benchmarks/" + BENCHMARK_DIR_PREFIX + "." + str(readType) + "." + workload + ".*"
+			dirs = glob.glob(path)
+
+			results = dict()
+			for dir in dirs:
+				result = dict()
+				for numThread in NUM_THREADS:
+					result[numThread] = extractYcsbParams(dir+"/"+str(numThread)+"/ycsb-results")
+				results[dir] = result
+
+			mean = calcMeanResults(results)
+			print path + " (" + str(len(results.keys())) + " readings)"
+			dumpForGoogleSheet(mean)
+			print ""
 
 if __name__ == '__main__':
 	main()
