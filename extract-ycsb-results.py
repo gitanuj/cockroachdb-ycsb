@@ -6,8 +6,12 @@
 
 import sys
 import glob
+import os
+import Gnuplot as gp
+import Gnuplot.funcutils
+import errno
 
-BENCHMARK_DIR_PREFIX = "03.06.2017.dsl"
+BENCHMARK_DIR_PREFIX = "03.06.2017.m3.2xl"
 READ_TYPES = [0, 1, 2, 3]
 WORKLOADS = ["uniform95"]
 NUM_THREADS = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]
@@ -70,6 +74,26 @@ def getGlobpath(readType, workload):
 def getFile(dir, numThread):
 	return dir+"/"+str(numThread)+"/ycsb-results"
 
+def plot(x, ys, labels, filename):
+	g = gp.Gnuplot()
+	g("set terminal svg")
+	g("set multiplot")
+	g("set title " + filename)
+	plotData = []
+	for i, y in enumerate(ys):
+		plotData.append(gp.Data(x, y, with_="linespoints", title=str(labels[i])))
+	g.plot(*plotData)
+	g("unset multiplot")
+	g.hardcopy(filename=filename, terminal="svg")
+	del g
+
+def mkdirsp(dirs):
+	try:
+		os.makedirs(dirs)
+	except OSError as e:
+		if e.errno != errno.EEXIST:
+			raise
+
 def main():
 	results = dict()
 	for readType in READ_TYPES:
@@ -96,11 +120,36 @@ def main():
 				means[getFile(globpath, numThread)] = mean
 
 	# dump
+	# for readType in READ_TYPES:
+	# 	for workload in WORKLOADS:
+	# 		print getGlobpath(readType, workload)
+	# 		dumpThreadsVsTables(means, YCSB_PARAMS, readType, workload)
+	# 		print ""
+
+	mkdirsp("graphs/ycsb/" + BENCHMARK_DIR_PREFIX)
 	for readType in READ_TYPES:
-		for workload in WORKLOADS:
-			print getFile(getGlobpath(readType, workload), numThread)
-			dumpThreadsVsTables(means, YCSB_PARAMS, readType, workload)
-			print ""
+		for ycsbParam in YCSB_PARAMS:
+			ys = []
+			for workload in WORKLOADS:
+				y = []
+				ys.append(y)
+				globpath = getGlobpath(readType, workload)
+				for numThread in NUM_THREADS:
+					y.append(means[getFile(globpath, numThread)][ycsbParam])
+			filename = "graphs/ycsb/" + BENCHMARK_DIR_PREFIX + "/" + str(readType) + "." + ycsbParam.rstrip(", ") + ".svg"
+			plot(NUM_THREADS, ys, WORKLOADS, filename)
+
+	for workload in WORKLOADS:
+		for ycsbParam in YCSB_PARAMS:
+			ys = []
+			for readType in READ_TYPES:
+				y = []
+				ys.append(y)
+				globpath = getGlobpath(readType, workload)
+				for numThread in NUM_THREADS:
+					y.append(means[getFile(globpath, numThread)][ycsbParam])
+			filename = "graphs/ycsb/" + BENCHMARK_DIR_PREFIX + "/" + workload + "." + ycsbParam.rstrip(", ") + ".svg"
+			plot(NUM_THREADS, ys, READ_TYPES, filename)
 
 if __name__ == '__main__':
 	main()
