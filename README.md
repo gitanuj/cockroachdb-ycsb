@@ -7,9 +7,9 @@
 1. Install `python`, `java` and `nmon`
 2. Copy over contents from `ycsb-client-files`
 
-### Master machine (macOS 10.12)
-1. Install `python` (for extract scripts)
-2. Install `go` (for lhfallback-prob.go script)
+### Master machine
+1. Copy over `common.sh`, `master.sh` and `run-benchmark.sh`
+2. (Optional) Copy over `ec2.py` and `lhfallback-prob.go`
 
 # Steps
 1. Update vars in `common.sh`
