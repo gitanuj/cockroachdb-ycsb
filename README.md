@@ -1,9 +1,9 @@
 # Setup
-### Cockroach Server (ubuntu 14.04 or 16.04)
+### Cockroach Server
 1. Install `nmon`
 2. Copy over `cockroach` binary
 
-### YCSB Client (ubuntu 14.04 or 16.04)
+### YCSB Client
 1. Install `python`, `java` and `nmon`
 2. Copy over contents from `ycsb-client-files`
 
