@@ -3,6 +3,7 @@
 # "Raft Read Scalability - YCSB Benchmarks" Google Sheet
 # python extract-ycsb-results.py
 #
+
 import sys
 import glob
 
@@ -38,56 +39,67 @@ def extractYcsbParams(file):
 		results[param] = extractYcsbParam(file, param)
 	return results
 
-def calcMeanResults(results):
-	meanDict = dict()
-	totalReadings = len(results.keys())
+def meanDicts(dicts):
+	mean = dict()
+	total = float(len(dicts))
+	for k in dicts[0].keys():
+		mean[k] = 0
+		for d in dicts:
+			mean[k] += d[k]/total
+	return mean
 
-	for dir, dirDict in results.items():
-		for numThread, numThreadDict in dirDict.items():
-			meanNumThreadDict = meanDict.get(numThread, dict())
-			for param, paramVal in numThreadDict.items():
-				meanNumThreadDict[param] = meanNumThreadDict.get(param, 0) + paramVal
-			meanDict[numThread] = meanNumThreadDict
-
-	for numThread, numThreadDict in meanDict.items():
-		for param, paramVal in numThreadDict.items():
-			numThreadDict[param] = numThreadDict[param] / totalReadings
-
-	return meanDict
-
-def dumpForGoogleSheet(d, delimiter='\t'):
-	# print headers
-	sys.stdout.write("Threads" + delimiter)
-	for param in YCSB_PARAMS:
-		sys.stdout.write(param.rstrip(', ') + delimiter)
+def dumpThreadsVsTables(means, cols, readType, workload, delimiter='\t'):
+	# headers
+	sys.stdout.write('Threads' + delimiter)
+	for col in cols:
+		sys.stdout.write(col.rstrip(', ') + delimiter)
 	sys.stdout.write('\n')
 
-	# print vals
+	# data
 	for numThread in NUM_THREADS:
+		file = getFile(getGlobpath(readType, workload), numThread)
+		data = means[file]
 		sys.stdout.write(str(numThread) + delimiter)
-		numThreadDict = d[numThread]
-		for param in YCSB_PARAMS:
-			sys.stdout.write(str(numThreadDict[param]) + delimiter)
+		for col in cols:
+			sys.stdout.write(str(data[col]) + delimiter)
 		sys.stdout.write('\n')
 
-	sys.stdout.flush()
+def getGlobpath(readType, workload):
+	return "benchmarks/" + BENCHMARK_DIR_PREFIX + "." + str(readType) + "." + workload + ".*"
+
+def getFile(dir, numThread):
+	return dir+"/"+str(numThread)+"/ycsb-results"
 
 def main():
+	results = dict()
 	for readType in READ_TYPES:
 		for workload in WORKLOADS:
-			path = "benchmarks/" + BENCHMARK_DIR_PREFIX + "." + str(readType) + "." + workload + ".*"
-			dirs = glob.glob(path)
-
-			results = dict()
+			globpath = getGlobpath(readType, workload)
+			dirs = glob.glob(globpath)
 			for dir in dirs:
-				result = dict()
 				for numThread in NUM_THREADS:
-					result[numThread] = extractYcsbParams(dir+"/"+str(numThread)+"/ycsb-results")
-				results[dir] = result
+					file = getFile(dir, numThread)
+					params = extractYcsbParams(file)
+					results[file] = params
 
-			mean = calcMeanResults(results)
-			print path + " (" + str(len(results.keys())) + " readings)"
-			dumpForGoogleSheet(mean)
+	# Calculate mean
+	means = dict()
+	for readType in READ_TYPES:
+		for workload in WORKLOADS:
+			for numThread in NUM_THREADS:
+				toAvg = []
+				globpath = getGlobpath(readType, workload)
+				for dir in glob.glob(globpath):
+					file = getFile(dir, numThread)
+					toAvg.append(results[file])
+				mean = meanDicts(toAvg)
+				means[getFile(globpath, numThread)] = mean
+
+	# dump
+	for readType in READ_TYPES:
+		for workload in WORKLOADS:
+			print getFile(getGlobpath(readType, workload), numThread)
+			dumpThreadsVsTables(means, YCSB_PARAMS, readType, workload)
 			print ""
 
 if __name__ == '__main__':
