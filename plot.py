@@ -5,7 +5,7 @@ Gnuplot.GnuplotOpts.default_term = 'svg'
 def multiplot(xlabel, x, ylabel, ys, ytitles, filename):
 	g = Gnuplot.Gnuplot()
 	g.set(output=filename)
-	g("set term svg size 1024,600")
+	g("set term svg enhanced background rgb 'white' size 1024,600")
 	g("set border 1+2")
 	g("set key outside vertical right top")
 	g.xlabel(xlabel)

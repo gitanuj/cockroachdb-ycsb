@@ -60,6 +60,7 @@ def extractDataParams(file):
 			results.append(extractDataParam(file, param_id))
 		return results
 	except:
+		print "Error in parsing " + file
 		return None
 
 def extractYcsbParam(file, param_id):
@@ -77,6 +78,7 @@ def extractYcsbParams(file):
 			results.append(extractYcsbParam(file, param_id))
 		return results
 	except:
+		print "Error in parsing " + file
 		return None
 
 def my(path_exp, extract_func):
@@ -126,7 +128,7 @@ def dump_ycsb_graphs(results):
 				curr = path.replace("$readtype", str(readtype))
 				curr = curr.replace("$thread", str(thread))
 				y.append(results[curr][i])
-		filename = OUTPUT_DIR + "/diffthreads." + param["title"]+"."+str(readtype)+".svg"
+		filename = OUTPUT_DIR + "/" + param["title"]+"."+str(readtype)+".svg"
 		multiplot(xlabel, x, param["title"], ys, ytitles, filename)
 
 	# for 70 threads
@@ -143,7 +145,7 @@ def dump_ycsb_graphs(results):
 				curr = path.replace("$readtype", str(readtype))
 				curr = curr.replace("$workload", str(workload))
 				y.append(results[curr][i])
-		filename = OUTPUT_DIR + "/diffworkloads." + param["title"]+"."+str(readtype)+".svg"
+		filename = OUTPUT_DIR + "/70threads." + param["title"]+"."+str(readtype)+".svg"
 		multiplot(xlabel, x, param["title"], ys, ytitles, filename)
 
 if __name__ == '__main__':
