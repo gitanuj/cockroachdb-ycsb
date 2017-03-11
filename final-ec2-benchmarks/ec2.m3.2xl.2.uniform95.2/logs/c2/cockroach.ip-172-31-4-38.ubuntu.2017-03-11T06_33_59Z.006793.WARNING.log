@@ -1,0 +1,25 @@
+W170311 06:33:59.911812 8 util/log/clog.go:1003  [config] file created at: 2017/03/11 06:33:59
+W170311 06:33:59.911812 8 util/log/clog.go:1003  [config] running on machine: ip-172-31-4-38
+W170311 06:33:59.911812 8 util/log/clog.go:1003  [config] binary: CockroachDB fa9e7ab (linux amd64, built 2017/03/11 00:35:03, go1.8)
+W170311 06:33:59.911812 8 util/log/clog.go:1003  [config] arguments: [./cockroach start --insecure --host=172.31.4.38 --port=26267 --http-port=8081 --join=172.31.0.107:26267]
+W170311 06:33:59.911812 8 util/log/clog.go:1003  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg
+W170311 06:33:59.911811 8 server/server.go:157  [n?] running in insecure mode, this is strongly discouraged. See --insecure.
+W170311 06:33:59.912045 8 gossip/gossip.go:1138  [n?] no incoming or outgoing connections
+W170311 06:33:59.915116 50 gossip/client.go:119  [n?] failed to start gossip client to 172.31.0.107:26267: rpc error: code = 14 desc = grpc: the connection is unavailable
+E170311 06:35:00.925021 153 storage/replica.go:4292  [n4,s4] failed to gossip cluster ID: info not fresh
+E170311 06:36:00.924564 153 storage/replica.go:4292  [n4,s4] failed to gossip cluster ID: info not fresh
+E170311 06:37:00.924667 153 storage/replica.go:4292  [n4,s4] failed to gossip cluster ID: info not fresh
+E170311 06:38:00.924666 153 storage/replica.go:4292  [n4,s4] failed to gossip cluster ID: info not fresh
+E170311 06:39:00.924673 153 storage/replica.go:4292  [n4,s4] failed to gossip cluster ID: info not fresh
+E170311 06:40:00.924751 153 storage/replica.go:4292  [n4,s4] failed to gossip cluster ID: info not fresh
+E170311 06:41:00.924582 153 storage/replica.go:4292  [n4,s4] failed to gossip cluster ID: info not fresh
+E170311 06:42:00.924656 153 storage/replica.go:4292  [n4,s4] failed to gossip cluster ID: info not fresh
+W170311 06:42:23.548858 744382 storage/intent_resolver.go:338  [n4,s4,r22/4:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=0965e33e key=/Table/51/1/"user5008310054042953721"/0 rw=true pri=0.02467022 iso=SERIALIZABLE stat=PENDING epo=0 ts=1489214543.559724887,37 orig=1489214543.559724887,28 max=1489214543.561469806,25 wto=false rop=false
+W170311 06:44:30.931341 255 storage/raft_transport.go:443  [n4] raft transport stream to node 3 failed: rpc error: code = 13 desc = transport is closing
+E170311 06:49:01.917914 160 storage/queue.go:610  [replicate,n4,s4,r5/6:/Table/{14-50},@c4208c0900] purgatory: 0 of 4 stores with an attribute matching []; likely not enough nodes in cluster
+E170311 06:49:01.918053 1205111 storage/queue.go:610  [replicate,n4,s4,r5/6:/Table/{14-50},@c4208c0900] purgatory: 0 of 4 stores with an attribute matching []; likely not enough nodes in cluster
+E170311 06:49:01.923830 1205111 storage/queue.go:610  [replicate,n4,s4,r5/6:/Table/{14-50},@c4208c0900] purgatory: 0 of 4 stores with an attribute matching []; likely not enough nodes in cluster
+E170311 06:49:46.413379 160 storage/queue.go:610  [replicate,n4,s4,r21/4:/Table/5{0-1},@c4211fa300] purgatory: 0 of 4 stores with an attribute matching []; likely not enough nodes in cluster
+E170311 06:49:46.413514 1205537 storage/queue.go:610  [replicate,n4,s4,r21/4:/Table/5{0-1},@c4211fa300] purgatory: 0 of 4 stores with an attribute matching []; likely not enough nodes in cluster
+E170311 06:49:55.485472 1205537 storage/queue.go:610  [replicate,n4,s4,r21/4:/Table/5{0-1},@c4211fa300] purgatory: 0 of 4 stores with an attribute matching []; likely not enough nodes in cluster
+E170311 06:49:55.485551 1205537 storage/queue.go:610  [replicate,n4,s4,r21/4:/Table/5{0-1},@c4211fa300] purgatory: 0 of 4 stores with an attribute matching []; likely not enough nodes in cluster

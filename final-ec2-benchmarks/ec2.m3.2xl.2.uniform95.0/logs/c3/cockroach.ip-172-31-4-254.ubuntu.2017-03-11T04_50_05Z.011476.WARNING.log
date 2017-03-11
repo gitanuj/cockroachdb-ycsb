@@ -1,0 +1,10 @@
+W170311 04:50:05.285586 30 util/log/clog.go:1003  [config] file created at: 2017/03/11 04:50:05
+W170311 04:50:05.285586 30 util/log/clog.go:1003  [config] running on machine: ip-172-31-4-254
+W170311 04:50:05.285586 30 util/log/clog.go:1003  [config] binary: CockroachDB fa9e7ab (linux amd64, built 2017/03/11 00:35:03, go1.8)
+W170311 04:50:05.285586 30 util/log/clog.go:1003  [config] arguments: [./cockroach start --insecure --host=172.31.4.254 --port=26267 --http-port=8081 --join=172.31.7.31:26267]
+W170311 04:50:05.285586 30 util/log/clog.go:1003  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg
+W170311 04:50:05.285585 30 server/server.go:157  [n?] running in insecure mode, this is strongly discouraged. See --insecure.
+W170311 04:50:05.286852 30 gossip/gossip.go:1138  [n?] no incoming or outgoing connections
+W170311 05:01:27.237941 1081722 storage/intent_resolver.go:338  [n3,s3,r22/4:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=7baec74f key=/Table/51/1/"user6693265679564388708"/0 rw=true pri=0.00548828 iso=SERIALIZABLE stat=PENDING epo=0 ts=1489208487.221552399,22 orig=1489208487.221552399,18 max=1489208487.224557182,46 wto=false rop=false
+W170311 05:01:59.044392 1162233 storage/intent_resolver.go:338  [n3,s3,r22/4:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=63f85f5a key=/Table/51/1/"user8780337488600391966"/0 rw=true pri=0.02129748 iso=SERIALIZABLE stat=PENDING epo=0 ts=1489208519.027291417,1 orig=1489208519.026418355,0 max=1489208519.026418355,1 wto=false rop=false
+W170311 05:03:36.088128 383 storage/raft_transport.go:443  [n3] raft transport stream to node 5 failed: rpc error: code = 13 desc = transport is closing

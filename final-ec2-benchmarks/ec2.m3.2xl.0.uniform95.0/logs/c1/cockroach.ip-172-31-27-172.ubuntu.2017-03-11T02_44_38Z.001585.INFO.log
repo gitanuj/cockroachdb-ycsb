@@ -1,0 +1,203 @@
+I170311 02:44:38.977218 1 util/log/clog.go:1003  [config] file created at: 2017/03/11 02:44:38
+I170311 02:44:38.977218 1 util/log/clog.go:1003  [config] running on machine: ip-172-31-27-172
+I170311 02:44:38.977218 1 util/log/clog.go:1003  [config] binary: CockroachDB fa9e7ab (linux amd64, built 2017/03/11 00:35:03, go1.8)
+I170311 02:44:38.977218 1 util/log/clog.go:1003  [config] arguments: [./cockroach start --insecure --host=172.31.27.172 --port=26267 --http-port=8081 --join=172.31.26.191:26267]
+I170311 02:44:38.977218 1 util/log/clog.go:1003  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg
+I170311 02:44:38.977217 1 cli/start.go:323  CockroachDB fa9e7ab (linux amd64, built 2017/03/11 00:35:03, go1.8)
+I170311 02:44:39.078356 8 cli/start.go:354  starting cockroach node
+W170311 02:44:39.079936 8 server/server.go:157  [n?] running in insecure mode, this is strongly discouraged. See --insecure.
+W170311 02:44:39.080149 8 gossip/gossip.go:1138  [n?] no incoming or outgoing connections
+I170311 02:44:39.085851 8 storage/engine/rocksdb.go:326  opening rocksdb instance at "cockroach-data"
+I170311 02:44:39.092337 66 gossip/client.go:125  [n?] started gossip client to 172.31.26.191:26267
+I170311 02:44:39.305185 8 server/config.go:456  1 storage engine initialized
+I170311 02:44:39.308217 8 server/node.go:426  [n?] store [n0,s0] not bootstrapped
+I170311 02:44:39.308248 8 storage/stores.go:296  [n?] read 0 node addresses from persistent storage
+I170311 02:44:39.308345 8 storage/stores.go:312  [n?] wrote 2 node addresses to persistent storage
+I170311 02:44:39.308360 8 server/node.go:571  [n?] connecting to gossip network to verify cluster ID...
+I170311 02:44:39.308410 8 server/node.go:595  [n?] node connected via gossip and verified as part of cluster "4ec48b70-d971-4711-8b2d-2660a522d673"
+I170311 02:44:39.311782 8 kv/dist_sender.go:369  [n?] unable to determine this node's attributes for replica selection; node is most likely bootstrapping
+I170311 02:44:39.313390 8 server/node.go:317  [n?] new node allocated ID 3
+I170311 02:44:39.313499 8 gossip/gossip.go:292  [n3] NodeDescriptor set to node_id:3 address:<network_field:"tcp" address_field:"172.31.27.172:26267" > attrs:<> locality:<> 
+I170311 02:44:39.313579 8 server/node.go:374  [n3] node=3: started with [[]=cockroach-data] engine(s) and attributes []
+I170311 02:44:39.314560 8 sql/executor.go:322  [n3] creating distSQLPlanner with address {tcp 172.31.27.172:26267}
+I170311 02:44:39.320699 114 server/node.go:552  [n3] bootstrapped store [n3,s3]
+I170311 02:44:39.323405 8 server/server.go:632  [n3] starting http server at 172.31.27.172:8081
+I170311 02:44:39.323419 8 server/server.go:633  [n3] starting grpc/postgres server at 172.31.27.172:26267
+I170311 02:44:39.323431 8 server/server.go:634  [n3] advertising CockroachDB node at 172.31.27.172:26267
+I170311 02:44:39.324208 8 server/server.go:689  [n3] done ensuring all necessary migrations have run
+I170311 02:44:39.324223 8 server/server.go:691  [n3] serving sql connections
+I170311 02:44:39.331382 117 sql/event_log.go:95  [n3] Event: "node_join", target: 3, info: {Descriptor:{NodeID:3 Address:{NetworkField:tcp AddressField:172.31.27.172:26267} Attrs: Locality:} ClusterID:4ec48b70-d971-4711-8b2d-2660a522d673 StartedAt:1489200279313556847}
+I170311 02:44:39.332332 185 storage/replica_raftstorage.go:575  [n3,s3,r5/?:{-},@c420c0e600] applying preemptive snapshot at index 16 (id=71050478, encoded size=2163, 1 rocksdb batches, 6 log entries)
+I170311 02:44:39.332577 185 storage/replica_raftstorage.go:583  [n3,s3,r5/?:/{Table/14-Max},@c420c0e600] applied preemptive snapshot in 0ms [clear=0ms batch=0ms entries=0ms commit=0ms]
+I170311 02:44:39.340173 110 storage/replica_raftstorage.go:575  [n3,s3,r2/?:{-},@c420bb2c00] applying preemptive snapshot at index 23 (id=e27315d2, encoded size=6233, 1 rocksdb batches, 13 log entries)
+I170311 02:44:39.340404 110 storage/replica_raftstorage.go:583  [n3,s3,r2/?:/Table/1{1-2},@c420bb2c00] applied preemptive snapshot in 0ms [clear=0ms batch=0ms entries=0ms commit=0ms]
+I170311 02:44:39.341845 80 storage/raft_transport.go:437  [n3] raft transport stream to node 1 established
+I170311 02:44:39.348140 159 storage/replica_raftstorage.go:575  [n3,s3,r4/?:{-},@c420324900] applying preemptive snapshot at index 34 (id=655ab117, encoded size=19656, 1 rocksdb batches, 24 log entries)
+I170311 02:44:39.348456 159 storage/replica_raftstorage.go:583  [n3,s3,r4/?:/Table/1{3-4},@c420324900] applied preemptive snapshot in 0ms [clear=0ms batch=0ms entries=0ms commit=0ms]
+I170311 02:44:39.356637 210 storage/replica_raftstorage.go:575  [n3,s3,r3/?:{-},@c420c0e300] applying preemptive snapshot at index 27 (id=669a2057, encoded size=10859, 1 rocksdb batches, 17 log entries)
+I170311 02:44:39.356912 210 storage/replica_raftstorage.go:583  [n3,s3,r3/?:/Table/1{2-3},@c420c0e300] applied preemptive snapshot in 0ms [clear=0ms batch=0ms entries=0ms commit=0ms]
+I170311 02:44:39.370938 196 storage/replica_raftstorage.go:575  [n3,s3,r1/?:{-},@c420bb2300] applying preemptive snapshot at index 79 (id=1348ddcb, encoded size=284263, 1 rocksdb batches, 69 log entries)
+I170311 02:44:39.372666 196 storage/replica_raftstorage.go:583  [n3,s3,r1/?:/{Min-Table/11},@c420bb2300] applied preemptive snapshot in 2ms [clear=0ms batch=0ms entries=1ms commit=1ms]
+I170311 02:44:39.997771 232 storage/stores.go:312  [n3] wrote 3 node addresses to persistent storage
+I170311 02:44:40.012515 46 storage/stores.go:312  [n3] wrote 4 node addresses to persistent storage
+I170311 02:44:40.084763 194 storage/store.go:3153  [n3,s3,r5/3:/{Table/14-Max},@c420c0e600] added to replica GC queue (peer suggestion)
+I170311 02:44:40.086181 152 storage/store.go:2107  [replicaGC,n3,s3,r5/3:/{Table/14-Max},@c420c0e600] removing replica
+I170311 02:44:40.086324 152 storage/replica.go:732  [replicaGC,n3,s3,r5/3:/{Table/14-Max},@c420c0e600] removed 11 (0+11) keys in 0ms [clear=0ms commit=0ms]
+I170311 02:44:40.282485 194 storage/store.go:3153  [n3,s3,r2/3:/Table/1{1-2},@c420bb2c00] added to replica GC queue (peer suggestion)
+I170311 02:44:40.284870 152 storage/store.go:2107  [replicaGC,n3,s3,r2/3:/Table/1{1-2},@c420bb2c00] removing replica
+I170311 02:44:40.285011 152 storage/replica.go:732  [replicaGC,n3,s3,r2/3:/Table/1{1-2},@c420bb2c00] removed 11 (0+11) keys in 0ms [clear=0ms commit=0ms]
+I170311 02:44:47.134542 280 storage/raft_transport.go:437  [n3] raft transport stream to node 2 established
+I170311 02:44:47.134679 151 storage/replica_raftstorage.go:410  [replicate,n3,s3,r4/3:/Table/1{3-4},@c420324900] generated preemptive snapshot a4abe9b9 at index 60
+I170311 02:44:47.136298 151 storage/store.go:3297  [replicate,n3,s3,r4/3:/Table/1{3-4},@c420324900] streamed snapshot: kv pairs: 127, log entries: 50, 1ms
+I170311 02:44:47.187031 151 storage/replica_command.go:3210  [replicate,n3,s3,r4/3:/Table/1{3-4},@c420324900] change replicas (remove {5 5 4}): read existing descriptor range_id:4 start_key:"\225" end_key:"\226" replicas:<node_id:1 store_id:1 replica_id:1 > replicas:<node_id:2 store_id:2 replica_id:2 > replicas:<node_id:3 store_id:3 replica_id:3 > next_replica_id:4 
+I170311 02:44:47.194102 94 storage/replica.go:2454  [n3,s3,r4/3:/Table/1{3-4},@c420324900] proposing ADD_REPLICA {NodeID:5 StoreID:5 ReplicaID:4}: [{NodeID:1 StoreID:1 ReplicaID:1} {NodeID:2 StoreID:2 ReplicaID:2} {NodeID:3 StoreID:3 ReplicaID:3} {NodeID:5 StoreID:5 ReplicaID:4}]
+I170311 02:44:47.195654 151 storage/replica_command.go:3210  [replicate,n3,s3,r4/3:/Table/1{3-4},@c420324900] change replicas (remove {1 1 1}): read existing descriptor range_id:4 start_key:"\225" end_key:"\226" replicas:<node_id:1 store_id:1 replica_id:1 > replicas:<node_id:2 store_id:2 replica_id:2 > replicas:<node_id:3 store_id:3 replica_id:3 > replicas:<node_id:5 store_id:5 replica_id:4 > next_replica_id:5 
+I170311 02:44:47.203349 338 storage/replica.go:2454  [n3,s3,r4/3:/Table/1{3-4},@c420324900] proposing REMOVE_REPLICA {NodeID:1 StoreID:1 ReplicaID:1}: [{NodeID:5 StoreID:5 ReplicaID:4} {NodeID:2 StoreID:2 ReplicaID:2} {NodeID:3 StoreID:3 ReplicaID:3}]
+I170311 02:44:49.314174 115 storage/store.go:3943  [n3,s3] sstables (read amplification = 0):
+I170311 02:44:49.314408 118 server/status/runtime.go:228  runtime stats: 117 MiB RSS, 110 goroutines, 11 MiB/1.3 MiB/20 MiB GO alloc/idle/total, 8.2 MiB/13 MiB CGO alloc/total, 0.00cgo/sec, 0.00/0.00 %(u/s)time, 0.00 %gc (6x)
+I170311 02:44:52.888643 358 storage/replica_raftstorage.go:575  [n3,s3,r5/?:{-},@c4201cb800] applying preemptive snapshot at index 35 (id=81af0d97, encoded size=10058, 1 rocksdb batches, 25 log entries)
+I170311 02:44:52.888999 358 storage/replica_raftstorage.go:583  [n3,s3,r5/?:/{Table/14-Max},@c4201cb800] applied preemptive snapshot in 0ms [clear=0ms batch=0ms entries=0ms commit=0ms]
+I170311 02:44:52.905276 372 storage/raft_transport.go:437  [n3] raft transport stream to node 4 established
+I170311 02:44:53.076934 389 storage/replica_raftstorage.go:575  [n3,s3,r2/?:{-},@c420bb3800] applying preemptive snapshot at index 44 (id=0290347c, encoded size=14700, 1 rocksdb batches, 34 log entries)
+I170311 02:44:53.077896 389 storage/replica_raftstorage.go:583  [n3,s3,r2/?:/Table/1{1-2},@c420bb3800] applied preemptive snapshot in 1ms [clear=0ms batch=0ms entries=0ms commit=0ms]
+I170311 02:44:53.142406 151 storage/replica_raftstorage.go:410  [replicate,n3,s3,r4/3:/Table/1{3-4},@c420324900] generated preemptive snapshot 26d09610 at index 83
+I170311 02:44:53.143417 151 storage/store.go:3297  [replicate,n3,s3,r4/3:/Table/1{3-4},@c420324900] streamed snapshot: kv pairs: 170, log entries: 73, 1ms
+I170311 02:44:53.145195 151 storage/replica_command.go:3210  [replicate,n3,s3,r4/3:/Table/1{3-4},@c420324900] change replicas (remove {4 4 5}): read existing descriptor range_id:4 start_key:"\225" end_key:"\226" replicas:<node_id:5 store_id:5 replica_id:4 > replicas:<node_id:2 store_id:2 replica_id:2 > replicas:<node_id:3 store_id:3 replica_id:3 > next_replica_id:5 
+I170311 02:44:53.154753 300 storage/replica.go:2454  [n3,s3,r4/3:/Table/1{3-4},@c420324900] proposing ADD_REPLICA {NodeID:4 StoreID:4 ReplicaID:5}: [{NodeID:5 StoreID:5 ReplicaID:4} {NodeID:2 StoreID:2 ReplicaID:2} {NodeID:3 StoreID:3 ReplicaID:3} {NodeID:4 StoreID:4 ReplicaID:5}]
+I170311 02:44:53.156139 151 storage/replica_raftstorage.go:410  [replicate,n3,s3,r4/3:/Table/1{3-4},@c420324900] generated preemptive snapshot b248aac1 at index 86
+I170311 02:44:53.157250 151 storage/store.go:3297  [replicate,n3,s3,r4/3:/Table/1{3-4},@c420324900] streamed snapshot: kv pairs: 177, log entries: 76, 1ms
+I170311 02:44:53.159446 151 storage/replica_command.go:3210  [replicate,n3,s3,r4/3:/Table/1{3-4},@c420324900] change replicas (remove {1 1 6}): read existing descriptor range_id:4 start_key:"\225" end_key:"\226" replicas:<node_id:5 store_id:5 replica_id:4 > replicas:<node_id:2 store_id:2 replica_id:2 > replicas:<node_id:3 store_id:3 replica_id:3 > replicas:<node_id:4 store_id:4 replica_id:5 > next_replica_id:6 
+I170311 02:44:53.166451 406 storage/replica.go:2454  [n3,s3,r4/3:/Table/1{3-4},@c420324900] proposing ADD_REPLICA {NodeID:1 StoreID:1 ReplicaID:6}: [{NodeID:5 StoreID:5 ReplicaID:4} {NodeID:2 StoreID:2 ReplicaID:2} {NodeID:3 StoreID:3 ReplicaID:3} {NodeID:4 StoreID:4 ReplicaID:5} {NodeID:1 StoreID:1 ReplicaID:6}]
+I170311 02:44:59.314758 118 server/status/runtime.go:228  runtime stats: 150 MiB RSS, 144 goroutines, 12 MiB/5.5 MiB/29 MiB GO alloc/idle/total, 13 MiB/28 MiB CGO alloc/total, 21842.34cgo/sec, 0.40/0.07 %(u/s)time, 0.00 %gc (43x)
+I170311 02:45:09.314463 118 server/status/runtime.go:228  runtime stats: 186 MiB RSS, 141 goroutines, 17 MiB/5.0 MiB/32 MiB GO alloc/idle/total, 35 MiB/63 MiB CGO alloc/total, 55367.78cgo/sec, 1.07/0.17 %(u/s)time, 0.00 %gc (94x)
+I170311 02:45:15.563721 55 gossip/gossip.go:1152  [n3] node has connected to cluster via gossip
+I170311 02:45:15.563865 55 storage/stores.go:312  [n3] wrote 4 node addresses to persistent storage
+I170311 02:45:19.314490 118 server/status/runtime.go:228  runtime stats: 221 MiB RSS, 142 goroutines, 14 MiB/7.7 MiB/34 MiB GO alloc/idle/total, 68 MiB/100 MiB CGO alloc/total, 55040.10cgo/sec, 1.13/0.16 %(u/s)time, 0.00 %gc (86x)
+I170311 02:45:29.314355 118 server/status/runtime.go:228  runtime stats: 294 MiB RSS, 119 goroutines, 19 MiB/7.2 MiB/37 MiB GO alloc/idle/total, 132 MiB/174 MiB CGO alloc/total, 52977.05cgo/sec, 1.13/0.14 %(u/s)time, 0.00 %gc (71x)
+I170311 02:45:39.313996 116 gossip/gossip.go:437  [n3] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.26.191:26267 (1m0s: infos 18/663 sent/received, bytes 3695B/123643B sent/received)
+gossip server (0/3 cur/max conns, infos 18/663 sent/received, bytes 3695B/123643B sent/received)
+I170311 02:45:39.314811 118 server/status/runtime.go:228  runtime stats: 305 MiB RSS, 144 goroutines, 17 MiB/9.7 MiB/44 MiB GO alloc/idle/total, 128 MiB/177 MiB CGO alloc/total, 8657.14cgo/sec, 1.06/0.16 %(u/s)time, 0.00 %gc (54x)
+I170311 02:45:49.314449 118 server/status/runtime.go:228  runtime stats: 325 MiB RSS, 117 goroutines, 20 MiB/11 MiB/46 MiB GO alloc/idle/total, 146 MiB/191 MiB CGO alloc/total, 5109.07cgo/sec, 0.62/0.10 %(u/s)time, 0.00 %gc (27x)
+I170311 02:45:59.314420 118 server/status/runtime.go:228  runtime stats: 332 MiB RSS, 108 goroutines, 22 MiB/19 MiB/54 MiB GO alloc/idle/total, 147 MiB/192 MiB CGO alloc/total, 381.50cgo/sec, 0.05/0.01 %(u/s)time, 0.00 %gc (2x)
+I170311 02:46:09.314390 118 server/status/runtime.go:228  runtime stats: 332 MiB RSS, 108 goroutines, 21 MiB/19 MiB/54 MiB GO alloc/idle/total, 148 MiB/193 MiB CGO alloc/total, 1162.50cgo/sec, 0.15/0.03 %(u/s)time, 0.00 %gc (7x)
+I170311 02:46:19.314392 118 server/status/runtime.go:228  runtime stats: 334 MiB RSS, 108 goroutines, 22 MiB/18 MiB/54 MiB GO alloc/idle/total, 149 MiB/195 MiB CGO alloc/total, 1132.60cgo/sec, 0.14/0.03 %(u/s)time, 0.00 %gc (7x)
+I170311 02:46:29.314408 118 server/status/runtime.go:228  runtime stats: 337 MiB RSS, 108 goroutines, 17 MiB/20 MiB/54 MiB GO alloc/idle/total, 150 MiB/196 MiB CGO alloc/total, 1153.30cgo/sec, 0.15/0.03 %(u/s)time, 0.00 %gc (8x)
+I170311 02:46:39.314027 116 gossip/gossip.go:437  [n3] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.26.191:26267 (2m0s: infos 20/1225 sent/received, bytes 4088B/180055B sent/received)
+gossip server (0/3 cur/max conns, infos 20/1225 sent/received, bytes 4088B/180055B sent/received)
+I170311 02:46:39.314404 118 server/status/runtime.go:228  runtime stats: 337 MiB RSS, 108 goroutines, 20 MiB/19 MiB/54 MiB GO alloc/idle/total, 145 MiB/196 MiB CGO alloc/total, 1148.70cgo/sec, 0.19/0.03 %(u/s)time, 0.00 %gc (8x)
+I170311 02:46:49.314555 118 server/status/runtime.go:228  runtime stats: 344 MiB RSS, 108 goroutines, 16 MiB/22 MiB/54 MiB GO alloc/idle/total, 155 MiB/204 MiB CGO alloc/total, 1194.98cgo/sec, 0.15/0.03 %(u/s)time, 0.00 %gc (11x)
+I170311 02:46:59.314562 118 server/status/runtime.go:228  runtime stats: 348 MiB RSS, 108 goroutines, 20 MiB/20 MiB/54 MiB GO alloc/idle/total, 159 MiB/209 MiB CGO alloc/total, 1094.60cgo/sec, 0.12/0.03 %(u/s)time, 0.00 %gc (10x)
+I170311 02:47:09.314393 118 server/status/runtime.go:228  runtime stats: 348 MiB RSS, 108 goroutines, 19 MiB/22 MiB/54 MiB GO alloc/idle/total, 161 MiB/211 MiB CGO alloc/total, 1196.82cgo/sec, 0.13/0.03 %(u/s)time, 0.00 %gc (10x)
+I170311 02:47:19.314327 118 server/status/runtime.go:228  runtime stats: 351 MiB RSS, 108 goroutines, 11 MiB/27 MiB/54 MiB GO alloc/idle/total, 163 MiB/213 MiB CGO alloc/total, 1213.91cgo/sec, 0.13/0.03 %(u/s)time, 0.00 %gc (11x)
+I170311 02:47:29.314364 118 server/status/runtime.go:228  runtime stats: 354 MiB RSS, 108 goroutines, 12 MiB/27 MiB/54 MiB GO alloc/idle/total, 164 MiB/215 MiB CGO alloc/total, 1161.30cgo/sec, 0.12/0.03 %(u/s)time, 0.00 %gc (11x)
+I170311 02:47:39.314056 116 gossip/gossip.go:437  [n3] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.26.191:26267 (3m0s: infos 22/1813 sent/received, bytes 4481B/238963B sent/received)
+gossip server (0/3 cur/max conns, infos 22/1813 sent/received, bytes 4481B/238963B sent/received)
+I170311 02:47:39.314369 118 server/status/runtime.go:228  runtime stats: 354 MiB RSS, 108 goroutines, 14 MiB/27 MiB/54 MiB GO alloc/idle/total, 165 MiB/215 MiB CGO alloc/total, 1225.10cgo/sec, 0.13/0.03 %(u/s)time, 0.00 %gc (11x)
+I170311 02:47:49.314318 118 server/status/runtime.go:228  runtime stats: 354 MiB RSS, 108 goroutines, 12 MiB/27 MiB/54 MiB GO alloc/idle/total, 166 MiB/216 MiB CGO alloc/total, 1128.31cgo/sec, 0.13/0.03 %(u/s)time, 0.00 %gc (11x)
+I170311 02:47:59.314478 118 server/status/runtime.go:228  runtime stats: 359 MiB RSS, 108 goroutines, 12 MiB/27 MiB/54 MiB GO alloc/idle/total, 167 MiB/219 MiB CGO alloc/total, 1123.58cgo/sec, 0.14/0.03 %(u/s)time, 0.00 %gc (10x)
+I170311 02:48:09.314630 118 server/status/runtime.go:228  runtime stats: 364 MiB RSS, 107 goroutines, 14 MiB/26 MiB/54 MiB GO alloc/idle/total, 172 MiB/223 MiB CGO alloc/total, 780.19cgo/sec, 0.08/0.02 %(u/s)time, 0.00 %gc (7x)
+I170311 02:48:19.314560 118 server/status/runtime.go:228  runtime stats: 364 MiB RSS, 107 goroutines, 16 MiB/25 MiB/54 MiB GO alloc/idle/total, 173 MiB/224 MiB CGO alloc/total, 98.10cgo/sec, 0.02/0.00 %(u/s)time, 0.00 %gc (1x)
+I170311 02:48:29.314540 118 server/status/runtime.go:228  runtime stats: 365 MiB RSS, 112 goroutines, 13 MiB/26 MiB/54 MiB GO alloc/idle/total, 176 MiB/227 MiB CGO alloc/total, 962.60cgo/sec, 0.11/0.01 %(u/s)time, 0.00 %gc (9x)
+I170311 02:48:39.313935 116 gossip/gossip.go:437  [n3] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.26.191:26267 (4m0s: infos 24/2410 sent/received, bytes 4874B/298831B sent/received)
+gossip server (0/3 cur/max conns, infos 24/2410 sent/received, bytes 4874B/298831B sent/received)
+I170311 02:48:39.314551 118 server/status/runtime.go:228  runtime stats: 373 MiB RSS, 113 goroutines, 22 MiB/22 MiB/54 MiB GO alloc/idle/total, 181 MiB/233 MiB CGO alloc/total, 5027.57cgo/sec, 0.53/0.10 %(u/s)time, 0.00 %gc (40x)
+I170311 02:48:49.314426 118 server/status/runtime.go:228  runtime stats: 387 MiB RSS, 114 goroutines, 13 MiB/26 MiB/54 MiB GO alloc/idle/total, 190 MiB/244 MiB CGO alloc/total, 5043.17cgo/sec, 0.56/0.11 %(u/s)time, 0.00 %gc (39x)
+I170311 02:48:59.314413 118 server/status/runtime.go:228  runtime stats: 390 MiB RSS, 107 goroutines, 18 MiB/23 MiB/54 MiB GO alloc/idle/total, 195 MiB/249 MiB CGO alloc/total, 3509.00cgo/sec, 0.40/0.08 %(u/s)time, 0.00 %gc (26x)
+I170311 02:49:09.314452 118 server/status/runtime.go:228  runtime stats: 390 MiB RSS, 107 goroutines, 16 MiB/24 MiB/54 MiB GO alloc/idle/total, 195 MiB/249 MiB CGO alloc/total, 91.70cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (1x)
+I170311 02:49:19.314391 118 server/status/runtime.go:228  runtime stats: 393 MiB RSS, 117 goroutines, 20 MiB/21 MiB/54 MiB GO alloc/idle/total, 196 MiB/251 MiB CGO alloc/total, 700.60cgo/sec, 0.08/0.02 %(u/s)time, 0.00 %gc (5x)
+I170311 02:49:29.314418 118 server/status/runtime.go:228  runtime stats: 396 MiB RSS, 117 goroutines, 26 MiB/17 MiB/54 MiB GO alloc/idle/total, 195 MiB/256 MiB CGO alloc/total, 8044.78cgo/sec, 0.94/0.15 %(u/s)time, 0.00 %gc (49x)
+I170311 02:49:39.313912 116 gossip/gossip.go:437  [n3] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.26.191:26267 (5m0s: infos 26/2973 sent/received, bytes 5267B/355441B sent/received)
+gossip server (0/3 cur/max conns, infos 26/2973 sent/received, bytes 5267B/355441B sent/received)
+I170311 02:49:39.314485 118 server/status/runtime.go:228  runtime stats: 397 MiB RSS, 107 goroutines, 27 MiB/16 MiB/54 MiB GO alloc/idle/total, 198 MiB/257 MiB CGO alloc/total, 5241.27cgo/sec, 0.63/0.11 %(u/s)time, 0.00 %gc (31x)
+I170311 02:49:49.314439 118 server/status/runtime.go:228  runtime stats: 397 MiB RSS, 107 goroutines, 21 MiB/18 MiB/54 MiB GO alloc/idle/total, 198 MiB/258 MiB CGO alloc/total, 99.40cgo/sec, 0.04/0.01 %(u/s)time, 0.00 %gc (1x)
+I170311 02:49:59.314450 118 server/status/runtime.go:228  runtime stats: 399 MiB RSS, 124 goroutines, 24 MiB/16 MiB/54 MiB GO alloc/idle/total, 200 MiB/259 MiB CGO alloc/total, 1617.60cgo/sec, 0.20/0.03 %(u/s)time, 0.00 %gc (10x)
+I170311 02:50:09.314591 118 server/status/runtime.go:228  runtime stats: 402 MiB RSS, 123 goroutines, 28 MiB/14 MiB/54 MiB GO alloc/idle/total, 198 MiB/262 MiB CGO alloc/total, 9413.37cgo/sec, 1.14/0.17 %(u/s)time, 0.00 %gc (55x)
+I170311 02:50:19.314453 118 server/status/runtime.go:228  runtime stats: 403 MiB RSS, 107 goroutines, 32 MiB/12 MiB/54 MiB GO alloc/idle/total, 201 MiB/263 MiB CGO alloc/total, 3107.14cgo/sec, 0.37/0.05 %(u/s)time, 0.00 %gc (16x)
+I170311 02:50:29.314446 118 server/status/runtime.go:228  runtime stats: 403 MiB RSS, 107 goroutines, 24 MiB/15 MiB/54 MiB GO alloc/idle/total, 201 MiB/263 MiB CGO alloc/total, 102.70cgo/sec, 0.05/0.01 %(u/s)time, 0.00 %gc (1x)
+I170311 02:50:39.314301 116 gossip/gossip.go:437  [n3] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.26.191:26267 (6m0s: infos 28/3561 sent/received, bytes 5660B/414349B sent/received)
+gossip server (0/3 cur/max conns, infos 28/3561 sent/received, bytes 5660B/414349B sent/received)
+I170311 02:50:39.314696 118 server/status/runtime.go:228  runtime stats: 406 MiB RSS, 130 goroutines, 29 MiB/11 MiB/54 MiB GO alloc/idle/total, 203 MiB/267 MiB CGO alloc/total, 4776.08cgo/sec, 0.61/0.09 %(u/s)time, 0.00 %gc (30x)
+I170311 02:50:49.314440 118 server/status/runtime.go:228  runtime stats: 414 MiB RSS, 107 goroutines, 32 MiB/11 MiB/54 MiB GO alloc/idle/total, 219 MiB/278 MiB CGO alloc/total, 8943.83cgo/sec, 1.07/0.16 %(u/s)time, 0.00 %gc (49x)
+I170311 02:50:59.314548 118 server/status/runtime.go:228  runtime stats: 415 MiB RSS, 107 goroutines, 26 MiB/13 MiB/54 MiB GO alloc/idle/total, 220 MiB/279 MiB CGO alloc/total, 125.80cgo/sec, 0.02/0.00 %(u/s)time, 0.00 %gc (1x)
+I170311 02:51:09.314430 118 server/status/runtime.go:228  runtime stats: 416 MiB RSS, 107 goroutines, 19 MiB/22 MiB/56 MiB GO alloc/idle/total, 221 MiB/279 MiB CGO alloc/total, 89.40cgo/sec, 0.05/0.01 %(u/s)time, 0.00 %gc (1x)
+I170311 02:51:19.314651 118 server/status/runtime.go:228  runtime stats: 420 MiB RSS, 134 goroutines, 18 MiB/18 MiB/56 MiB GO alloc/idle/total, 218 MiB/282 MiB CGO alloc/total, 7925.12cgo/sec, 1.02/0.16 %(u/s)time, 0.00 %gc (52x)
+I170311 02:51:29.314460 118 server/status/runtime.go:228  runtime stats: 420 MiB RSS, 107 goroutines, 29 MiB/14 MiB/56 MiB GO alloc/idle/total, 222 MiB/284 MiB CGO alloc/total, 4785.19cgo/sec, 0.61/0.09 %(u/s)time, 0.00 %gc (26x)
+I170311 02:51:39.314105 116 gossip/gossip.go:437  [n3] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.26.191:26267 (7m0s: infos 30/4169 sent/received, bytes 6053B/475308B sent/received)
+gossip server (0/3 cur/max conns, infos 30/4169 sent/received, bytes 6053B/475308B sent/received)
+I170311 02:51:39.314376 118 server/status/runtime.go:228  runtime stats: 420 MiB RSS, 107 goroutines, 24 MiB/17 MiB/56 MiB GO alloc/idle/total, 223 MiB/285 MiB CGO alloc/total, 135.80cgo/sec, 0.03/0.01 %(u/s)time, 0.00 %gc (1x)
+I170311 02:51:49.314500 118 server/status/runtime.go:228  runtime stats: 421 MiB RSS, 143 goroutines, 23 MiB/15 MiB/56 MiB GO alloc/idle/total, 218 MiB/285 MiB CGO alloc/total, 2043.07cgo/sec, 0.34/0.04 %(u/s)time, 0.00 %gc (16x)
+I170311 02:51:59.314579 118 server/status/runtime.go:228  runtime stats: 428 MiB RSS, 144 goroutines, 25 MiB/15 MiB/56 MiB GO alloc/idle/total, 223 MiB/288 MiB CGO alloc/total, 8098.83cgo/sec, 1.13/0.17 %(u/s)time, 0.00 %gc (54x)
+I170311 02:52:09.314634 118 server/status/runtime.go:228  runtime stats: 428 MiB RSS, 107 goroutines, 23 MiB/18 MiB/56 MiB GO alloc/idle/total, 224 MiB/288 MiB CGO alloc/total, 1446.99cgo/sec, 0.18/0.03 %(u/s)time, 0.00 %gc (8x)
+I170311 02:52:19.314362 118 server/status/runtime.go:228  runtime stats: 428 MiB RSS, 107 goroutines, 32 MiB/9.2 MiB/56 MiB GO alloc/idle/total, 225 MiB/290 MiB CGO alloc/total, 100.00cgo/sec, 0.05/0.01 %(u/s)time, 0.00 %gc (0x)
+I170311 02:52:29.314458 118 server/status/runtime.go:228  runtime stats: 440 MiB RSS, 149 goroutines, 27 MiB/14 MiB/56 MiB GO alloc/idle/total, 241 MiB/305 MiB CGO alloc/total, 4883.26cgo/sec, 0.78/0.12 %(u/s)time, 0.00 %gc (39x)
+I170311 02:52:39.313922 116 gossip/gossip.go:437  [n3] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.26.191:26267 (8m0s: infos 32/4732 sent/received, bytes 6446B/531918B sent/received)
+gossip server (0/3 cur/max conns, infos 32/4732 sent/received, bytes 6446B/531918B sent/received)
+I170311 02:52:39.314505 118 server/status/runtime.go:228  runtime stats: 446 MiB RSS, 107 goroutines, 23 MiB/18 MiB/56 MiB GO alloc/idle/total, 245 MiB/309 MiB CGO alloc/total, 5638.97cgo/sec, 0.84/0.11 %(u/s)time, 0.00 %gc (38x)
+I170311 02:52:49.314390 118 server/status/runtime.go:228  runtime stats: 448 MiB RSS, 107 goroutines, 18 MiB/21 MiB/56 MiB GO alloc/idle/total, 246 MiB/310 MiB CGO alloc/total, 99.00cgo/sec, 0.02/0.00 %(u/s)time, 0.00 %gc (1x)
+I170311 02:52:59.314412 118 server/status/runtime.go:228  runtime stats: 449 MiB RSS, 107 goroutines, 27 MiB/14 MiB/56 MiB GO alloc/idle/total, 240 MiB/309 MiB CGO alloc/total, 96.30cgo/sec, 0.05/0.01 %(u/s)time, 0.00 %gc (0x)
+I170311 02:53:09.314633 118 server/status/runtime.go:228  runtime stats: 452 MiB RSS, 156 goroutines, 30 MiB/12 MiB/56 MiB GO alloc/idle/total, 244 MiB/312 MiB CGO alloc/total, 6713.07cgo/sec, 1.00/0.15 %(u/s)time, 0.00 %gc (48x)
+I170311 02:53:19.314534 118 server/status/runtime.go:228  runtime stats: 453 MiB RSS, 107 goroutines, 22 MiB/18 MiB/56 MiB GO alloc/idle/total, 248 MiB/314 MiB CGO alloc/total, 3738.45cgo/sec, 0.57/0.08 %(u/s)time, 0.00 %gc (25x)
+I170311 02:53:29.314438 118 server/status/runtime.go:228  runtime stats: 454 MiB RSS, 107 goroutines, 16 MiB/22 MiB/56 MiB GO alloc/idle/total, 241 MiB/315 MiB CGO alloc/total, 98.50cgo/sec, 0.05/0.01 %(u/s)time, 0.00 %gc (1x)
+I170311 02:53:39.314182 116 gossip/gossip.go:437  [n3] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.26.191:26267 (9m0s: infos 34/5320 sent/received, bytes 6839B/590826B sent/received)
+gossip server (0/3 cur/max conns, infos 34/5320 sent/received, bytes 6839B/590826B sent/received)
+I170311 02:53:39.314666 118 server/status/runtime.go:228  runtime stats: 456 MiB RSS, 157 goroutines, 17 MiB/15 MiB/56 MiB GO alloc/idle/total, 244 MiB/316 MiB CGO alloc/total, 2321.75cgo/sec, 0.42/0.06 %(u/s)time, 0.00 %gc (20x)
+I170311 02:53:49.314594 118 server/status/runtime.go:228  runtime stats: 458 MiB RSS, 146 goroutines, 26 MiB/12 MiB/56 MiB GO alloc/idle/total, 248 MiB/318 MiB CGO alloc/total, 6922.37cgo/sec, 1.11/0.18 %(u/s)time, 0.00 %gc (48x)
+I170311 02:53:59.314596 118 server/status/runtime.go:228  runtime stats: 459 MiB RSS, 107 goroutines, 29 MiB/12 MiB/56 MiB GO alloc/idle/total, 250 MiB/319 MiB CGO alloc/total, 538.90cgo/sec, 0.05/0.01 %(u/s)time, 0.00 %gc (2x)
+I170311 02:54:09.314470 118 server/status/runtime.go:228  runtime stats: 458 MiB RSS, 107 goroutines, 21 MiB/20 MiB/57 MiB GO alloc/idle/total, 244 MiB/317 MiB CGO alloc/total, 94.10cgo/sec, 0.07/0.01 %(u/s)time, 0.00 %gc (1x)
+I170311 02:54:19.314529 118 server/status/runtime.go:228  runtime stats: 479 MiB RSS, 169 goroutines, 27 MiB/12 MiB/57 MiB GO alloc/idle/total, 268 MiB/338 MiB CGO alloc/total, 5048.58cgo/sec, 0.86/0.14 %(u/s)time, 0.00 %gc (41x)
+I170311 02:54:29.314446 118 server/status/runtime.go:228  runtime stats: 486 MiB RSS, 107 goroutines, 32 MiB/13 MiB/57 MiB GO alloc/idle/total, 272 MiB/342 MiB CGO alloc/total, 4373.54cgo/sec, 0.67/0.11 %(u/s)time, 0.00 %gc (28x)
+I170311 02:54:39.314105 116 gossip/gossip.go:437  [n3] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.26.191:26267 (10m0s: infos 36/5917 sent/received, bytes 7232B/650694B sent/received)
+gossip server (0/3 cur/max conns, infos 36/5917 sent/received, bytes 7232B/650694B sent/received)
+I170311 02:54:39.314395 118 server/status/runtime.go:228  runtime stats: 485 MiB RSS, 107 goroutines, 26 MiB/15 MiB/57 MiB GO alloc/idle/total, 266 MiB/343 MiB CGO alloc/total, 133.90cgo/sec, 0.03/0.01 %(u/s)time, 0.00 %gc (1x)
+I170311 02:54:49.319378 118 server/status/runtime.go:228  runtime stats: 487 MiB RSS, 172 goroutines, 30 MiB/11 MiB/57 MiB GO alloc/idle/total, 268 MiB/343 MiB CGO alloc/total, 1172.62cgo/sec, 0.23/0.04 %(u/s)time, 0.00 %gc (11x)
+I170311 02:54:59.314686 118 server/status/runtime.go:228  runtime stats: 489 MiB RSS, 167 goroutines, 25 MiB/12 MiB/57 MiB GO alloc/idle/total, 273 MiB/347 MiB CGO alloc/total, 6882.83cgo/sec, 1.18/0.16 %(u/s)time, 0.00 %gc (51x)
+I170311 02:55:09.314446 118 server/status/runtime.go:228  runtime stats: 492 MiB RSS, 107 goroutines, 31 MiB/13 MiB/57 MiB GO alloc/idle/total, 267 MiB/347 MiB CGO alloc/total, 1318.73cgo/sec, 0.19/0.02 %(u/s)time, 0.00 %gc (7x)
+I170311 02:55:19.314393 118 server/status/runtime.go:228  runtime stats: 492 MiB RSS, 107 goroutines, 23 MiB/17 MiB/57 MiB GO alloc/idle/total, 267 MiB/348 MiB CGO alloc/total, 105.40cgo/sec, 0.05/0.01 %(u/s)time, 0.00 %gc (1x)
+I170311 02:55:29.314647 118 server/status/runtime.go:228  runtime stats: 498 MiB RSS, 183 goroutines, 34 MiB/8.5 MiB/58 MiB GO alloc/idle/total, 273 MiB/351 MiB CGO alloc/total, 4165.99cgo/sec, 0.75/0.11 %(u/s)time, 0.00 %gc (35x)
+I170311 02:55:39.314150 116 gossip/gossip.go:437  [n3] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.26.191:26267 (11m0s: infos 38/6480 sent/received, bytes 7625B/707304B sent/received)
+gossip server (0/3 cur/max conns, infos 38/6480 sent/received, bytes 7625B/707304B sent/received)
+I170311 02:55:39.314481 118 server/status/runtime.go:228  runtime stats: 495 MiB RSS, 107 goroutines, 21 MiB/20 MiB/58 MiB GO alloc/idle/total, 269 MiB/350 MiB CGO alloc/total, 5073.69cgo/sec, 0.87/0.11 %(u/s)time, 0.00 %gc (35x)
+I170311 02:55:49.314379 118 server/status/runtime.go:228  runtime stats: 495 MiB RSS, 107 goroutines, 31 MiB/11 MiB/58 MiB GO alloc/idle/total, 270 MiB/351 MiB CGO alloc/total, 95.90cgo/sec, 0.02/0.00 %(u/s)time, 0.00 %gc (0x)
+I170311 02:55:59.314736 118 server/status/runtime.go:228  runtime stats: 496 MiB RSS, 182 goroutines, 24 MiB/12 MiB/58 MiB GO alloc/idle/total, 274 MiB/352 MiB CGO alloc/total, 270.99cgo/sec, 0.11/0.01 %(u/s)time, 0.00 %gc (4x)
+I170311 02:56:09.321291 118 server/status/runtime.go:228  runtime stats: 516 MiB RSS, 187 goroutines, 37 MiB/8.6 MiB/58 MiB GO alloc/idle/total, 299 MiB/370 MiB CGO alloc/total, 6293.18cgo/sec, 1.10/0.16 %(u/s)time, 0.00 %gc (49x)
+I170311 02:56:19.314475 118 server/status/runtime.go:228  runtime stats: 515 MiB RSS, 107 goroutines, 32 MiB/14 MiB/58 MiB GO alloc/idle/total, 294 MiB/371 MiB CGO alloc/total, 2480.58cgo/sec, 0.39/0.06 %(u/s)time, 0.00 %gc (15x)
+I170311 02:56:29.314445 118 server/status/runtime.go:228  runtime stats: 515 MiB RSS, 107 goroutines, 24 MiB/18 MiB/58 MiB GO alloc/idle/total, 295 MiB/372 MiB CGO alloc/total, 99.70cgo/sec, 0.04/0.00 %(u/s)time, 0.00 %gc (1x)
+I170311 02:56:39.314072 116 gossip/gossip.go:437  [n3] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.26.191:26267 (12m0s: infos 40/7068 sent/received, bytes 8018B/766212B sent/received)
+gossip server (0/3 cur/max conns, infos 40/7068 sent/received, bytes 8018B/766212B sent/received)
+I170311 02:56:39.314577 118 server/status/runtime.go:228  runtime stats: 518 MiB RSS, 190 goroutines, 25 MiB/12 MiB/58 MiB GO alloc/idle/total, 297 MiB/373 MiB CGO alloc/total, 3080.86cgo/sec, 0.59/0.09 %(u/s)time, 0.00 %gc (26x)
+I170311 02:56:49.314506 118 server/status/runtime.go:228  runtime stats: 522 MiB RSS, 107 goroutines, 34 MiB/9.9 MiB/58 MiB GO alloc/idle/total, 295 MiB/378 MiB CGO alloc/total, 5720.65cgo/sec, 0.98/0.15 %(u/s)time, 0.00 %gc (38x)
+I170311 02:56:59.314423 118 server/status/runtime.go:228  runtime stats: 522 MiB RSS, 107 goroutines, 24 MiB/17 MiB/58 MiB GO alloc/idle/total, 295 MiB/378 MiB CGO alloc/total, 92.90cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (1x)
+I170311 02:57:09.314450 118 server/status/runtime.go:228  runtime stats: 522 MiB RSS, 107 goroutines, 17 MiB/22 MiB/58 MiB GO alloc/idle/total, 296 MiB/378 MiB CGO alloc/total, 94.10cgo/sec, 0.05/0.01 %(u/s)time, 0.00 %gc (1x)
+I170311 02:57:19.314624 118 server/status/runtime.go:228  runtime stats: 525 MiB RSS, 197 goroutines, 39 MiB/4.5 MiB/58 MiB GO alloc/idle/total, 302 MiB/382 MiB CGO alloc/total, 5881.38cgo/sec, 1.12/0.15 %(u/s)time, 0.00 %gc (46x)
+I170311 02:57:29.314426 118 server/status/runtime.go:228  runtime stats: 527 MiB RSS, 107 goroutines, 19 MiB/21 MiB/58 MiB GO alloc/idle/total, 298 MiB/385 MiB CGO alloc/total, 2858.26cgo/sec, 0.50/0.07 %(u/s)time, 0.00 %gc (18x)
+I170311 02:57:39.314132 116 gossip/gossip.go:437  [n3] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.26.191:26267 (13m0s: infos 42/7665 sent/received, bytes 8411B/826080B sent/received)
+gossip server (0/3 cur/max conns, infos 42/7665 sent/received, bytes 8411B/826080B sent/received)
+I170311 02:57:39.314463 118 server/status/runtime.go:228  runtime stats: 528 MiB RSS, 107 goroutines, 31 MiB/11 MiB/59 MiB GO alloc/idle/total, 301 MiB/387 MiB CGO alloc/total, 135.30cgo/sec, 0.03/0.00 %(u/s)time, 0.00 %gc (0x)
+I170311 02:57:49.314577 118 server/status/runtime.go:228  runtime stats: 550 MiB RSS, 193 goroutines, 27 MiB/14 MiB/61 MiB GO alloc/idle/total, 323 MiB/399 MiB CGO alloc/total, 2404.78cgo/sec, 0.50/0.09 %(u/s)time, 0.00 %gc (22x)
+I170311 02:57:59.314491 118 server/status/runtime.go:228  runtime stats: 560 MiB RSS, 107 goroutines, 35 MiB/14 MiB/61 MiB GO alloc/idle/total, 324 MiB/408 MiB CGO alloc/total, 6320.05cgo/sec, 1.08/0.17 %(u/s)time, 0.00 %gc (42x)

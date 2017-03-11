@@ -1,0 +1,16 @@
+W170311 06:20:00.955743 40 util/log/clog.go:1003  [config] file created at: 2017/03/11 06:20:00
+W170311 06:20:00.955743 40 util/log/clog.go:1003  [config] running on machine: ip-172-31-15-2
+W170311 06:20:00.955743 40 util/log/clog.go:1003  [config] binary: CockroachDB fa9e7ab (linux amd64, built 2017/03/11 00:35:03, go1.8)
+W170311 06:20:00.955743 40 util/log/clog.go:1003  [config] arguments: [./cockroach start --insecure --host=172.31.15.2 --port=26267 --http-port=8081 --join=172.31.0.107:26267]
+W170311 06:20:00.955743 40 util/log/clog.go:1003  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg
+W170311 06:20:00.955743 40 server/server.go:157  [n?] running in insecure mode, this is strongly discouraged. See --insecure.
+W170311 06:20:00.956644 40 gossip/gossip.go:1138  [n?] no incoming or outgoing connections
+E170311 06:20:00.987143 40 migrations/migrations.go:143  [n2] failed attempt to acquire migration lease: lease /System/"system-version/lease" is not available until at least 1489213260.967146308,0
+E170311 06:27:00.982673 152 storage/replica.go:4292  [n2,s2] failed to gossip cluster ID: info not fresh
+E170311 06:28:00.982597 152 storage/replica.go:4292  [n2,s2] failed to gossip cluster ID: info not fresh
+W170311 06:28:58.833243 838344 storage/intent_resolver.go:338  [n2,s2,r7/3:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=7603540b key=/Table/51/1/"user566448922380157549"/0 rw=true pri=0.00510737 iso=SERIALIZABLE stat=PENDING epo=0 ts=1489213738.827510678,11 orig=1489213738.826379489,5 max=1489213738.828450050,6 wto=false rop=false
+W170311 06:31:00.487957 1142498 storage/intent_resolver.go:338  [n2,s2,r7/3:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=707f279d key=/Table/51/1/"user8435597473105958134"/0 rw=true pri=0.00746343 iso=SERIALIZABLE stat=PENDING epo=0 ts=1489213860.475536164,9 orig=1489213860.473176462,22 max=1489213860.476484861,6 wto=false rop=false
+E170311 06:31:00.985100 152 storage/replica.go:4292  [n2,s2] failed to gossip cluster ID: info not fresh
+W170311 06:32:36.585106 58 storage/raft_transport.go:443  [n2] raft transport stream to node 1 failed: rpc error: code = 13 desc = transport is closing
+W170311 06:32:36.585234 50 gossip/gossip.go:1138  [n2] no incoming or outgoing connections
+W170311 06:32:43.203497 104 storage/node_liveness.go:229  [n2,hb] slow heartbeat took 6.2s

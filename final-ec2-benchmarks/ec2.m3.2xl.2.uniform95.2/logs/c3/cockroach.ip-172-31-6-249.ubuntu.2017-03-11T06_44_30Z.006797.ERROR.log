@@ -1,0 +1,49 @@
+E170311 06:44:30.909461 742631 util/log/clog.go:1003  [config] file created at: 2017/03/11 06:44:30
+E170311 06:44:30.909461 742631 util/log/clog.go:1003  [config] running on machine: ip-172-31-6-249
+E170311 06:44:30.909461 742631 util/log/clog.go:1003  [config] binary: CockroachDB fa9e7ab (linux amd64, built 2017/03/11 00:35:03, go1.8)
+E170311 06:44:30.909461 742631 util/log/clog.go:1003  [config] arguments: [./cockroach start --insecure --host=172.31.6.249 --port=26267 --http-port=8081 --join=172.31.0.107:26267]
+E170311 06:44:30.909461 742631 util/log/clog.go:1003  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg
+F170311 06:44:30.909391 742631 storage/replica.go:2305  [n3,s3,r22/2:/{Table/51-Max},@c420d78c00] pending command already exists for s¦‰#Õ·ÿ
+goroutine 742631 [running]:
+github.com/cockroachdb/cockroach/pkg/util/log.getStacks(0xb5400, 0x3634382f, 0x2970220, 0x0)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/log/clog.go:849 +0xa7
+github.com/cockroachdb/cockroach/pkg/util/log.(*loggingT).outputLogEntry(0x29719c0, 0xc400000004, 0x21675ac, 0x12, 0x901, 0xc421cb3980, 0x55)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/log/clog.go:712 +0x772
+github.com/cockroachdb/cockroach/pkg/util/log.addStructured(0x7fab3e5a1550, 0xc42367d380, 0x7fab00000004, 0x2, 0x197a8fa, 0x25, 0xc4246103b0, 0x1, 0x1)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/log/structured.go:146 +0x27b
+github.com/cockroachdb/cockroach/pkg/util/log.logDepth(0x7fab3e5a1550, 0xc42367d380, 0x1, 0xc400000004, 0x197a8fa, 0x25, 0xc4246103b0, 0x1, 0x1)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/log/log.go:88 +0x8c
+github.com/cockroachdb/cockroach/pkg/util/log.Fatalf(0x7fab3e5a1550, 0xc42367d380, 0x197a8fa, 0x25, 0xc4246103b0, 0x1, 0x1)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/log/log.go:172 +0x7e
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).insertProposalLocked(0xc420d78c00, 0xc4227d5680, 0x300000003, 0xc400000002, 0xc423946820)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/replica.go:2305 +0x29d
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).propose(0xc420d78c00, 0x7fab3e5a1550, 0xc421dcf080, 0xc423946820, 0x14aac0da5ddb95c0, 0x7, 0x300000003, 0x2, 0x16, 0x0, ...)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/replica.go:2382 +0x5ce
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).tryAddWriteCmd(0xc420d78c00, 0x7fab3e5a1550, 0xc421dcf080, 0x14aac0da5ddb95c0, 0x7, 0x300000003, 0x2, 0x16, 0x0, 0xc4228fe240, ...)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/replica.go:2126 +0x1e9
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).addWriteCmd(0xc420d78c00, 0x7fab3e5a1550, 0xc421dcf080, 0x14aac0da5ddb95c0, 0x7, 0x300000003, 0x2, 0x16, 0x0, 0xc4228fe240, ...)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/replica.go:1962 +0x98
+github.com/cockroachdb/cockroach/pkg/storage.(*Replica).Send(0xc420d78c00, 0x7fab3e5a1550, 0xc421dcf080, 0x14aac0da5ddb95c0, 0x7, 0x300000003, 0x2, 0x16, 0x0, 0xc4228fe240, ...)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/replica.go:1346 +0x23a
+github.com/cockroachdb/cockroach/pkg/storage.(*Store).Send(0xc420074700, 0x7fab3e5a1550, 0xc421dceff0, 0x14aac0da5ddb95c0, 0x7, 0x300000003, 0x2, 0x16, 0x0, 0xc4228fe240, ...)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/store.go:2508 +0x776
+github.com/cockroachdb/cockroach/pkg/storage.(*Stores).Send(0xc42043a8a0, 0x7fab3e5a1550, 0xc421dcef60, 0x0, 0x0, 0x300000003, 0x2, 0x16, 0x0, 0xc4228fe240, ...)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/storage/stores.go:187 +0x1cf
+github.com/cockroachdb/cockroach/pkg/server.(*Node).batchInternal.func1(0x0, 0x0)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/server/node.go:832 +0x277
+github.com/cockroachdb/cockroach/pkg/util/stop.(*Stopper).RunTaskWithErr(0xc42015b050, 0xc424611838, 0x0, 0x0)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/util/stop/stopper.go:245 +0x100
+github.com/cockroachdb/cockroach/pkg/server.(*Node).batchInternal(0xc420099680, 0x7fab3e5a1550, 0xc421dceed0, 0xc420da8cb0, 0xc421dceed0, 0xc420a39ae8, 0x5fdd63)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/server/node.go:843 +0x22f
+github.com/cockroachdb/cockroach/pkg/server.(*Node).Batch(0xc420099680, 0x7fab3e5a1550, 0xc421dceed0, 0xc420da8cb0, 0xc420099680, 0x0, 0x0)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/server/node.go:865 +0x93
+github.com/cockroachdb/cockroach/pkg/roachpb._Internal_Batch_Handler(0x1920200, 0xc420099680, 0x7fab3e5a1550, 0xc421dcecf0, 0xc425c13bc0, 0x0, 0x0, 0x0, 0xb8, 0x1923140)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/pkg/roachpb/api.pb.go:1525 +0x28d
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc.(*Server).processUnaryRPC(0xc420092000, 0x24985c0, 0xc420124dd0, 0xc420c1e000, 0xc420109b60, 0x2458350, 0x0, 0x0, 0x0)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/server.go:709 +0xa61
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc.(*Server).handleStream(0xc420092000, 0x24985c0, 0xc420124dd0, 0xc420c1e000, 0x0)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/server.go:893 +0x1261
+github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc.(*Server).serveStreams.func1.1(0xc4208db6e0, 0xc420092000, 0x24985c0, 0xc420124dd0, 0xc420c1e000)
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/server.go:469 +0xa9
+created by github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc.(*Server).serveStreams.func1
+	/home/ubuntu/golang/src/github.com/cockroachdb/cockroach/vendor/google.golang.org/grpc/server.go:470 +0xa1

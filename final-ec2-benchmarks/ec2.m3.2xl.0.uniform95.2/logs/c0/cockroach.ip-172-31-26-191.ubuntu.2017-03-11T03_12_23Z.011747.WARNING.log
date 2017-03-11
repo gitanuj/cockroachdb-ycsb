@@ -1,0 +1,9 @@
+W170311 03:12:23.965601 25 util/log/clog.go:1003  [config] file created at: 2017/03/11 03:12:23
+W170311 03:12:23.965601 25 util/log/clog.go:1003  [config] running on machine: ip-172-31-26-191
+W170311 03:12:23.965601 25 util/log/clog.go:1003  [config] binary: CockroachDB fa9e7ab (linux amd64, built 2017/03/11 00:35:03, go1.8)
+W170311 03:12:23.965601 25 util/log/clog.go:1003  [config] arguments: [./cockroach start --insecure --host=172.31.26.191 --port=26267 --http-port=8081]
+W170311 03:12:23.965601 25 util/log/clog.go:1003  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg
+W170311 03:12:23.965600 25 server/server.go:157  [n?] running in insecure mode, this is strongly discouraged. See --insecure.
+E170311 03:12:24.023031 132 storage/queue.go:599  [split,n1,s1,r1/1:/{Min-Table/11},@c4202e6600] unable to split [n1,s1,r1/1:/{Min-Table/11}] at key "/Table/12/0": key range /Table/12/0-/Table/12/0 outside of bounds of range /Min-/Max
+E170311 03:12:24.033769 132 storage/queue.go:599  [split,n1,s1,r2/1:/Table/1{1-2},@c4208c2300] unable to split [n1,s1,r2/1:/Table/1{1-2}] at key "/Table/13/0": key range /Table/13/0-/Table/13/0 outside of bounds of range /Table/11-/Max
+E170311 03:12:24.039594 132 storage/queue.go:599  [split,n1,s1,r3/1:/Table/1{2-3},@c4208c2900] unable to split [n1,s1,r3/1:/Table/1{2-3}] at key "/Table/14/0": key range /Table/14/0-/Table/14/0 outside of bounds of range /Table/12-/Max

@@ -1,0 +1,54 @@
+java -cp postgresql-9.4.1212.jre7.jar:/home/ubuntu/ycsb/jdbc-binding/conf:/home/ubuntu/ycsb/conf:/home/ubuntu/ycsb/lib/jdbc-binding-0.13.0-SNAPSHOT.jar:/home/ubuntu/ycsb/lib/core-0.13.0-SNAPSHOT.jar:/home/ubuntu/ycsb/lib/openjpa-jdbc-2.1.1.jar:/home/ubuntu/ycsb/lib/HdrHistogram-2.1.4.jar:/home/ubuntu/ycsb/lib/geronimo-jta_1.1_spec-1.1.1.jar:/home/ubuntu/ycsb/lib/commons-collections-3.2.1.jar:/home/ubuntu/ycsb/lib/htrace-core4-4.1.0-incubating.jar:/home/ubuntu/ycsb/lib/geronimo-jms_1.1_spec-1.1.1.jar:/home/ubuntu/ycsb/lib/serp-1.13.1.jar:/home/ubuntu/ycsb/lib/openjpa-kernel-2.1.1.jar:/home/ubuntu/ycsb/lib/jackson-mapper-asl-1.9.4.jar:/home/ubuntu/ycsb/lib/openjpa-lib-2.1.1.jar:/home/ubuntu/ycsb/lib/commons-lang-2.4.jar:/home/ubuntu/ycsb/lib/jackson-core-asl-1.9.4.jar:/home/ubuntu/ycsb/lib/commons-pool-1.5.4.jar com.yahoo.ycsb.Client -db com.yahoo.ycsb.db.JdbcDBClient -P workloads/uniform95 -P cockroachdb.properties -p db.url=jdbc:postgresql://52.43.246.185:26267/test,jdbc:postgresql://52.26.239.158:26267/test,jdbc:postgresql://35.162.212.87:26267/test,jdbc:postgresql://52.88.7.214:26267/test,jdbc:postgresql://52.88.0.231:26267/test -s -threads 1 -t
+Command line: -db com.yahoo.ycsb.db.JdbcDBClient -P workloads/uniform95 -P cockroachdb.properties -p db.url=jdbc:postgresql://52.43.246.185:26267/test,jdbc:postgresql://52.26.239.158:26267/test,jdbc:postgresql://35.162.212.87:26267/test,jdbc:postgresql://52.88.7.214:26267/test,jdbc:postgresql://52.88.0.231:26267/test -s -threads 1 -tYCSB Client 0.13.0-SNAPSHOT
+
+Loading workload...
+Starting test.
+Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
+2017-03-11 03:28:30:462 0 sec: 0 operations; est completion in 0 seconds 
+Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
+Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
+Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
+Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+2017-03-11 03:28:40:437 10 sec: 10347 operations; 1034.7 current ops/sec; est completion in 1 minutes [READ: Count=9818, Max=18319, Min=727, Avg=856.95, 90=923, 99=1657, 99.9=4391, 99.99=15503] [UPDATE: Count=532, Max=17375, Min=1942, Avg=2649, 90=2925, 99=6127, 99.9=7471, 99.99=17375] 
+2017-03-11 03:28:50:437 20 sec: 20731 operations; 1038.4 current ops/sec; est completion in 1 minutes [READ: Count=9892, Max=20799, Min=738, Avg=871.9, 90=946, 99=1833, 99.9=6371, 99.99=19295] [UPDATE: Count=490, Max=21007, Min=1933, Avg=2706.8, 90=3005, 99=4443, 99.9=21007, 99.99=21007] 
+2017-03-11 03:29:00:437 30 sec: 30980 operations; 1024.9 current ops/sec; est completion in 1 minutes [READ: Count=9755, Max=202623, Min=738, Avg=884.15, 90=924, 99=2103, 99.9=5359, 99.99=13943] [UPDATE: Count=494, Max=20415, Min=1950, Avg=2709.92, 90=2973, 99=5199, 99.9=20415, 99.99=20415] 
+2017-03-11 03:29:10:437 40 sec: 41530 operations; 1055 current ops/sec; est completion in 57 seconds [READ: Count=9980, Max=18255, Min=733, Avg=849.83, 90=912, 99=1683, 99.9=5375, 99.99=16479] [UPDATE: Count=570, Max=12375, Min=1887, Avg=2603.04, 90=2913, 99=3869, 99.9=6459, 99.99=12375] 
+2017-03-11 03:29:20:437 50 sec: 52055 operations; 1052.5 current ops/sec; est completion in 47 seconds [READ: Count=9985, Max=17823, Min=733, Avg=856.35, 90=926, 99=1651, 99.9=4567, 99.99=14567] [UPDATE: Count=540, Max=11327, Min=1869, Avg=2615.48, 90=2909, 99=3931, 99.9=7527, 99.99=11327] 
+2017-03-11 03:29:30:437 60 sec: 62735 operations; 1068 current ops/sec; est completion in 36 seconds [READ: Count=10141, Max=22559, Min=733, Avg=844.87, 90=925, 99=1608, 99.9=3771, 99.99=10511] [UPDATE: Count=539, Max=12111, Min=1879, Avg=2594.25, 90=2885, 99=4995, 99.9=7147, 99.99=12111] 
+2017-03-11 03:29:40:437 70 sec: 73536 operations; 1080.1 current ops/sec; est completion in 26 seconds [READ: Count=10284, Max=10871, Min=727, Avg=838.98, 90=924, 99=1588, 99.9=3209, 99.99=7835] [UPDATE: Count=516, Max=18015, Min=1897, Avg=2603.43, 90=2825, 99=4219, 99.9=5023, 99.99=18015] 
+2017-03-11 03:29:50:437 80 sec: 84279 operations; 1074.3 current ops/sec; est completion in 15 seconds [READ: Count=10224, Max=17599, Min=732, Avg=844.67, 90=933, 99=1651, 99.9=3431, 99.99=16071] [UPDATE: Count=520, Max=4887, Min=1854, Avg=2569.14, 90=2861, 99=3857, 99.9=4455, 99.99=4887] 
+2017-03-11 03:30:00:437 90 sec: 94760 operations; 1048.1 current ops/sec; est completion in 5 seconds [READ: Count=9948, Max=204415, Min=735, Avg=866.25, 90=899, 99=1616, 99.9=4195, 99.99=20319] [UPDATE: Count=532, Max=5279, Min=1870, Avg=2546.61, 90=2857, 99=3575, 99.9=4847, 99.99=5279] 
+2017-03-11 03:30:05:469 95 sec: 100000 operations; 1041.34 current ops/sec; [READ: Count=4992, Max=6191, Min=736, Avg=871.48, 90=968, 99=1794, 99.9=4089, 99.99=6191] [CLEANUP: Count=1, Max=529, Min=529, Avg=529, 90=529, 99=529, 99.9=529, 99.99=529] [UPDATE: Count=248, Max=8019, Min=1945, Avg=2690.8, 90=3039, 99=4663, 99.9=8019, 99.99=8019] 
+[OVERALL], RunTime(ms), 95032.0
+[OVERALL], Throughput(ops/sec), 1052.2771277043523
+[TOTAL_GCS_PS_Scavenge], Count, 1.0
+[TOTAL_GC_TIME_PS_Scavenge], Time(ms), 3.0
+[TOTAL_GC_TIME_%_PS_Scavenge], Time(%), 0.0031568313831130566
+[TOTAL_GCS_PS_MarkSweep], Count, 0.0
+[TOTAL_GC_TIME_PS_MarkSweep], Time(ms), 0.0
+[TOTAL_GC_TIME_%_PS_MarkSweep], Time(%), 0.0
+[TOTAL_GCs], Count, 1.0
+[TOTAL_GC_TIME], Time(ms), 3.0
+[TOTAL_GC_TIME_%], Time(%), 0.0031568313831130566
+[READ], Operations, 95019.0
+[READ], AverageLatency(us), 857.6705395762953
+[READ], MinLatency(us), 727.0
+[READ], MaxLatency(us), 204415.0
+[READ], 95thPercentileLatency(us), 1063.0
+[READ], 99thPercentileLatency(us), 1718.0
+[READ], Return=OK, 95019
+[CLEANUP], Operations, 1.0
+[CLEANUP], AverageLatency(us), 529.0
+[CLEANUP], MinLatency(us), 529.0
+[CLEANUP], MaxLatency(us), 529.0
+[CLEANUP], 95thPercentileLatency(us), 529.0
+[CLEANUP], 99thPercentileLatency(us), 529.0
+[UPDATE], Operations, 4981.0
+[UPDATE], AverageLatency(us), 2623.998193133909
+[UPDATE], MinLatency(us), 1854.0
+[UPDATE], MaxLatency(us), 21007.0
+[UPDATE], 95thPercentileLatency(us), 3141.0
+[UPDATE], 99thPercentileLatency(us), 4419.0
+[UPDATE], Return=OK, 4981

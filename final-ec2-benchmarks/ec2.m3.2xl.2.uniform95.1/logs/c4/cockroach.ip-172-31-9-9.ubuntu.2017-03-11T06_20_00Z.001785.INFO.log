@@ -1,0 +1,241 @@
+I170311 06:20:00.872711 1 util/log/clog.go:1003  [config] file created at: 2017/03/11 06:20:00
+I170311 06:20:00.872711 1 util/log/clog.go:1003  [config] running on machine: ip-172-31-9-9
+I170311 06:20:00.872711 1 util/log/clog.go:1003  [config] binary: CockroachDB fa9e7ab (linux amd64, built 2017/03/11 00:35:03, go1.8)
+I170311 06:20:00.872711 1 util/log/clog.go:1003  [config] arguments: [./cockroach start --insecure --host=172.31.9.9 --port=26267 --http-port=8081 --join=172.31.0.107:26267]
+I170311 06:20:00.872711 1 util/log/clog.go:1003  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg
+I170311 06:20:00.872709 1 cli/start.go:323  CockroachDB fa9e7ab (linux amd64, built 2017/03/11 00:35:03, go1.8)
+I170311 06:20:00.973297 16 cli/start.go:354  starting cockroach node
+W170311 06:20:00.973379 16 server/server.go:157  [n?] running in insecure mode, this is strongly discouraged. See --insecure.
+W170311 06:20:00.973576 16 gossip/gossip.go:1138  [n?] no incoming or outgoing connections
+I170311 06:20:00.976014 16 storage/engine/rocksdb.go:326  opening rocksdb instance at "cockroach-data"
+I170311 06:20:00.977736 50 gossip/client.go:125  [n?] started gossip client to 172.31.0.107:26267
+I170311 06:20:00.998059 16 server/config.go:456  1 storage engine initialized
+I170311 06:20:00.999011 16 server/node.go:426  [n?] store [n0,s0] not bootstrapped
+I170311 06:20:00.999039 16 storage/stores.go:296  [n?] read 0 node addresses from persistent storage
+I170311 06:20:00.999126 16 storage/stores.go:312  [n?] wrote 3 node addresses to persistent storage
+I170311 06:20:00.999141 16 server/node.go:571  [n?] connecting to gossip network to verify cluster ID...
+I170311 06:20:00.999228 16 server/node.go:595  [n?] node connected via gossip and verified as part of cluster "39f35df7-ab41-4e65-b7b7-ff126f10fe30"
+I170311 06:20:01.002492 16 kv/dist_sender.go:369  [n?] unable to determine this node's attributes for replica selection; node is most likely bootstrapping
+I170311 06:20:01.008086 16 server/node.go:317  [n?] new node allocated ID 4
+I170311 06:20:01.008177 16 gossip/gossip.go:292  [n4] NodeDescriptor set to node_id:4 address:<network_field:"tcp" address_field:"172.31.9.9:26267" > attrs:<> locality:<> 
+I170311 06:20:01.008261 16 server/node.go:374  [n4] node=4: started with [[]=cockroach-data] engine(s) and attributes []
+I170311 06:20:01.008316 16 sql/executor.go:322  [n4] creating distSQLPlanner with address {tcp 172.31.9.9:26267}
+I170311 06:20:01.010485 114 storage/stores.go:312  [n4] wrote 4 node addresses to persistent storage
+I170311 06:20:01.012525 86 server/node.go:552  [n4] bootstrapped store [n4,s4]
+I170311 06:20:01.012741 16 server/server.go:632  [n4] starting http server at 172.31.9.9:8081
+I170311 06:20:01.012755 16 server/server.go:633  [n4] starting grpc/postgres server at 172.31.9.9:26267
+I170311 06:20:01.012767 16 server/server.go:634  [n4] advertising CockroachDB node at 172.31.9.9:26267
+I170311 06:20:01.016983 16 server/server.go:689  [n4] done ensuring all necessary migrations have run
+I170311 06:20:01.017002 16 server/server.go:691  [n4] serving sql connections
+I170311 06:20:01.019594 89 sql/event_log.go:95  [n4] Event: "node_join", target: 4, info: {Descriptor:{NodeID:4 Address:{NetworkField:tcp AddressField:172.31.9.9:26267} Attrs: Locality:} ClusterID:39f35df7-ab41-4e65-b7b7-ff126f10fe30 StartedAt:1489213201008237930}
+I170311 06:20:01.030588 208 storage/replica_raftstorage.go:575  [n4,s4,r3/?:{-},@c4201c0900] applying preemptive snapshot at index 27 (id=6d314a9f, encoded size=13381, 1 rocksdb batches, 17 log entries)
+I170311 06:20:01.031830 208 storage/replica_raftstorage.go:583  [n4,s4,r3/?:/Table/1{2-3},@c4201c0900] applied preemptive snapshot in 1ms [clear=0ms batch=0ms entries=0ms commit=1ms]
+I170311 06:20:01.038598 181 storage/raft_transport.go:437  [n4] raft transport stream to node 1 established
+I170311 06:20:01.092752 217 storage/replica_raftstorage.go:575  [n4,s4,r1/?:{-},@c420448300] applying preemptive snapshot at index 94 (id=f72b9082, encoded size=471639, 1 rocksdb batches, 84 log entries)
+I170311 06:20:01.095040 217 storage/replica_raftstorage.go:583  [n4,s4,r1/?:/{Min-Table/11},@c420448300] applied preemptive snapshot in 2ms [clear=0ms batch=0ms entries=1ms commit=1ms]
+I170311 06:20:10.012611 307 storage/replica_raftstorage.go:575  [n4,s4,r2/?:{-},@c4209dd800] applying preemptive snapshot at index 30 (id=cdade9b2, encoded size=9405, 1 rocksdb batches, 20 log entries)
+I170311 06:20:10.012961 307 storage/replica_raftstorage.go:583  [n4,s4,r2/?:/Table/1{1-2},@c4209dd800] applied preemptive snapshot in 0ms [clear=0ms batch=0ms entries=0ms commit=0ms]
+I170311 06:20:10.024069 271 storage/raft_transport.go:437  [n4] raft transport stream to node 2 established
+I170311 06:20:11.008909 87 storage/store.go:3943  [n4,s4] sstables (read amplification = 0):
+I170311 06:20:11.009185 90 server/status/runtime.go:228  runtime stats: 119 MiB RSS, 101 goroutines, 8.7 MiB/1.6 MiB/19 MiB GO alloc/idle/total, 6.4 MiB/11 MiB CGO alloc/total, 0.00cgo/sec, 0.00/0.00 %(u/s)time, 0.00 %gc (6x)
+I170311 06:20:15.999279 281 storage/replica_raftstorage.go:575  [n4,s4,r5/?:{-},@c420306000] applying preemptive snapshot at index 20 (id=f3b06b5f, encoded size=3643, 1 rocksdb batches, 10 log entries)
+I170311 06:20:15.999620 281 storage/replica_raftstorage.go:583  [n4,s4,r5/?:/{Table/14-Max},@c420306000] applied preemptive snapshot in 0ms [clear=0ms batch=0ms entries=0ms commit=0ms]
+I170311 06:20:16.600265 319 storage/replica_raftstorage.go:575  [n4,s4,r4/?:{-},@c4209dc600] applying preemptive snapshot at index 64 (id=784ee272, encoded size=46966, 1 rocksdb batches, 54 log entries)
+I170311 06:20:16.600895 319 storage/replica_raftstorage.go:583  [n4,s4,r4/?:/Table/1{3-4},@c4209dc600] applied preemptive snapshot in 1ms [clear=0ms batch=0ms entries=0ms commit=0ms]
+I170311 06:20:21.009352 90 server/status/runtime.go:228  runtime stats: 143 MiB RSS, 134 goroutines, 16 MiB/2.7 MiB/28 MiB GO alloc/idle/total, 9.4 MiB/23 MiB CGO alloc/total, 13872.87cgo/sec, 0.27/0.04 %(u/s)time, 0.00 %gc (28x)
+I170311 06:20:29.236923 47 gossip/gossip.go:1152  [n4] node has connected to cluster via gossip
+I170311 06:20:29.237110 47 storage/stores.go:312  [n4] wrote 4 node addresses to persistent storage
+I170311 06:20:31.009350 90 server/status/runtime.go:228  runtime stats: 179 MiB RSS, 133 goroutines, 12 MiB/7.2 MiB/31 MiB GO alloc/idle/total, 32 MiB/54 MiB CGO alloc/total, 53569.29cgo/sec, 1.09/0.17 %(u/s)time, 0.00 %gc (96x)
+I170311 06:20:41.009327 90 server/status/runtime.go:228  runtime stats: 217 MiB RSS, 133 goroutines, 17 MiB/6.1 MiB/34 MiB GO alloc/idle/total, 61 MiB/95 MiB CGO alloc/total, 52857.29cgo/sec, 1.12/0.16 %(u/s)time, 0.00 %gc (83x)
+I170311 06:20:51.009224 90 server/status/runtime.go:228  runtime stats: 288 MiB RSS, 135 goroutines, 17 MiB/6.7 MiB/35 MiB GO alloc/idle/total, 121 MiB/160 MiB CGO alloc/total, 51424.76cgo/sec, 1.13/0.15 %(u/s)time, 0.00 %gc (76x)
+I170311 06:21:01.008719 88 gossip/gossip.go:437  [n4] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.0.107:26267 (1m0s: infos 11/823 sent/received, bytes 2296B/155205B sent/received)
+gossip server (0/3 cur/max conns, infos 11/823 sent/received, bytes 2296B/155205B sent/received)
+I170311 06:21:01.009426 90 server/status/runtime.go:228  runtime stats: 319 MiB RSS, 132 goroutines, 18 MiB/6.5 MiB/41 MiB GO alloc/idle/total, 138 MiB/185 MiB CGO alloc/total, 38494.59cgo/sec, 2.12/0.30 %(u/s)time, 0.00 %gc (90x)
+I170311 06:21:11.009070 90 server/status/runtime.go:228  runtime stats: 331 MiB RSS, 107 goroutines, 17 MiB/15 MiB/47 MiB GO alloc/idle/total, 148 MiB/195 MiB CGO alloc/total, 21321.97cgo/sec, 1.51/0.20 %(u/s)time, 0.00 %gc (50x)
+I170311 06:21:21.009190 90 server/status/runtime.go:228  runtime stats: 335 MiB RSS, 105 goroutines, 22 MiB/14 MiB/50 MiB GO alloc/idle/total, 149 MiB/196 MiB CGO alloc/total, 809.89cgo/sec, 0.06/0.01 %(u/s)time, 0.00 %gc (2x)
+I170311 06:21:31.009095 90 server/status/runtime.go:228  runtime stats: 338 MiB RSS, 103 goroutines, 24 MiB/14 MiB/50 MiB GO alloc/idle/total, 151 MiB/198 MiB CGO alloc/total, 3350.53cgo/sec, 0.23/0.04 %(u/s)time, 0.00 %gc (9x)
+I170311 06:21:41.009252 90 server/status/runtime.go:228  runtime stats: 338 MiB RSS, 103 goroutines, 23 MiB/14 MiB/50 MiB GO alloc/idle/total, 152 MiB/199 MiB CGO alloc/total, 3477.35cgo/sec, 0.24/0.03 %(u/s)time, 0.00 %gc (10x)
+I170311 06:21:51.009121 90 server/status/runtime.go:228  runtime stats: 338 MiB RSS, 103 goroutines, 16 MiB/16 MiB/50 MiB GO alloc/idle/total, 153 MiB/200 MiB CGO alloc/total, 3528.64cgo/sec, 0.24/0.04 %(u/s)time, 0.00 %gc (11x)
+I170311 06:22:01.008792 88 gossip/gossip.go:437  [n4] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.0.107:26267 (2m0s: infos 13/1270 sent/received, bytes 2680B/199718B sent/received)
+gossip server (0/3 cur/max conns, infos 13/1270 sent/received, bytes 2680B/199718B sent/received)
+I170311 06:22:01.009043 90 server/status/runtime.go:228  runtime stats: 339 MiB RSS, 103 goroutines, 17 MiB/15 MiB/50 MiB GO alloc/idle/total, 154 MiB/201 MiB CGO alloc/total, 3493.32cgo/sec, 0.25/0.04 %(u/s)time, 0.00 %gc (11x)
+I170311 06:22:11.009247 90 server/status/runtime.go:228  runtime stats: 342 MiB RSS, 103 goroutines, 12 MiB/19 MiB/50 MiB GO alloc/idle/total, 155 MiB/202 MiB CGO alloc/total, 3534.33cgo/sec, 0.24/0.03 %(u/s)time, 0.00 %gc (15x)
+I170311 06:22:21.009031 90 server/status/runtime.go:228  runtime stats: 351 MiB RSS, 103 goroutines, 11 MiB/20 MiB/50 MiB GO alloc/idle/total, 163 MiB/213 MiB CGO alloc/total, 3652.18cgo/sec, 0.24/0.04 %(u/s)time, 0.00 %gc (16x)
+I170311 06:22:31.009077 90 server/status/runtime.go:228  runtime stats: 352 MiB RSS, 103 goroutines, 17 MiB/18 MiB/50 MiB GO alloc/idle/total, 164 MiB/214 MiB CGO alloc/total, 3517.69cgo/sec, 0.22/0.03 %(u/s)time, 0.00 %gc (14x)
+I170311 06:22:41.009085 90 server/status/runtime.go:228  runtime stats: 353 MiB RSS, 103 goroutines, 11 MiB/22 MiB/50 MiB GO alloc/idle/total, 165 MiB/216 MiB CGO alloc/total, 3486.80cgo/sec, 0.22/0.04 %(u/s)time, 0.00 %gc (15x)
+I170311 06:22:51.009085 90 server/status/runtime.go:228  runtime stats: 355 MiB RSS, 103 goroutines, 15 MiB/21 MiB/50 MiB GO alloc/idle/total, 166 MiB/217 MiB CGO alloc/total, 3704.20cgo/sec, 0.22/0.04 %(u/s)time, 0.00 %gc (14x)
+I170311 06:23:01.008815 88 gossip/gossip.go:437  [n4] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.0.107:26267 (3m0s: infos 16/1670 sent/received, bytes 3238B/238426B sent/received)
+gossip server (0/3 cur/max conns, infos 16/1670 sent/received, bytes 3238B/238426B sent/received)
+I170311 06:23:01.009072 90 server/status/runtime.go:228  runtime stats: 357 MiB RSS, 103 goroutines, 14 MiB/22 MiB/50 MiB GO alloc/idle/total, 168 MiB/220 MiB CGO alloc/total, 3664.70cgo/sec, 0.24/0.03 %(u/s)time, 0.00 %gc (16x)
+I170311 06:23:11.009070 90 server/status/runtime.go:228  runtime stats: 360 MiB RSS, 109 goroutines, 16 MiB/21 MiB/50 MiB GO alloc/idle/total, 169 MiB/221 MiB CGO alloc/total, 3651.70cgo/sec, 0.23/0.04 %(u/s)time, 0.00 %gc (15x)
+I170311 06:23:21.009126 90 server/status/runtime.go:228  runtime stats: 362 MiB RSS, 108 goroutines, 16 MiB/21 MiB/50 MiB GO alloc/idle/total, 170 MiB/222 MiB CGO alloc/total, 3598.19cgo/sec, 0.22/0.03 %(u/s)time, 0.00 %gc (14x)
+I170311 06:23:31.009057 90 server/status/runtime.go:228  runtime stats: 372 MiB RSS, 108 goroutines, 12 MiB/22 MiB/50 MiB GO alloc/idle/total, 177 MiB/230 MiB CGO alloc/total, 3406.62cgo/sec, 0.24/0.03 %(u/s)time, 0.00 %gc (14x)
+I170311 06:23:41.009109 90 server/status/runtime.go:228  runtime stats: 377 MiB RSS, 107 goroutines, 12 MiB/23 MiB/50 MiB GO alloc/idle/total, 181 MiB/236 MiB CGO alloc/total, 3213.39cgo/sec, 0.19/0.04 %(u/s)time, 0.00 %gc (14x)
+I170311 06:23:51.009089 90 server/status/runtime.go:228  runtime stats: 377 MiB RSS, 107 goroutines, 13 MiB/22 MiB/50 MiB GO alloc/idle/total, 182 MiB/237 MiB CGO alloc/total, 104.10cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (1x)
+I170311 06:24:01.008815 88 gossip/gossip.go:437  [n4] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.0.107:26267 (4m0s: infos 18/2046 sent/received, bytes 3622B/274538B sent/received)
+gossip server (0/3 cur/max conns, infos 18/2046 sent/received, bytes 3622B/274538B sent/received)
+I170311 06:24:01.009100 90 server/status/runtime.go:228  runtime stats: 379 MiB RSS, 107 goroutines, 13 MiB/22 MiB/50 MiB GO alloc/idle/total, 183 MiB/238 MiB CGO alloc/total, 93.30cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (1x)
+I170311 06:24:11.009250 90 server/status/runtime.go:228  runtime stats: 384 MiB RSS, 117 goroutines, 19 MiB/19 MiB/50 MiB GO alloc/idle/total, 184 MiB/241 MiB CGO alloc/total, 11032.64cgo/sec, 0.73/0.12 %(u/s)time, 0.00 %gc (43x)
+I170311 06:24:21.009431 90 server/status/runtime.go:228  runtime stats: 385 MiB RSS, 114 goroutines, 13 MiB/22 MiB/50 MiB GO alloc/idle/total, 186 MiB/242 MiB CGO alloc/total, 15352.75cgo/sec, 1.01/0.15 %(u/s)time, 0.00 %gc (56x)
+I170311 06:24:31.009157 90 server/status/runtime.go:228  runtime stats: 398 MiB RSS, 112 goroutines, 20 MiB/19 MiB/50 MiB GO alloc/idle/total, 198 MiB/255 MiB CGO alloc/total, 14901.99cgo/sec, 1.03/0.15 %(u/s)time, 0.00 %gc (52x)
+I170311 06:24:41.009184 90 server/status/runtime.go:228  runtime stats: 400 MiB RSS, 107 goroutines, 17 MiB/19 MiB/50 MiB GO alloc/idle/total, 200 MiB/257 MiB CGO alloc/total, 7203.59cgo/sec, 0.49/0.07 %(u/s)time, 0.00 %gc (24x)
+I170311 06:24:51.009190 90 server/status/runtime.go:228  runtime stats: 400 MiB RSS, 107 goroutines, 15 MiB/20 MiB/50 MiB GO alloc/idle/total, 200 MiB/257 MiB CGO alloc/total, 88.20cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (1x)
+I170311 06:25:01.008979 88 gossip/gossip.go:437  [n4] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.0.107:26267 (5m0s: infos 20/2422 sent/received, bytes 4006B/310674B sent/received)
+gossip server (0/3 cur/max conns, infos 20/2422 sent/received, bytes 4006B/310674B sent/received)
+I170311 06:25:01.009290 90 server/status/runtime.go:228  runtime stats: 402 MiB RSS, 120 goroutines, 20 MiB/16 MiB/50 MiB GO alloc/idle/total, 202 MiB/260 MiB CGO alloc/total, 7958.71cgo/sec, 0.55/0.07 %(u/s)time, 0.00 %gc (23x)
+I170311 06:25:11.009268 90 server/status/runtime.go:228  runtime stats: 405 MiB RSS, 117 goroutines, 24 MiB/14 MiB/50 MiB GO alloc/idle/total, 199 MiB/261 MiB CGO alloc/total, 25349.57cgo/sec, 1.78/0.24 %(u/s)time, 0.00 %gc (71x)
+I170311 06:25:21.009173 90 server/status/runtime.go:228  runtime stats: 408 MiB RSS, 107 goroutines, 26 MiB/13 MiB/50 MiB GO alloc/idle/total, 202 MiB/264 MiB CGO alloc/total, 15460.45cgo/sec, 1.09/0.15 %(u/s)time, 0.00 %gc (41x)
+I170311 06:25:31.009134 90 server/status/runtime.go:228  runtime stats: 408 MiB RSS, 107 goroutines, 20 MiB/14 MiB/50 MiB GO alloc/idle/total, 202 MiB/264 MiB CGO alloc/total, 93.80cgo/sec, 0.03/0.00 %(u/s)time, 0.00 %gc (1x)
+I170311 06:25:41.009446 90 server/status/runtime.go:228  runtime stats: 410 MiB RSS, 123 goroutines, 19 MiB/14 MiB/50 MiB GO alloc/idle/total, 204 MiB/265 MiB CGO alloc/total, 8172.54cgo/sec, 0.58/0.07 %(u/s)time, 0.00 %gc (24x)
+I170311 06:25:51.012714 90 server/status/runtime.go:228  runtime stats: 412 MiB RSS, 124 goroutines, 30 MiB/8.8 MiB/50 MiB GO alloc/idle/total, 203 MiB/265 MiB CGO alloc/total, 36056.94cgo/sec, 2.49/0.34 %(u/s)time, 0.00 %gc (93x)
+I170311 06:26:01.008872 88 gossip/gossip.go:437  [n4] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.0.107:26267 (6m0s: infos 22/2810 sent/received, bytes 4390B/348017B sent/received)
+gossip server (0/3 cur/max conns, infos 22/2810 sent/received, bytes 4390B/348017B sent/received)
+I170311 06:26:01.009155 90 server/status/runtime.go:228  runtime stats: 414 MiB RSS, 102 goroutines, 30 MiB/9.0 MiB/50 MiB GO alloc/idle/total, 205 MiB/268 MiB CGO alloc/total, 4401.09cgo/sec, 0.33/0.04 %(u/s)time, 0.00 %gc (10x)
+I170311 06:26:11.009092 90 server/status/runtime.go:228  runtime stats: 414 MiB RSS, 102 goroutines, 23 MiB/11 MiB/50 MiB GO alloc/idle/total, 206 MiB/268 MiB CGO alloc/total, 99.40cgo/sec, 0.04/0.01 %(u/s)time, 0.00 %gc (1x)
+I170311 06:26:21.009265 90 server/status/runtime.go:228  runtime stats: 432 MiB RSS, 126 goroutines, 20 MiB/14 MiB/53 MiB GO alloc/idle/total, 222 MiB/287 MiB CGO alloc/total, 26572.62cgo/sec, 1.86/0.26 %(u/s)time, 0.00 %gc (70x)
+I170311 06:26:31.009158 90 server/status/runtime.go:228  runtime stats: 436 MiB RSS, 107 goroutines, 26 MiB/12 MiB/53 MiB GO alloc/idle/total, 227 MiB/293 MiB CGO alloc/total, 21472.56cgo/sec, 1.47/0.20 %(u/s)time, 0.00 %gc (49x)
+I170311 06:26:41.009090 90 server/status/runtime.go:228  runtime stats: 437 MiB RSS, 107 goroutines, 18 MiB/20 MiB/54 MiB GO alloc/idle/total, 227 MiB/293 MiB CGO alloc/total, 87.60cgo/sec, 0.02/0.00 %(u/s)time, 0.00 %gc (1x)
+I170311 06:26:51.009453 90 server/status/runtime.go:228  runtime stats: 444 MiB RSS, 135 goroutines, 28 MiB/11 MiB/54 MiB GO alloc/idle/total, 230 MiB/296 MiB CGO alloc/total, 10979.83cgo/sec, 0.80/0.11 %(u/s)time, 0.00 %gc (29x)
+I170311 06:27:01.008831 88 gossip/gossip.go:437  [n4] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.0.107:26267 (7m0s: infos 24/3266 sent/received, bytes 4774B/393357B sent/received)
+gossip server (0/3 cur/max conns, infos 24/3266 sent/received, bytes 4774B/393357B sent/received)
+I170311 06:27:01.009139 90 server/status/runtime.go:228  runtime stats: 447 MiB RSS, 107 goroutines, 23 MiB/15 MiB/54 MiB GO alloc/idle/total, 228 MiB/298 MiB CGO alloc/total, 37111.33cgo/sec, 2.61/0.35 %(u/s)time, 0.00 %gc (88x)
+I170311 06:27:11.014718 90 server/status/runtime.go:228  runtime stats: 449 MiB RSS, 107 goroutines, 33 MiB/7.5 MiB/54 MiB GO alloc/idle/total, 229 MiB/299 MiB CGO alloc/total, 95.85cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (1x)
+I170311 06:27:21.009438 90 server/status/runtime.go:228  runtime stats: 449 MiB RSS, 140 goroutines, 17 MiB/19 MiB/55 MiB GO alloc/idle/total, 230 MiB/300 MiB CGO alloc/total, 181.60cgo/sec, 0.05/0.01 %(u/s)time, 0.00 %gc (1x)
+I170311 06:27:31.009270 90 server/status/runtime.go:228  runtime stats: 454 MiB RSS, 107 goroutines, 18 MiB/20 MiB/55 MiB GO alloc/idle/total, 231 MiB/304 MiB CGO alloc/total, 47449.29cgo/sec, 3.41/0.46 %(u/s)time, 0.00 %gc (115x)
+I170311 06:27:41.009256 90 server/status/runtime.go:228  runtime stats: 456 MiB RSS, 107 goroutines, 28 MiB/12 MiB/55 MiB GO alloc/idle/total, 232 MiB/305 MiB CGO alloc/total, 100.10cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (0x)
+I170311 06:27:51.009110 90 server/status/runtime.go:228  runtime stats: 456 MiB RSS, 102 goroutines, 23 MiB/16 MiB/55 MiB GO alloc/idle/total, 232 MiB/306 MiB CGO alloc/total, 93.80cgo/sec, 0.03/0.00 %(u/s)time, 0.00 %gc (1x)
+I170311 06:28:01.008971 88 gossip/gossip.go:437  [n4] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.0.107:26267 (8m0s: infos 26/3700 sent/received, bytes 5158B/436547B sent/received)
+gossip server (0/3 cur/max conns, infos 26/3700 sent/received, bytes 5158B/436547B sent/received)
+I170311 06:28:01.009525 90 server/status/runtime.go:228  runtime stats: 473 MiB RSS, 143 goroutines, 31 MiB/11 MiB/55 MiB GO alloc/idle/total, 255 MiB/328 MiB CGO alloc/total, 42627.65cgo/sec, 3.05/0.46 %(u/s)time, 0.00 %gc (101x)
+I170311 06:28:11.009135 90 server/status/runtime.go:228  runtime stats: 475 MiB RSS, 102 goroutines, 19 MiB/19 MiB/55 MiB GO alloc/idle/total, 256 MiB/330 MiB CGO alloc/total, 4598.97cgo/sec, 0.32/0.05 %(u/s)time, 0.00 %gc (11x)
+I170311 06:28:21.009070 90 server/status/runtime.go:228  runtime stats: 475 MiB RSS, 102 goroutines, 29 MiB/11 MiB/55 MiB GO alloc/idle/total, 256 MiB/330 MiB CGO alloc/total, 110.40cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (0x)
+I170311 06:28:31.009394 90 server/status/runtime.go:228  runtime stats: 478 MiB RSS, 150 goroutines, 34 MiB/8.2 MiB/55 MiB GO alloc/idle/total, 255 MiB/330 MiB CGO alloc/total, 35847.73cgo/sec, 2.66/0.33 %(u/s)time, 0.00 %gc (81x)
+I170311 06:28:41.009151 90 server/status/runtime.go:228  runtime stats: 481 MiB RSS, 107 goroutines, 25 MiB/13 MiB/55 MiB GO alloc/idle/total, 259 MiB/332 MiB CGO alloc/total, 10917.17cgo/sec, 0.80/0.11 %(u/s)time, 0.00 %gc (24x)
+I170311 06:28:51.009078 90 server/status/runtime.go:228  runtime stats: 484 MiB RSS, 107 goroutines, 17 MiB/22 MiB/58 MiB GO alloc/idle/total, 260 MiB/333 MiB CGO alloc/total, 92.90cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (1x)
+W170311 06:28:58.869731 833693 storage/intent_resolver.go:338  [n4,s4,r7/4:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=7603540b key=/Table/51/1/"user566448922380157549"/0 rw=true pri=0.00510737 iso=SERIALIZABLE stat=PENDING epo=0 ts=1489213738.827510678,11 orig=1489213738.826379489,5 max=1489213738.828450050,6 wto=false rop=false
+I170311 06:29:01.008955 88 gossip/gossip.go:437  [n4] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.0.107:26267 (9m0s: infos 28/4149 sent/received, bytes 5542B/481210B sent/received)
+gossip server (0/3 cur/max conns, infos 28/4149 sent/received, bytes 5542B/481210B sent/received)
+I170311 06:29:01.009961 90 server/status/runtime.go:228  runtime stats: 490 MiB RSS, 173 goroutines, 30 MiB/11 MiB/58 MiB GO alloc/idle/total, 258 MiB/336 MiB CGO alloc/total, 29892.32cgo/sec, 2.21/0.31 %(u/s)time, 0.00 %gc (67x)
+I170311 06:29:11.009154 90 server/status/runtime.go:228  runtime stats: 493 MiB RSS, 107 goroutines, 28 MiB/15 MiB/58 MiB GO alloc/idle/total, 261 MiB/339 MiB CGO alloc/total, 16052.63cgo/sec, 1.20/0.15 %(u/s)time, 0.00 %gc (35x)
+I170311 06:29:21.009133 90 server/status/runtime.go:228  runtime stats: 494 MiB RSS, 107 goroutines, 21 MiB/19 MiB/58 MiB GO alloc/idle/total, 262 MiB/340 MiB CGO alloc/total, 89.60cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (1x)
+I170311 06:29:31.009363 90 server/status/runtime.go:228  runtime stats: 512 MiB RSS, 172 goroutines, 22 MiB/14 MiB/58 MiB GO alloc/idle/total, 284 MiB/360 MiB CGO alloc/total, 26912.47cgo/sec, 2.04/0.27 %(u/s)time, 0.00 %gc (61x)
+W170311 06:29:32.104190 937097 storage/intent_resolver.go:338  [n4,s4,r7/4:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=c896e126 key=/Table/51/1/"user4899012749927996343"/0 rw=true pri=0.00092676 iso=SERIALIZABLE stat=PENDING epo=0 ts=1489213772.086244803,13 orig=1489213772.084195507,3 max=1489213772.093061184,9 wto=false rop=false
+I170311 06:29:41.009399 90 server/status/runtime.go:228  runtime stats: 516 MiB RSS, 107 goroutines, 20 MiB/20 MiB/58 MiB GO alloc/idle/total, 287 MiB/363 MiB CGO alloc/total, 19404.25cgo/sec, 1.43/0.19 %(u/s)time, 0.00 %gc (42x)
+I170311 06:29:51.009179 90 server/status/runtime.go:228  runtime stats: 516 MiB RSS, 107 goroutines, 30 MiB/12 MiB/58 MiB GO alloc/idle/total, 288 MiB/364 MiB CGO alloc/total, 110.40cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (0x)
+I170311 06:30:01.008816 88 gossip/gossip.go:437  [n4] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.0.107:26267 (10m0s: infos 30/4570 sent/received, bytes 5926B/522969B sent/received)
+gossip server (0/3 cur/max conns, infos 30/4570 sent/received, bytes 5926B/522969B sent/received)
+I170311 06:30:01.009236 90 server/status/runtime.go:228  runtime stats: 517 MiB RSS, 164 goroutines, 22 MiB/14 MiB/58 MiB GO alloc/idle/total, 283 MiB/366 MiB CGO alloc/total, 21336.46cgo/sec, 1.63/0.19 %(u/s)time, 0.00 %gc (47x)
+I170311 06:30:11.009234 90 server/status/runtime.go:228  runtime stats: 518 MiB RSS, 102 goroutines, 23 MiB/18 MiB/58 MiB GO alloc/idle/total, 288 MiB/368 MiB CGO alloc/total, 24369.16cgo/sec, 1.80/0.26 %(u/s)time, 0.00 %gc (50x)
+I170311 06:30:21.009288 90 server/status/runtime.go:228  runtime stats: 518 MiB RSS, 102 goroutines, 17 MiB/23 MiB/58 MiB GO alloc/idle/total, 289 MiB/368 MiB CGO alloc/total, 94.10cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (1x)
+I170311 06:30:31.011312 90 server/status/runtime.go:228  runtime stats: 522 MiB RSS, 187 goroutines, 31 MiB/10 MiB/58 MiB GO alloc/idle/total, 287 MiB/371 MiB CGO alloc/total, 17182.97cgo/sec, 1.34/0.16 %(u/s)time, 0.00 %gc (38x)
+I170311 06:30:41.009107 90 server/status/runtime.go:228  runtime stats: 524 MiB RSS, 107 goroutines, 18 MiB/22 MiB/58 MiB GO alloc/idle/total, 291 MiB/373 MiB CGO alloc/total, 27824.61cgo/sec, 2.11/0.28 %(u/s)time, 0.00 %gc (58x)
+I170311 06:30:51.009140 90 server/status/runtime.go:228  runtime stats: 524 MiB RSS, 107 goroutines, 27 MiB/14 MiB/58 MiB GO alloc/idle/total, 291 MiB/373 MiB CGO alloc/total, 89.60cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (0x)
+I170311 06:31:01.008688 88 gossip/gossip.go:437  [n4] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.0.107:26267 (11m0s: infos 32/5015 sent/received, bytes 6310B/567295B sent/received)
+gossip server (0/3 cur/max conns, infos 32/5015 sent/received, bytes 6310B/567295B sent/received)
+I170311 06:31:01.009743 90 server/status/runtime.go:228  runtime stats: 546 MiB RSS, 181 goroutines, 33 MiB/9.1 MiB/58 MiB GO alloc/idle/total, 314 MiB/395 MiB CGO alloc/total, 14810.98cgo/sec, 1.18/0.16 %(u/s)time, 0.00 %gc (33x)
+I170311 06:31:11.009182 90 server/status/runtime.go:228  runtime stats: 552 MiB RSS, 107 goroutines, 18 MiB/21 MiB/58 MiB GO alloc/idle/total, 318 MiB/400 MiB CGO alloc/total, 30002.81cgo/sec, 2.26/0.29 %(u/s)time, 0.00 %gc (63x)
+I170311 06:31:21.009316 90 server/status/runtime.go:228  runtime stats: 552 MiB RSS, 107 goroutines, 28 MiB/13 MiB/58 MiB GO alloc/idle/total, 319 MiB/400 MiB CGO alloc/total, 106.50cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (0x)
+I170311 06:31:31.009639 90 server/status/runtime.go:228  runtime stats: 555 MiB RSS, 193 goroutines, 29 MiB/8.8 MiB/58 MiB GO alloc/idle/total, 314 MiB/402 MiB CGO alloc/total, 11326.79cgo/sec, 0.89/0.12 %(u/s)time, 0.00 %gc (25x)
+I170311 06:31:41.009365 90 server/status/runtime.go:228  runtime stats: 567 MiB RSS, 107 goroutines, 30 MiB/15 MiB/60 MiB GO alloc/idle/total, 320 MiB/408 MiB CGO alloc/total, 33298.61cgo/sec, 2.57/0.31 %(u/s)time, 0.00 %gc (67x)
+I170311 06:31:51.009149 90 server/status/runtime.go:228  runtime stats: 567 MiB RSS, 107 goroutines, 22 MiB/20 MiB/60 MiB GO alloc/idle/total, 321 MiB/409 MiB CGO alloc/total, 94.10cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (1x)
+I170311 06:32:01.008906 88 gossip/gossip.go:437  [n4] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  1: 172.31.0.107:26267 (12m0s: infos 34/5460 sent/received, bytes 6694B/611568B sent/received)
+gossip server (0/3 cur/max conns, infos 34/5460 sent/received, bytes 6694B/611568B sent/received)
+I170311 06:32:01.009461 90 server/status/runtime.go:228  runtime stats: 570 MiB RSS, 195 goroutines, 31 MiB/9.3 MiB/60 MiB GO alloc/idle/total, 318 MiB/412 MiB CGO alloc/total, 10183.98cgo/sec, 0.80/0.11 %(u/s)time, 0.00 %gc (22x)
+I170311 06:32:11.009201 90 server/status/runtime.go:228  runtime stats: 571 MiB RSS, 107 goroutines, 29 MiB/14 MiB/60 MiB GO alloc/idle/total, 323 MiB/415 MiB CGO alloc/total, 34003.51cgo/sec, 2.61/0.34 %(u/s)time, 0.00 %gc (67x)
+I170311 06:32:21.009327 90 server/status/runtime.go:228  runtime stats: 571 MiB RSS, 107 goroutines, 22 MiB/19 MiB/60 MiB GO alloc/idle/total, 324 MiB/416 MiB CGO alloc/total, 129.40cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (1x)
+I170311 06:32:31.009686 90 server/status/runtime.go:228  runtime stats: 583 MiB RSS, 208 goroutines, 38 MiB/5.9 MiB/60 MiB GO alloc/idle/total, 339 MiB/432 MiB CGO alloc/total, 9226.35cgo/sec, 0.78/0.11 %(u/s)time, 0.00 %gc (20x)
+I170311 06:32:36.604775 67 vendor/google.golang.org/grpc/transport/http2_client.go:1123  transport: http2Client.notifyError got notified that the client transport was broken read tcp 172.31.9.9:35484->172.31.0.107:26267: read: connection reset by peer.
+W170311 06:32:36.604994 181 storage/raft_transport.go:443  [n4] raft transport stream to node 1 failed: rpc error: code = 13 desc = transport is closing
+I170311 06:32:36.605158 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+W170311 06:32:36.605174 47 gossip/gossip.go:1138  [n4] no incoming or outgoing connections
+I170311 06:32:36.605418 1423311 gossip/client.go:125  [n4] started gossip client to 172.31.4.38:26267
+I170311 06:32:37.605344 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:38.592423 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:39.437661 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:40.621678 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:41.009285 90 server/status/runtime.go:228  runtime stats: 596 MiB RSS, 166 goroutines, 32 MiB/11 MiB/62 MiB GO alloc/idle/total, 351 MiB/444 MiB CGO alloc/total, 32904.81cgo/sec, 2.57/0.34 %(u/s)time, 0.00 %gc (66x)
+I170311 06:32:41.218535 1428647 storage/raft_transport.go:437  [n4] raft transport stream to node 5 established
+I170311 06:32:41.802175 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:41.802660 1428697 storage/raft_transport.go:437  [n4] raft transport stream to node 3 established
+I170311 06:32:42.869390 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+W170311 06:32:43.490703 97 storage/node_liveness.go:229  [n4,hb] slow heartbeat took 6.5s
+I170311 06:32:43.728228 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:44.009584 47 gossip/gossip.go:1152  [n4] node has connected to cluster via gossip
+I170311 06:32:44.923035 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:46.047143 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:47.079556 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:48.056788 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:49.102300 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:50.123173 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:51.009437 90 server/status/runtime.go:228  runtime stats: 599 MiB RSS, 137 goroutines, 20 MiB/16 MiB/63 MiB GO alloc/idle/total, 352 MiB/445 MiB CGO alloc/total, 3116.56cgo/sec, 0.22/0.04 %(u/s)time, 0.00 %gc (6x)
+I170311 06:32:51.203442 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:52.330066 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:53.407512 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:54.527519 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:55.492208 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:56.634567 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:57.787987 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:58.605672 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:32:59.462052 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:00.353630 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:01.008816 88 gossip/gossip.go:437  [n4] gossip status (ok, 5 nodes)
+gossip client (1/3 cur/max conns)
+  5: 172.31.4.38:26267 (24s: infos 39/119 sent/received, bytes 11185B/16524B sent/received)
+gossip server (0/3 cur/max conns, infos 77/5798 sent/received, bytes 18550B/650151B sent/received)
+I170311 06:33:01.009162 90 server/status/runtime.go:228  runtime stats: 599 MiB RSS, 118 goroutines, 34 MiB/13 MiB/63 MiB GO alloc/idle/total, 353 MiB/445 MiB CGO alloc/total, 791.52cgo/sec, 0.07/0.01 %(u/s)time, 0.00 %gc (1x)
+I170311 06:33:01.388448 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:02.273339 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:03.133511 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:04.132953 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:05.285345 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:06.149977 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:07.081238 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:08.224302 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:09.368399 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:10.562415 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:11.009143 90 server/status/runtime.go:228  runtime stats: 599 MiB RSS, 112 goroutines, 32 MiB/11 MiB/63 MiB GO alloc/idle/total, 354 MiB/446 MiB CGO alloc/total, 312.60cgo/sec, 0.07/0.01 %(u/s)time, 0.00 %gc (1x)
+I170311 06:33:11.685655 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:12.521046 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:13.518022 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:14.472755 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:15.462043 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:16.653173 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:17.692349 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:18.746289 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:19.691864 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:20.730185 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:21.009140 90 server/status/runtime.go:228  runtime stats: 602 MiB RSS, 109 goroutines, 21 MiB/17 MiB/64 MiB GO alloc/idle/total, 354 MiB/446 MiB CGO alloc/total, 124.10cgo/sec, 0.02/0.00 %(u/s)time, 0.00 %gc (1x)
+I170311 06:33:21.801885 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:22.758994 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:23.621794 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:24.542141 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:25.615577 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:26.624300 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:27.574936 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:28.507213 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:29.475012 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}
+I170311 06:33:30.394901 52 vendor/google.golang.org/grpc/clientconn.go:766  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: dial tcp 172.31.0.107:26267: getsockopt: connection refused"; Reconnecting to {172.31.0.107:26267 <nil>}

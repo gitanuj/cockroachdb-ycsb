@@ -1,0 +1,20 @@
+W170311 06:33:59.907568 24 util/log/clog.go:1003  [config] file created at: 2017/03/11 06:33:59
+W170311 06:33:59.907568 24 util/log/clog.go:1003  [config] running on machine: ip-172-31-15-2
+W170311 06:33:59.907568 24 util/log/clog.go:1003  [config] binary: CockroachDB fa9e7ab (linux amd64, built 2017/03/11 00:35:03, go1.8)
+W170311 06:33:59.907568 24 util/log/clog.go:1003  [config] arguments: [./cockroach start --insecure --host=172.31.15.2 --port=26267 --http-port=8081 --join=172.31.0.107:26267]
+W170311 06:33:59.907568 24 util/log/clog.go:1003  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg
+W170311 06:33:59.907568 24 server/server.go:157  [n?] running in insecure mode, this is strongly discouraged. See --insecure.
+W170311 06:33:59.907768 24 gossip/gossip.go:1138  [n?] no incoming or outgoing connections
+W170311 06:33:59.911091 66 gossip/client.go:119  [n?] failed to start gossip client to 172.31.0.107:26267: rpc error: code = 14 desc = grpc: the connection is unavailable
+W170311 06:42:23.567493 742166 storage/intent_resolver.go:338  [n5,s5,r22/3:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=0965e33e key=/Table/51/1/"user5008310054042953721"/0 rw=true pri=0.02467022 iso=SERIALIZABLE stat=PENDING epo=0 ts=1489214543.559724887,37 orig=1489214543.559724887,28 max=1489214543.561469806,25 wto=false rop=false
+W170311 06:44:30.926171 268 storage/raft_transport.go:443  [n5] raft transport stream to node 3 failed: rpc error: code = 13 desc = transport is closing
+W170311 06:44:30.926368 51 gossip/gossip.go:1138  [n5] no incoming or outgoing connections
+E170311 06:49:02.048204 206 storage/queue.go:610  [replicate,n5,s5,r3/5:/Table/1{2-3},@c420b30300] purgatory: 0 of 4 stores with an attribute matching []; likely not enough nodes in cluster
+E170311 06:49:02.048508 1200659 storage/queue.go:610  [replicate,n5,s5,r3/5:/Table/1{2-3},@c420b30300] purgatory: 0 of 4 stores with an attribute matching []; likely not enough nodes in cluster
+E170311 06:49:10.156476 1200659 storage/queue.go:610  [replicate,n5,s5,r3/5:/Table/1{2-3},@c420b30300] purgatory: 0 of 4 stores with an attribute matching []; likely not enough nodes in cluster
+E170311 06:49:10.156556 1200659 storage/queue.go:610  [replicate,n5,s5,r3/5:/Table/1{2-3},@c420b30300] purgatory: 0 of 4 stores with an attribute matching []; likely not enough nodes in cluster
+E170311 06:49:37.254780 206 storage/queue.go:610  [replicate,n5,s5,r5/4:/Table/{14-50},@c420322600] purgatory: 0 of 4 stores with an attribute matching []; likely not enough nodes in cluster
+E170311 06:49:37.255069 1200966 storage/queue.go:610  [replicate,n5,s5,r5/4:/Table/{14-50},@c420322600] purgatory: 0 of 4 stores with an attribute matching []; likely not enough nodes in cluster
+E170311 06:49:37.255894 1200966 storage/queue.go:610  [replicate,n5,s5,r5/4:/Table/{14-50},@c420322600] purgatory: 0 of 4 stores with an attribute matching []; likely not enough nodes in cluster
+E170311 06:49:46.410411 1200966 storage/queue.go:610  [replicate,n5,s5,r5/4:/Table/{14-50},@c420322600] purgatory: 0 of 4 stores with an attribute matching []; likely not enough nodes in cluster
+E170311 06:49:46.410487 1200966 storage/queue.go:610  [replicate,n5,s5,r5/4:/Table/{14-50},@c420322600] purgatory: 0 of 4 stores with an attribute matching []; likely not enough nodes in cluster

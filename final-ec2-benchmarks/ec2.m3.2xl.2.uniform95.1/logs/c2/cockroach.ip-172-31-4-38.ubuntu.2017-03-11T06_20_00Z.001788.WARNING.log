@@ -1,0 +1,20 @@
+W170311 06:20:00.969038 50 util/log/clog.go:1003  [config] file created at: 2017/03/11 06:20:00
+W170311 06:20:00.969038 50 util/log/clog.go:1003  [config] running on machine: ip-172-31-4-38
+W170311 06:20:00.969038 50 util/log/clog.go:1003  [config] binary: CockroachDB fa9e7ab (linux amd64, built 2017/03/11 00:35:03, go1.8)
+W170311 06:20:00.969038 50 util/log/clog.go:1003  [config] arguments: [./cockroach start --insecure --host=172.31.4.38 --port=26267 --http-port=8081 --join=172.31.0.107:26267]
+W170311 06:20:00.969038 50 util/log/clog.go:1003  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg
+W170311 06:20:00.969037 50 server/server.go:157  [n?] running in insecure mode, this is strongly discouraged. See --insecure.
+W170311 06:20:00.969239 50 gossip/gossip.go:1138  [n?] no incoming or outgoing connections
+E170311 06:21:01.001366 148 storage/replica.go:4292  [n5,s5] failed to gossip cluster ID: info not fresh
+E170311 06:22:01.001426 148 storage/replica.go:4292  [n5,s5] failed to gossip cluster ID: info not fresh
+E170311 06:25:01.001292 148 storage/replica.go:4292  [n5,s5] failed to gossip cluster ID: info not fresh
+E170311 06:26:01.001295 148 storage/replica.go:4292  [n5,s5] failed to gossip cluster ID: info not fresh
+E170311 06:27:01.001306 148 storage/replica.go:4292  [n5,s5] failed to gossip cluster ID: info not fresh
+E170311 06:28:01.001230 148 storage/replica.go:4292  [n5,s5] failed to gossip cluster ID: info not fresh
+E170311 06:29:01.001399 148 storage/replica.go:4292  [n5,s5] failed to gossip cluster ID: info not fresh
+W170311 06:29:32.087550 943815 storage/intent_resolver.go:338  [n5,s5,r7/2:/{Table/51-Max}]: failed to push during intent resolution: failed to push "sql/executor.go:586 sql txn implicit" id=c896e126 key=/Table/51/1/"user4899012749927996343"/0 rw=true pri=0.00092676 iso=SERIALIZABLE stat=PENDING epo=0 ts=1489213772.086244803,13 orig=1489213772.084195507,3 max=1489213772.093061184,9 wto=false rop=false
+E170311 06:30:01.006294 148 storage/replica.go:4292  [n5,s5] failed to gossip cluster ID: info not fresh
+E170311 06:31:01.001213 148 storage/replica.go:4292  [n5,s5] failed to gossip cluster ID: info not fresh
+W170311 06:32:36.588932 230 storage/raft_transport.go:443  [n5] raft transport stream to node 1 failed: rpc error: code = 13 desc = transport is closing
+W170311 06:32:43.961559 172 storage/node_liveness.go:229  [n5,hb] slow heartbeat took 7.0s
+E170311 06:33:01.001194 148 storage/replica.go:4292  [n5,s5] failed to gossip cluster ID: info not fresh

@@ -4,28 +4,33 @@
 ### custom variables ###
 ########################
 
-benchmark_dir_prefix="03.07.2017.dsl"
-read_types=( "0" "1" "2" "3" )
+benchmark_dir_prefix="ec2.m3.2xl"
+read_types=( "2" )
 workloads=( "uniform95" )
-repetitions=3
-num_threads=( 1 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 )
+repetitions=1
+num_threads=( 65 70 75 )
 
 # Use ec2.py to generate
-all_ec2_ids=()
-all_names=( dsl0 dsl1 dsl2 dsl3 )
-all_ips=( 128.111.44.237 128.111.44.241 128.111.44.238 128.111.44.163 )
-all_internal_ips=( 128.111.44.237 128.111.44.241 128.111.44.238 128.111.44.163 )
+# all_ec2_ids=()
+# all_names=( dsl0 dsl1 dsl2 dsl3 )
+# all_ips=( 128.111.44.237 128.111.44.241 128.111.44.238 128.111.44.163 )
+# all_internal_ips=( 128.111.44.237 128.111.44.241 128.111.44.238 128.111.44.163 )
 
-ssh_user="migr"
-ssh_id_file=""
+all_ec2_ids=( i-0914967898a634107 i-048ec5bbf3b0556b7 i-01445990b21457a53 i-0243d1b8a4b88a17c i-0c10c13acd3f31add i-09c008defaa0f623e )
+all_names=( c0 c1 c2 c3 c4 y0 )
+all_ips=( 52.41.133.39 35.163.38.228 52.33.49.79 52.32.76.162 35.163.50.124 35.167.92.141 )
+all_internal_ips=( 172.31.11.78 172.31.5.12 172.31.9.28 172.31.10.252 172.31.10.87 172.31.11.13 )
+
+ssh_user="ubuntu"
+ssh_id_file="~/.ssh/tanuj.pem"
 
 db_name="test"
 crdb_port="26267"
 crdb_http_port="8081"
 
-crdb_wdir="~/tanuj"
-ycsb_wdir="~/tanuj"
-nmon_wdir="~/tanuj"
+crdb_wdir="~"
+ycsb_wdir="~"
+nmon_wdir="~"
 
 #########################
 ### derived variables ###
@@ -110,13 +115,70 @@ function joinBy {
 	echo "$*"
 }
 
+function cleanup {
+	echo "Cleaning up YCSB client"
+	ssh $ycsb_machine "cd $ycsb_wdir; $cmd_kill_nmon; $cmd_rm_nmon_files"
+
+	echo "Cleaning up crdb servers"
+	for server in "${crdb_machines[@]}"
+	do
+		ssh $server "cd $crdb_wdir; $cmd_kill_crdb; $cmd_rm_crdb_files; $cmd_kill_nmon; $cmd_rm_nmon_files"
+	done
+}
+
+function setup {
+	# setup crdb servers
+	echo "Setting up crdb servers"
+	for i in "${!crdb_machines[@]}"
+	do
+		remote_cmd="cd $crdb_wdir; `echoCrdbEnvVars $read_type $lhfallback_prob`; `echoCrdbStartCmd ${crdb_internal_ips[$i]}`"
+		if [ $i == 0 ]; then
+			ssh ${crdb_machines[$i]} "$remote_cmd" &
+		else
+			ssh ${crdb_machines[$i]} "$remote_cmd --join=${crdb_internal_ips[0]}:$crdb_port" &
+		fi
+	done
+	sleep 15
+
+	# init db
+	ssh ${crdb_machines[0]} "cd $crdb_wdir; echo 'num_replicas: $num_replicas' | ./cockroach --url='${pg_urls[0]}' zone set .default -f -"
+	ssh ${crdb_machines[0]} "cd $crdb_wdir; echo 'range_max_bytes: $range_max_bytes' | ./cockroach --url='${pg_urls[0]}' zone set .default -f -"
+	ssh ${crdb_machines[0]} "cd $crdb_wdir; ./cockroach sql --url='${pg_urls[0]}' --execute='create database $db_name'"
+	ssh $ycsb_machine "cd $ycsb_wdir; $cmd_ycsb_create_table"
+}
+
+# $1: workload
+function loadAndWarmupDb {
+	workload=$1
+
+	# load workload
+	echo "Loading $workload workload"
+	ssh $ycsb_machine "cd $ycsb_wdir; `echoYcsbCmd load workloads/$workload 20`"
+
+	# warmup
+	echo "Warming up using $workload workload"
+	ssh $ycsb_machine "cd $ycsb_wdir; `echoYcsbCmd run workloads/$workload 20`"
+	sleep 5
+}
+
+# $1: benchmark_dir
+function fetchDbLogs {
+	benchmark_dir=$1
+
+	# fetch db logs
+	for i in "${!crdb_machines[@]}"
+	do
+		fetchUsingSsh "${crdb_names[$i]}" "${crdb_machines[$i]}" "$crdb_wdir/cockroach-data/logs/*" "benchmarks/$benchmark_dir/logs/${crdb_names[$i]}"
+	done
+}
+
 # $1: read type
 # $2: lhfallback prob
 function echoCrdbEnvVars {
 	read_type=$1
 	lhfallback_prob=$2
 
-	echo "export COCKROACH_READ_TYPE=$read_type; export COCKROACH_LHFALLBACK_PROB=$lhfallback_prob"
+	echo "export COCKROACH_MAX_TXN_RETRIES=5000 export COCKROACH_READ_TYPE=$read_type; export COCKROACH_LHFALLBACK_PROB=$lhfallback_prob"
 }
 
 # $1: load or run
@@ -135,4 +197,53 @@ function echoCrdbStartCmd {
 	host=$1
 
 	echo "./cockroach start --background --insecure --host=$host --port=$crdb_port --http-port=$crdb_http_port"
+}
+
+function removeDataDump {
+	for i in "${!crdb_machines[@]}"
+	do
+		echo "Removing *.dump from ${crdb_names[$i]}"
+		ssh ${crdb_machines[$i]} "cd $crdb_wdir; rm -rf *.dump"
+	done
+}
+
+# $1: workload
+# $2: num of threads
+function runYcsb {
+	workload=$1
+	num=$2
+
+	echo "Running YCSB for $num threads"
+	ssh $ycsb_machine "cd $ycsb_wdir; `echoYcsbCmd run workloads/$workload $num` &> ycsb-results"
+	echo "Finished running YCSB"
+}
+
+function startNmon {
+	for i in "${!all_machines[@]}"
+	do
+		echo "Starting nmon on ${all_names[$i]}"
+		ssh ${all_machines[$i]} "cd $nmon_wdir; nmon -f -s1 -c 10000"
+	done
+}
+
+# $1: path
+function stopAndFetchNmonResults {
+	path=$1
+
+	for i in "${!all_machines[@]}"
+	do
+		echo "Stopping nmon on ${all_names[i]}"
+		ssh ${all_machines[$i]} "$cmd_stop_nmon"
+		fetchUsingSsh "${all_names[$i]}" "${all_machines[$i]}" "$nmon_wdir/*.nmon" "$path/${all_names[$i]}"
+	done
+}
+
+# $1: path
+function fetchDataDump {
+	path=$1
+
+	for i in "${!crdb_machines[@]}"
+	do
+		fetchUsingSsh "${crdb_names[$i]}" "${crdb_machines[$i]}" "$crdb_wdir/data.dump" "$path/${crdb_names[$i]}"
+	done
 }

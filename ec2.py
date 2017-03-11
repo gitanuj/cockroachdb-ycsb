@@ -79,7 +79,7 @@ def main():
 	if sys.argv[1] == "start":
 		ids, tags = start(ec2, sys.argv[2], sys.argv[3], int(sys.argv[4]), sys.argv[5])
 		dump_info(ec2, ids, tags)
-	else:
+	elif sys.argv[1] == "stop":
 		stop(ec2, sys.argv[2:])
 
 if __name__ == '__main__':
