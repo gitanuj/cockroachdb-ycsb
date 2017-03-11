@@ -12,8 +12,8 @@ from plot import multiplot
 OUTPUT_DIR = sys.argv[1]
 
 READ_TYPES = [0, 1, 2, 3]
-MAX_REPETITIONS = 1
-WORKLOADS = ["zipfian95"]
+MAX_REPETITIONS = 3
+WORKLOADS = ["uniform95"]
 NUM_THREADS = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]
 MACHINES = ['c0', 'c1', 'c2', 'c3', 'c4']
 
@@ -22,13 +22,13 @@ YCSB_PARAMS = [
 	{ "id" : "[OVERALL], Throughput(ops/sec), ", "title" : "Throughput (ops per sec)" },
 	# { "id" : "[UPDATE], Operations, ", "title" : "Update Operations" },
 	{ "id" : "[UPDATE], AverageLatency(us), ", "title" : "Avg Update Latency (us)" },
-	# { "id" : "[UPDATE], 95thPercentileLatency(us), ", "title" : "95th%ile Update Latency (us)" },
-	# { "id" : "[UPDATE], 99thPercentileLatency(us), ", "title" : "99th%ile Update Latency (us)" },
+	{ "id" : "[UPDATE], 95thPercentileLatency(us), ", "title" : "95th%ile Update Latency (us)" },
+	{ "id" : "[UPDATE], 99thPercentileLatency(us), ", "title" : "99th%ile Update Latency (us)" },
 	# { "id" : "[UPDATE-FAILED], Operations, ", "title" : "Failed Update Operations" },
 	# { "id" : "[READ], Operations, ", "title" : "Read Operations" },
 	{ "id" : "[READ], AverageLatency(us), ", "title" : "Avg Read Latency (us)" },
-	# { "id" : "[READ], 95thPercentileLatency(us), ", "title" : "95th%ile Read Latency (us)" },
-	# { "id" : "[READ], 99thPercentileLatency(us), ", "title" : "99th%ile Read Latency (us)" },
+	{ "id" : "[READ], 95thPercentileLatency(us), ", "title" : "95th%ile Read Latency (us)" },
+	{ "id" : "[READ], 99thPercentileLatency(us), ", "title" : "99th%ile Read Latency (us)" },
 	# { "id" : "[READ-FAILED], Operations, ", "title" : "Failed Read Operations" },
 ]
 
@@ -114,7 +114,7 @@ def dump_ycsb_graphs(results):
 	path_exp = YCSB_PATH
 
 	# for single workload
-	path = path_exp.replace("$workload", "zipfian95")
+	path = path_exp.replace("$workload", "uniform95")
 	x = NUM_THREADS
 	xlabel = "Threads"
 	ytitles = ["Lease Holder", "Local", "Quorum", "Strongly Consistent Quorum"]
@@ -151,7 +151,7 @@ def dump_data_graphs(results):
 	path_exp = DATA_PATH
 
 	# for single workload
-	path = path_exp.replace("$workload", "zipfian95")
+	path = path_exp.replace("$workload", "uniform95")
 	x = NUM_THREADS
 	xlabel = "Threads"
 	ytitles = ["Lease Holder", "Local", "Quorum", "Strongly Consistent Quorum"]
