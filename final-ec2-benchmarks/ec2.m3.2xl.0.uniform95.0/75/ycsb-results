@@ -1,438 +1,477 @@
-java -cp postgresql-9.4.1212.jre7.jar:/home/ubuntu/ycsb/jdbc-binding/conf:/home/ubuntu/ycsb/conf:/home/ubuntu/ycsb/lib/jdbc-binding-0.13.0-SNAPSHOT.jar:/home/ubuntu/ycsb/lib/core-0.13.0-SNAPSHOT.jar:/home/ubuntu/ycsb/lib/openjpa-jdbc-2.1.1.jar:/home/ubuntu/ycsb/lib/HdrHistogram-2.1.4.jar:/home/ubuntu/ycsb/lib/geronimo-jta_1.1_spec-1.1.1.jar:/home/ubuntu/ycsb/lib/commons-collections-3.2.1.jar:/home/ubuntu/ycsb/lib/htrace-core4-4.1.0-incubating.jar:/home/ubuntu/ycsb/lib/geronimo-jms_1.1_spec-1.1.1.jar:/home/ubuntu/ycsb/lib/serp-1.13.1.jar:/home/ubuntu/ycsb/lib/openjpa-kernel-2.1.1.jar:/home/ubuntu/ycsb/lib/jackson-mapper-asl-1.9.4.jar:/home/ubuntu/ycsb/lib/openjpa-lib-2.1.1.jar:/home/ubuntu/ycsb/lib/commons-lang-2.4.jar:/home/ubuntu/ycsb/lib/jackson-core-asl-1.9.4.jar:/home/ubuntu/ycsb/lib/commons-pool-1.5.4.jar com.yahoo.ycsb.Client -db com.yahoo.ycsb.db.JdbcDBClient -P workloads/uniform95 -P cockroachdb.properties -p db.url=jdbc:postgresql://52.43.246.185:26267/test,jdbc:postgresql://52.26.239.158:26267/test,jdbc:postgresql://35.162.212.87:26267/test,jdbc:postgresql://52.88.7.214:26267/test,jdbc:postgresql://52.88.0.231:26267/test -s -threads 75 -t
-Command line: -db com.yahoo.ycsb.db.JdbcDBClient -P workloads/uniform95 -P cockroachdb.properties -p db.url=jdbc:postgresql://52.43.246.185:26267/test,jdbc:postgresql://52.26.239.158:26267/test,jdbc:postgresql://35.162.212.87:26267/test,jdbc:postgresql://52.88.7.214:26267/test,jdbc:postgresql://52.88.0.231:26267/test -s -threads 75 -tYCSB Client 0.13.0-SNAPSHOT
+java -cp postgresql-9.4.1212.jre7.jar:/home/ubuntu/ycsb/jdbc-binding/conf:/home/ubuntu/ycsb/conf:/home/ubuntu/ycsb/lib/jdbc-binding-0.13.0-SNAPSHOT.jar:/home/ubuntu/ycsb/lib/core-0.13.0-SNAPSHOT.jar:/home/ubuntu/ycsb/lib/openjpa-jdbc-2.1.1.jar:/home/ubuntu/ycsb/lib/HdrHistogram-2.1.4.jar:/home/ubuntu/ycsb/lib/geronimo-jta_1.1_spec-1.1.1.jar:/home/ubuntu/ycsb/lib/commons-collections-3.2.1.jar:/home/ubuntu/ycsb/lib/htrace-core4-4.1.0-incubating.jar:/home/ubuntu/ycsb/lib/geronimo-jms_1.1_spec-1.1.1.jar:/home/ubuntu/ycsb/lib/serp-1.13.1.jar:/home/ubuntu/ycsb/lib/openjpa-kernel-2.1.1.jar:/home/ubuntu/ycsb/lib/jackson-mapper-asl-1.9.4.jar:/home/ubuntu/ycsb/lib/openjpa-lib-2.1.1.jar:/home/ubuntu/ycsb/lib/commons-lang-2.4.jar:/home/ubuntu/ycsb/lib/jackson-core-asl-1.9.4.jar:/home/ubuntu/ycsb/lib/commons-pool-1.5.4.jar com.yahoo.ycsb.Client -db com.yahoo.ycsb.db.JdbcDBClient -P workloads/uniform95 -P cockroachdb.properties -p db.url=jdbc:postgresql://52.40.121.25:26267/test,jdbc:postgresql://52.42.192.88:26267/test,jdbc:postgresql://52.35.124.172:26267/test,jdbc:postgresql://52.42.176.201:26267/test,jdbc:postgresql://52.40.92.79:26267/test -s -threads 75 -t
+Command line: -db com.yahoo.ycsb.db.JdbcDBClient -P workloads/uniform95 -P cockroachdb.properties -p db.url=jdbc:postgresql://52.40.121.25:26267/test,jdbc:postgresql://52.42.192.88:26267/test,jdbc:postgresql://52.35.124.172:26267/test,jdbc:postgresql://52.42.176.201:26267/test,jdbc:postgresql://52.40.92.79:26267/test -s -threads 75 -tYCSB Client 0.13.0-SNAPSHOT
 
 Loading workload...
 Starting test.
-2017-03-11 02:57:09:407 0 sec: 0 operations; est completion in 0 seconds 
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.43.246.185:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.26.239.158:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
+2017-03-12 01:03:12:333 0 sec: 0 operations; est completion in 0 seconds 
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.121.25:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.192.88:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Using shards: 5, batchSize:-1, fetchSize: -1
-Using shards: 5, batchSize:-1, fetchSize: -1
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://35.162.212.87:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/testDBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Using shards: 5, batchSize:-1, fetchSize: -1
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/testDBWrapper: report latency for each error is false and specific error codes to track for latency are: []
 
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Using shards: 5, batchSize:-1, fetchSize: -1
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/testDBWrapper: report latency for each error is false and specific error codes to track for latency are: []
 
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
 Using shards: 5, batchSize:-1, fetchSize: -1
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/testDBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Using shards: 5, batchSize:-1, fetchSize: -1
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/testDBWrapper: report latency for each error is false and specific error codes to track for latency are: []
 
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/testDBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []Using shards: 5, batchSize:-1, fetchSize: -1
 
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Using shards: 5, batchSize:-1, fetchSize: -1
+Using shards: 5, batchSize:-1, fetchSize: -1DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/testDBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Using shards: 5, batchSize:-1, fetchSize: -1
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Using shards: 5, batchSize:-1, fetchSize: -1
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/testDBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []Using shards: 5, batchSize:-1, fetchSize: -1
+
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []Using shards: 5, batchSize:-1, fetchSize: -1
+
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 5, batchSize:-1, fetchSize: -1
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/testDBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.35.124.172:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
 Using shards: 5, batchSize:-1, fetchSize: -1
 Using shards: 5, batchSize:-1, fetchSize: -1DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
 
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
 Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/testDBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
 
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
 Using shards: 5, batchSize:-1, fetchSize: -1
@@ -441,124 +480,85 @@ Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
+Adding shard node URL: jdbc:postgresql://52.42.176.201:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.7.214:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []Adding shard node URL: jdbc:postgresql://52.88.0.231:26267/test
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
 
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-Using shards: 5, batchSize:-1, fetchSize: -1
-Using shards: 5, batchSize:-1, fetchSize: -1
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Adding shard node URL: jdbc:postgresql://52.40.92.79:26267/test
 Using shards: 5, batchSize:-1, fetchSize: -1
 DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
-2017-03-11 02:57:19:369 10 sec: 71511 operations; 7150.38 current ops/sec; est completion in 4 seconds [READ: Count=68052, Max=215935, Min=755, Avg=4517.49, 90=8511, 99=18527, 99.9=146175, 99.99=162687] [UPDATE: Count=3471, Max=239615, Min=16576, Avg=121536.93, 90=148735, 99=210943, 99.9=232191, 99.99=239615] 
-2017-03-11 02:57:23:492 14 sec: 100000 operations; 6909.77 current ops/sec; [READ: Count=27004, Max=211967, Min=773, Avg=4449.64, 90=8743, 99=18975, 99.9=30175, 99.99=79167] [CLEANUP: Count=75, Max=370, Min=72, Avg=115.36, 90=156, 99=255, 99.9=370, 99.99=370] [UPDATE: Count=1473, Max=245503, Min=2196, Avg=98727.78, 90=145151, 99=199551, 99.9=239871, 99.99=245503] 
-[OVERALL], RunTime(ms), 14123.0
-[OVERALL], Throughput(ops/sec), 7080.6485874106065
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+Using shards: 5, batchSize:-1, fetchSize: -1
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+2017-03-12 01:03:22:291 10 sec: 73167 operations; 7316.7 current ops/sec; est completion in 4 seconds [READ: Count=69642, Max=214527, Min=880, Avg=4550.27, 90=8439, 99=18751, 99.9=144127, 99.99=170239] [UPDATE: Count=3546, Max=268031, Min=3920, Avg=117033.03, 90=142975, 99=200959, 99.9=231423, 99.99=268031] 
+2017-03-12 01:03:26:102 13 sec: 100000 operations; 7039.09 current ops/sec; [READ: Count=25501, Max=112511, Min=899, Avg=4179.17, 90=7967, 99=18127, 99.9=30559, 99.99=74175] [CLEANUP: Count=75, Max=441, Min=80, Avg=115.71, 90=141, 99=243, 99.9=441, 99.99=441] [UPDATE: Count=1311, Max=254847, Min=2292, Avg=99311.83, 90=141951, 99=206975, 99.9=242047, 99.99=254847] 
+[OVERALL], RunTime(ms), 13811.0
+[OVERALL], Throughput(ops/sec), 7240.6053146043005
 [TOTAL_GCS_PS_Scavenge], Count, 2.0
-[TOTAL_GC_TIME_PS_Scavenge], Time(ms), 14.0
-[TOTAL_GC_TIME_%_PS_Scavenge], Time(%), 0.09912908022374849
+[TOTAL_GC_TIME_PS_Scavenge], Time(ms), 13.0
+[TOTAL_GC_TIME_%_PS_Scavenge], Time(%), 0.0941278690898559
 [TOTAL_GCS_PS_MarkSweep], Count, 0.0
 [TOTAL_GC_TIME_PS_MarkSweep], Time(ms), 0.0
 [TOTAL_GC_TIME_%_PS_MarkSweep], Time(%), 0.0
 [TOTAL_GCs], Count, 2.0
-[TOTAL_GC_TIME], Time(ms), 14.0
-[TOTAL_GC_TIME_%], Time(%), 0.09912908022374849
-[READ], Operations, 95056.0
-[READ], AverageLatency(us), 4498.217734808954
-[READ], MinLatency(us), 755.0
-[READ], MaxLatency(us), 215935.0
-[READ], 95thPercentileLatency(us), 11119.0
-[READ], 99thPercentileLatency(us), 18655.0
-[READ], Return=OK, 95056
+[TOTAL_GC_TIME], Time(ms), 13.0
+[TOTAL_GC_TIME_%], Time(%), 0.0941278690898559
+[READ], Operations, 95143.0
+[READ], AverageLatency(us), 4450.8039267208305
+[READ], MinLatency(us), 880.0
+[READ], MaxLatency(us), 214527.0
+[READ], 95thPercentileLatency(us), 10799.0
+[READ], 99thPercentileLatency(us), 18623.0
+[READ], Return=OK, 95143
 [CLEANUP], Operations, 75.0
-[CLEANUP], AverageLatency(us), 115.36
-[CLEANUP], MinLatency(us), 72.0
-[CLEANUP], MaxLatency(us), 370.0
-[CLEANUP], 95thPercentileLatency(us), 174.0
-[CLEANUP], 99thPercentileLatency(us), 255.0
-[UPDATE], Operations, 4944.0
-[UPDATE], AverageLatency(us), 114741.24170711974
-[UPDATE], MinLatency(us), 2196.0
-[UPDATE], MaxLatency(us), 245503.0
-[UPDATE], 95thPercentileLatency(us), 167935.0
-[UPDATE], 99thPercentileLatency(us), 209535.0
-[UPDATE], Return=OK, 4944
+[CLEANUP], AverageLatency(us), 115.70666666666666
+[CLEANUP], MinLatency(us), 80.0
+[CLEANUP], MaxLatency(us), 441.0
+[CLEANUP], 95thPercentileLatency(us), 175.0
+[CLEANUP], 99thPercentileLatency(us), 243.0
+[UPDATE], Operations, 4857.0
+[UPDATE], AverageLatency(us), 112249.73193329216
+[UPDATE], MinLatency(us), 2292.0
+[UPDATE], MaxLatency(us), 268031.0
+[UPDATE], 95thPercentileLatency(us), 161919.0
+[UPDATE], 99thPercentileLatency(us), 203263.0
+[UPDATE], Return=OK, 4857

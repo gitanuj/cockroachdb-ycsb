@@ -5,21 +5,16 @@
 ########################
 
 benchmark_dir_prefix="ec2.m3.2xl"
-read_types=( "2" )
-workloads=( "uniform95" )
+read_types=( "0" "2" )
+workloads=( "uniform90" )
 repetitions=1
-num_threads=( 65 70 75 )
+num_threads=( 70 )
 
 # Use ec2.py to generate
 # all_ec2_ids=()
 # all_names=( dsl0 dsl1 dsl2 dsl3 )
 # all_ips=( 128.111.44.237 128.111.44.241 128.111.44.238 128.111.44.163 )
 # all_internal_ips=( 128.111.44.237 128.111.44.241 128.111.44.238 128.111.44.163 )
-
-all_ec2_ids=( i-0914967898a634107 i-048ec5bbf3b0556b7 i-01445990b21457a53 i-0243d1b8a4b88a17c i-0c10c13acd3f31add i-09c008defaa0f623e )
-all_names=( c0 c1 c2 c3 c4 y0 )
-all_ips=( 52.41.133.39 35.163.38.228 52.33.49.79 52.32.76.162 35.163.50.124 35.167.92.141 )
-all_internal_ips=( 172.31.11.78 172.31.5.12 172.31.9.28 172.31.10.252 172.31.10.87 172.31.11.13 )
 
 ssh_user="ubuntu"
 ssh_id_file="~/.ssh/tanuj.pem"
@@ -126,7 +121,12 @@ function cleanup {
 	done
 }
 
+# $1: read_type
+# $2: lhfallback_prob
 function setup {
+	read_type=$1
+	lhfallback_prob=$2
+
 	# setup crdb servers
 	echo "Setting up crdb servers"
 	for i in "${!crdb_machines[@]}"
@@ -138,7 +138,7 @@ function setup {
 			ssh ${crdb_machines[$i]} "$remote_cmd --join=${crdb_internal_ips[0]}:$crdb_port" &
 		fi
 	done
-	sleep 15
+	sleep 10
 
 	# init db
 	ssh ${crdb_machines[0]} "cd $crdb_wdir; echo 'num_replicas: $num_replicas' | ./cockroach --url='${pg_urls[0]}' zone set .default -f -"
@@ -178,7 +178,7 @@ function echoCrdbEnvVars {
 	read_type=$1
 	lhfallback_prob=$2
 
-	echo "export COCKROACH_MAX_TXN_RETRIES=5000 export COCKROACH_READ_TYPE=$read_type; export COCKROACH_LHFALLBACK_PROB=$lhfallback_prob"
+	echo "export COCKROACH_MAX_TXN_RETRIES=1000 export COCKROACH_READ_TYPE=$read_type; export COCKROACH_LHFALLBACK_PROB=$lhfallback_prob"
 }
 
 # $1: load or run
