@@ -5,9 +5,10 @@
 ########################
 
 benchmark_dir_prefix="ec2.m3.2xl"
-read_types=( "0" "2" )
-workloads=( "uniform90" )
-repetitions=1
+read_types=( 3 )
+workloads=( "uniform95" )
+repetitions=5
+lhfallback_probs=( 0.30 )
 num_threads=( 70 )
 
 # Use ec2.py to generate

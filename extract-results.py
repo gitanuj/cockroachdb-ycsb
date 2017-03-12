@@ -11,13 +11,14 @@ from plot import multiplot
 
 OUTPUT_DIR = sys.argv[1]
 
-READ_TYPES = [0, 1, 2, 3]
-MAX_REPETITIONS = 3
+READ_TYPES = [2, 3]
+REPETITIONS = 3
 WORKLOADS = ["uniform95"]
-NUM_THREADS = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]
+NUM_THREADS = [70]
+LHFALLBACK_PROBS = ["0.0", "0.10", "0.20", "0.30", "0.40", "0.50"]
 MACHINES = ['c0', 'c1', 'c2', 'c3', 'c4']
 
-YCSB_PATH = "final-ec2-benchmarks/ec2.m3.2xl.$readtype.$workload.$repetition/$thread/ycsb-results"
+YCSB_PATH = "final-ec2-benchmarks/diff_lhfallback/ec2.m3.2xl.$readtype.$workload.$lhfallback.$repetition/$thread/ycsb-results"
 YCSB_PARAMS = [
 	{ "id" : "[OVERALL], Throughput(ops/sec), ", "title" : "Throughput (ops per sec)" },
 	# { "id" : "[UPDATE], Operations, ", "title" : "Update Operations" },
@@ -32,7 +33,7 @@ YCSB_PARAMS = [
 	# { "id" : "[READ-FAILED], Operations, ", "title" : "Failed Read Operations" },
 ]
 
-DATA_PATH = "final-ec2-benchmarks/ec2.m3.2xl.$readtype.$workload.$repetition/$thread/$machine/data.dump"
+DATA_PATH = "final-ec2-benchmarks/diff_lhfallback/ec2.m3.2xl.$readtype.$workload.$lhfallback.$repetition/$thread/$machine/data.dump"
 DATA_PARAMS = [
 	# { "id" : "0", "title" : "DistSender Requests" },
 	# { "id" : "1", "title" : "DistSender Retries" },
@@ -87,14 +88,16 @@ def my(path_exp, extract_func):
 	for readtype in READ_TYPES:
 		for workload in WORKLOADS:
 			for thread in NUM_THREADS:
-				path = path_exp.replace("$readtype", str(readtype))
-				path = path.replace("$workload", workload)
-				path = path.replace("$thread", str(thread))
-				all_paths.add(path)
+				for lhfallback in LHFALLBACK_PROBS:
+					path = path_exp.replace("$readtype", str(readtype))
+					path = path.replace("$workload", workload)
+					path = path.replace("$thread", str(thread))
+					path = path.replace("$lhfallback", str(lhfallback))
+					all_paths.add(path)
 	results = dict()
 	for path in all_paths:
 		toMean = []
-		for repetition in range(MAX_REPETITIONS):
+		for repetition in range(REPETITIONS):
 			file = path.replace("$repetition", str(repetition))
 			result = extract_func(file)
 			if result is not None:
@@ -114,44 +117,45 @@ def dump_ycsb_graphs(results):
 	path_exp = YCSB_PATH
 
 	# for single workload
-	path = path_exp.replace("$workload", "uniform95")
-	x = NUM_THREADS
-	xlabel = "Threads"
-	ytitles = ["Lease Holder", "Local", "Quorum", "Strongly Consistent Quorum"]
-	for i, param in enumerate(YCSB_PARAMS):
-		ys = []
-		for readtype in READ_TYPES:
-			y = []
-			ys.append(y)
-			for thread in NUM_THREADS:
-				curr = path.replace("$readtype", str(readtype))
-				curr = curr.replace("$thread", str(thread))
-				y.append(results[curr][i])
-		filename = OUTPUT_DIR + "/" + param["title"]+".svg"
-		multiplot(xlabel, x, param["title"], ys, ytitles, filename)
-
-	# for 70 threads
-	# path = path_exp.replace("$thread", "70")
-	# x = [75, 80, 85, 90, 95, 99] # workloads
-	# xlabel = "Read percentage"
+	# path = path_exp.replace("$workload", "hotspot")
+	# x = NUM_THREADS
+	# xlabel = "Threads"
 	# ytitles = ["Lease Holder", "Local", "Quorum", "Strongly Consistent Quorum"]
 	# for i, param in enumerate(YCSB_PARAMS):
 	# 	ys = []
 	# 	for readtype in READ_TYPES:
 	# 		y = []
 	# 		ys.append(y)
-	# 		for workload in WORKLOADS:
+	# 		for thread in NUM_THREADS:
 	# 			curr = path.replace("$readtype", str(readtype))
-	# 			curr = curr.replace("$workload", str(workload))
+	# 			curr = curr.replace("$thread", str(thread))
 	# 			y.append(results[curr][i])
-	# 	filename = OUTPUT_DIR + "/70threads." + param["title"]+"."+str(readtype)+".svg"
+	# 	filename = OUTPUT_DIR + "/" + param["title"]+".svg"
 	# 	multiplot(xlabel, x, param["title"], ys, ytitles, filename)
+
+	# for 70 threads
+	path = path_exp.replace("$thread", "70")
+	path = path.replace("$workload", "uniform95")
+	x = [0, 10, 20, 30, 40, 50] # lhfallbacks
+	xlabel = "Lease Holder Read Percentage"
+	ytitles = ["Quorum", "Strongly Consistent Quorum"]
+	for i, param in enumerate(YCSB_PARAMS):
+		ys = []
+		for readtype in READ_TYPES:
+			y = []
+			ys.append(y)
+			for lhfallback in LHFALLBACK_PROBS:
+				curr = path.replace("$readtype", str(readtype))
+				curr = curr.replace("$lhfallback", lhfallback)
+				y.append(results[curr][i])
+		filename = OUTPUT_DIR + "/" + param["title"]+".svg"
+		multiplot(xlabel, x, param["title"], ys, ytitles, filename)
 
 def dump_data_graphs(results):
 	path_exp = DATA_PATH
 
 	# for single workload
-	path = path_exp.replace("$workload", "uniform95")
+	path = path_exp.replace("$workload", "hotspot")
 	x = NUM_THREADS
 	xlabel = "Threads"
 	ytitles = ["Lease Holder", "Local", "Quorum", "Strongly Consistent Quorum"]
@@ -191,4 +195,4 @@ if __name__ == '__main__':
 
 	data_results = my(DATA_PATH, extractDataParams)
 	dump_raw_results(data_results, DATA_PARAMS, OUTPUT_DIR + "/" + "raw-data-results.txt")
-	dump_data_graphs(data_results)
+	# dump_data_graphs(data_results)
