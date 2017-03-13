@@ -140,7 +140,7 @@ def dump_ycsb_graphs(results):
 	path = path_exp.replace("$thread", "70")
 	# path = path.replace("$workload", "uniform95")
 	x = [30, 40, 50, 60, 70, 80, 90, 99]
-	xlabel = "Hotspot Data Fraction"
+	xlabel = "Read Percentage"
 	ytitles = ["Lease Holder", "Local", "Quorum", "Strongly Consistent Quorum"]
 	for i, param in enumerate(YCSB_PARAMS):
 		ys = []
@@ -193,7 +193,7 @@ def dump_data_graphs(results):
 	# for 70 threads
 	path = path_exp.replace("$thread", "70")
 	x = [30, 40, 50, 60, 70, 80, 90, 99]
-	xlabel = "Hotspot Data Fraction"
+	xlabel = "Read Percentage"
 	ytitles = ["Lease Holder", "Local", "Quorum", "Strongly Consistent Quorum"]
 
 	# DistSender backoff retries
