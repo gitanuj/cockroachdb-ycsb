@@ -5,10 +5,9 @@
 ########################
 
 benchmark_dir_prefix="ec2.m3.2xl"
-read_types=( 3 )
-workloads=( "uniform95" )
-repetitions=5
-lhfallback_probs=( 0.30 )
+read_types=( 2 3 )
+workloads=( "hotspot8015" "hotspot8010" "hotspot8005" "hotspot8001" "hotspot9020" "hotspot9520" "hotspot9920" )
+repetitions=1
 num_threads=( 70 )
 
 # Use ec2.py to generate

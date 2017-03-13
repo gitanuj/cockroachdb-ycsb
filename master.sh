@@ -9,17 +9,15 @@ source "./common.sh"
 # $1: read_type
 # $2: workload
 # $3: count
-# $4: lhfallback_prob
 function run {
 	read_type=$1
 	workload=$2
 	count=$3
-	lhfallback_prob=$4
 
 	printf "\n\n\n"
 	echo "!!!RUN STARTED [read_type: $read_type, workload: $workload, count: $count]"
 
-	benchmark_dir="$benchmark_dir_prefix.$read_type.$workload.$lhfallback_prob.$count"
+	benchmark_dir="$benchmark_dir_prefix.$read_type.$workload.$count"
 
 	setup $read_type $lhfallback_prob
 	loadAndWarmupDb $workload
@@ -40,14 +38,14 @@ for read_type in "${read_types[@]}"
 do
 	for workload in "${workloads[@]}"
 	do
-		for lhfallback_prob in "${lhfallback_probs[@]}"
+		# for lhfallback_prob in "${lhfallback_probs[@]}"
+		# do
+		for (( c=0; c<$repetitions; c++ ))
 		do
-			for (( c=0; c<$repetitions; c++ ))
-			do
-				cleanup
-				run $read_type $workload $c $lhfallback_prob
-			done
+			cleanup
+			run $read_type $workload $c
 		done
+		# done
 	done
 done
 cleanup
