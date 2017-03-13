@@ -13,7 +13,7 @@ OUTPUT_DIR = sys.argv[1]
 
 READ_TYPES = [0, 1, 2, 3]
 REPETITIONS = 3
-WORKLOADS = ["hotspot8001", "hotspot8002", "hotspot8003", "hotspot8004", "hotspot8005", "hotspot8006", "hotspot8007", "hotspot8008", "hotspot8009", "hotspot8010"]
+WORKLOADS = ["uniform30", "uniform40", "uniform50", "uniform60", "uniform70", "uniform80", "uniform90", "uniform99"]
 # NUM_THREADS = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]
 NUM_THREADS = [70]
 # LHFALLBACK_PROBS = ["0.0", "0.10", "0.20", "0.30", "0.40", "0.50"]
@@ -139,7 +139,7 @@ def dump_ycsb_graphs(results):
 	# for 70 threads
 	path = path_exp.replace("$thread", "70")
 	# path = path.replace("$workload", "uniform95")
-	x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+	x = [30, 40, 50, 60, 70, 80, 90, 99]
 	xlabel = "Hotspot Data Fraction"
 	ytitles = ["Lease Holder", "Local", "Quorum", "Strongly Consistent Quorum"]
 	for i, param in enumerate(YCSB_PARAMS):
@@ -192,7 +192,7 @@ def dump_data_graphs(results):
 
 	# for 70 threads
 	path = path_exp.replace("$thread", "70")
-	x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+	x = [30, 40, 50, 60, 70, 80, 90, 99]
 	xlabel = "Hotspot Data Fraction"
 	ytitles = ["Lease Holder", "Local", "Quorum", "Strongly Consistent Quorum"]
 
