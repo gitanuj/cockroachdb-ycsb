@@ -5,8 +5,8 @@
 ########################
 
 benchmark_dir_prefix="ec2.m3.2xl"
-read_types=( 2 3 )
-workloads=( "hotspot8015" "hotspot8010" "hotspot8005" "hotspot8001" "hotspot9020" "hotspot9520" "hotspot9920" )
+read_types=( 2 )
+workloads=( "hotspot9520" )
 repetitions=1
 num_threads=( 70 )
 
@@ -15,6 +15,11 @@ num_threads=( 70 )
 # all_names=( dsl0 dsl1 dsl2 dsl3 )
 # all_ips=( 128.111.44.237 128.111.44.241 128.111.44.238 128.111.44.163 )
 # all_internal_ips=( 128.111.44.237 128.111.44.241 128.111.44.238 128.111.44.163 )
+
+all_ec2_ids=( i-099f56f33bd4c9f3f i-0989aa175b280e999 i-00096db9145bcf216 i-0040de1f950bfcf0c i-0ce3533a6eeea05c2 i-0e49cd78c863eb49d )
+all_names=( c0 c1 c2 c3 c4 y0 )
+all_ips=( 52.88.53.216 52.43.223.63 52.43.91.140 52.43.32.155 52.43.63.45 52.37.126.88 )
+all_internal_ips=( 172.31.7.72 172.31.3.26 172.31.1.95 172.31.8.98 172.31.15.228 172.31.10.49 )
 
 ssh_user="ubuntu"
 ssh_id_file="~/.ssh/tanuj.pem"
