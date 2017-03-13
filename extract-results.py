@@ -11,7 +11,7 @@ from plot import multiplot
 
 OUTPUT_DIR = sys.argv[1]
 
-READ_TYPES = [2, 3]
+READ_TYPES = [0, 1, 2, 3]
 REPETITIONS = 3
 WORKLOADS = ["hotspot8001", "hotspot8002", "hotspot8003", "hotspot8004", "hotspot8005", "hotspot8006", "hotspot8007", "hotspot8008", "hotspot8009", "hotspot8010"]
 # NUM_THREADS = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]
@@ -141,8 +141,7 @@ def dump_ycsb_graphs(results):
 	# path = path.replace("$workload", "uniform95")
 	x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 	xlabel = "Hotspot Data Fraction"
-	# ytitles = ["Lease Holder", "Local", "Quorum", "Strongly Consistent Quorum"]
-	ytitles = ["Quorum", "Strongly Consistent Quorum"]
+	ytitles = ["Lease Holder", "Local", "Quorum", "Strongly Consistent Quorum"]
 	for i, param in enumerate(YCSB_PARAMS):
 		ys = []
 		for readtype in READ_TYPES:
@@ -195,7 +194,7 @@ def dump_data_graphs(results):
 	path = path_exp.replace("$thread", "70")
 	x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 	xlabel = "Hotspot Data Fraction"
-	ytitles = ["Quorum", "Strongly Consistent Quorum"]
+	ytitles = ["Lease Holder", "Local", "Quorum", "Strongly Consistent Quorum"]
 
 	# DistSender backoff retries
 	ys = []

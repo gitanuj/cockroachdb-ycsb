@@ -30,5 +30,7 @@ def multiplot(xlabel, x, ylabel, ys, ytitles, filename):
 	multiplot_internal(xlabel, x, ylabel, ys, ytitles, filename + "/key_right_top", "on right top")
 	multiplot_internal(xlabel, x, ylabel, ys, ytitles, filename + "/key_right_bottom", "on right bottom")
 	multiplot_internal(xlabel, x, ylabel, ys, ytitles, filename + "/key_left_top", "on left top")
+	# for datafraction plots
+	# multiplot_internal(xlabel, x, ylabel, ys, ytitles, filename + "/key_left_top", "on left top height 10")
 	multiplot_internal(xlabel, x, ylabel, ys, ytitles, filename + "/key_left_bottom", "on left bottom")
 	multiplot_internal(xlabel, x, ylabel, ys, ytitles, filename + "/key_off", "off")
