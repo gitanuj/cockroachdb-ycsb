@@ -13,9 +13,9 @@ OUTPUT_DIR = sys.argv[1]
 
 READ_TYPES = [0, 1, 2, 3]
 REPETITIONS = 3
-WORKLOADS = ["uniform30", "uniform40", "uniform50", "uniform60", "uniform70", "uniform80", "uniform90", "uniform99"]
-# NUM_THREADS = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]
-NUM_THREADS = [70]
+WORKLOADS = ["uniform95"]
+NUM_THREADS = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80]
+# NUM_THREADS = [70]
 # LHFALLBACK_PROBS = ["0.0", "0.10", "0.20", "0.30", "0.40", "0.50"]
 MACHINES = ['c0', 'c1', 'c2', 'c3', 'c4']
 
@@ -120,80 +120,48 @@ def dump_ycsb_graphs(results):
 	path_exp = YCSB_PATH
 
 	# for single workload
-	# path = path_exp.replace("$workload", "zipfian95")
-	# x = NUM_THREADS
-	# xlabel = "Threads"
-	# ytitles = ["Lease Holder", "Local", "Quorum", "Strongly Consistent Quorum"]
-	# for i, param in enumerate(YCSB_PARAMS):
-	# 	ys = []
-	# 	for readtype in READ_TYPES:
-	# 		y = []
-	# 		ys.append(y)
-	# 		for thread in NUM_THREADS:
-	# 			curr = path.replace("$readtype", str(readtype))
-	# 			curr = curr.replace("$thread", str(thread))
-	# 			y.append(results[curr][i])
-	# 	filename = OUTPUT_DIR + "/" + param["title"]
-	# 	multiplot(xlabel, x, param["title"], ys, ytitles, filename)
-
-	# for 70 threads
-	path = path_exp.replace("$thread", "70")
-	# path = path.replace("$workload", "uniform95")
-	x = [30, 40, 50, 60, 70, 80, 90, 99]
-	xlabel = "Read Percentage"
+	path = path_exp.replace("$workload", "uniform95")
+	x = NUM_THREADS
+	xlabel = "Threads"
 	ytitles = ["Lease Holder", "Local", "Quorum", "Strongly Consistent Quorum"]
 	for i, param in enumerate(YCSB_PARAMS):
 		ys = []
 		for readtype in READ_TYPES:
 			y = []
 			ys.append(y)
-			for workload in WORKLOADS:
+			for thread in NUM_THREADS:
 				curr = path.replace("$readtype", str(readtype))
-				curr = curr.replace("$workload", str(workload))
-				# curr = curr.replace("$lhfallback", lhfallback)
+				curr = curr.replace("$thread", str(thread))
 				y.append(results[curr][i])
 		filename = OUTPUT_DIR + "/" + param["title"]
 		multiplot(xlabel, x, param["title"], ys, ytitles, filename)
+
+	# for 70 threads
+	# path = path_exp.replace("$thread", "70")
+	# # path = path.replace("$workload", "uniform95")
+	# x = [30, 40, 50, 60, 70, 80, 90, 99]
+	# xlabel = "Read Percentage"
+	# ytitles = ["Lease Holder", "Local", "Quorum", "Strongly Consistent Quorum"]
+	# for i, param in enumerate(YCSB_PARAMS):
+	# 	ys = []
+	# 	for readtype in READ_TYPES:
+	# 		y = []
+	# 		ys.append(y)
+	# 		for workload in WORKLOADS:
+	# 			curr = path.replace("$readtype", str(readtype))
+	# 			curr = curr.replace("$workload", str(workload))
+	# 			# curr = curr.replace("$lhfallback", lhfallback)
+	# 			y.append(results[curr][i])
+	# 	filename = OUTPUT_DIR + "/" + param["title"]
+	# 	multiplot(xlabel, x, param["title"], ys, ytitles, filename)
 
 def dump_data_graphs(results):
 	path_exp = DATA_PATH
 
 	# # for single workload
-	# path = path_exp.replace("$workload", "zipfian95")
-	# x = NUM_THREADS
-	# xlabel = "Threads"
-	# ytitles = ["Lease Holder", "Local", "Quorum", "Strongly Consistent Quorum"]
-
-	# # DistSender backoff retries
-	# ys = []
-	# ylabel = "DistSender backoff retries"
-	# for readtype in READ_TYPES:
-	# 	y = []
-	# 	ys.append(y)
-	# 	for thread in NUM_THREADS:
-	# 		curr = path.replace("$readtype", str(readtype))
-	# 		curr = curr.replace("$thread", str(thread))
-	# 		y.append(results[curr][0])
-	# filename = OUTPUT_DIR + "/"+ylabel
-	# multiplot(xlabel, x, ylabel, ys, ytitles, filename)
-
-	# # Store backoff retries
-	# ys = []
-	# ylabel = "Store backoff retries"
-	# for readtype in READ_TYPES:
-	# 	y = []
-	# 	ys.append(y)
-	# 	for thread in NUM_THREADS:
-	# 		curr = path.replace("$readtype", str(readtype))
-	# 		curr = curr.replace("$thread", str(thread))
-	# 		y.append(results[curr][1] - results[curr][2])
-	# filename = OUTPUT_DIR + "/"+ylabel
-	# multiplot(xlabel, x, ylabel, ys, ytitles, filename)
-
-	# for 70 threads
-	path = path_exp.replace("$thread", "70")
-	x = [30, 40, 50, 60, 70, 80, 90, 99]
-	xlabel = "Read Percentage"
+	path = path_exp.replace("$workload", "uniform95")
+	x = NUM_THREADS
+	xlabel = "Threads"
 	ytitles = ["Lease Holder", "Local", "Quorum", "Strongly Consistent Quorum"]
 
 	# DistSender backoff retries
@@ -202,9 +170,9 @@ def dump_data_graphs(results):
 	for readtype in READ_TYPES:
 		y = []
 		ys.append(y)
-		for workload in WORKLOADS:
+		for thread in NUM_THREADS:
 			curr = path.replace("$readtype", str(readtype))
-			curr = curr.replace("$workload", workload)
+			curr = curr.replace("$thread", str(thread))
 			y.append(results[curr][0])
 	filename = OUTPUT_DIR + "/"+ylabel
 	multiplot(xlabel, x, ylabel, ys, ytitles, filename)
@@ -215,12 +183,44 @@ def dump_data_graphs(results):
 	for readtype in READ_TYPES:
 		y = []
 		ys.append(y)
-		for workload in WORKLOADS:
+		for thread in NUM_THREADS:
 			curr = path.replace("$readtype", str(readtype))
-			curr = curr.replace("$workload", workload)
+			curr = curr.replace("$thread", str(thread))
 			y.append(results[curr][1] - results[curr][2])
 	filename = OUTPUT_DIR + "/"+ylabel
 	multiplot(xlabel, x, ylabel, ys, ytitles, filename)
+
+	# for 70 threads
+	path = path_exp.replace("$thread", "70")
+	x = [30, 40, 50, 60, 70, 80, 90, 99]
+	xlabel = "Read Percentage"
+	ytitles = ["Lease Holder", "Local", "Quorum", "Strongly Consistent Quorum"]
+
+	# DistSender backoff retries
+	# ys = []
+	# ylabel = "DistSender backoff retries"
+	# for readtype in READ_TYPES:
+	# 	y = []
+	# 	ys.append(y)
+	# 	for workload in WORKLOADS:
+	# 		curr = path.replace("$readtype", str(readtype))
+	# 		curr = curr.replace("$workload", workload)
+	# 		y.append(results[curr][0])
+	# filename = OUTPUT_DIR + "/"+ylabel
+	# multiplot(xlabel, x, ylabel, ys, ytitles, filename)
+
+	# # Store backoff retries
+	# ys = []
+	# ylabel = "Store backoff retries"
+	# for readtype in READ_TYPES:
+	# 	y = []
+	# 	ys.append(y)
+	# 	for workload in WORKLOADS:
+	# 		curr = path.replace("$readtype", str(readtype))
+	# 		curr = curr.replace("$workload", workload)
+	# 		y.append(results[curr][1] - results[curr][2])
+	# filename = OUTPUT_DIR + "/"+ylabel
+	# multiplot(xlabel, x, ylabel, ys, ytitles, filename)
 
 if __name__ == '__main__':
 	os.mkdir(OUTPUT_DIR)
