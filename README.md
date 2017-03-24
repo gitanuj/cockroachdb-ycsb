@@ -1,4 +1,12 @@
-# Setup
+# Benchmarking Read Scalability in Raft
+
+This repo contains all the scripts to run YCSB benchmarks on cockroachDB cluster.
+* `common.sh`, `run-benchmark.sh` and `master.sh` are the scripts responsible to setting up machines and running benchamarks.
+* `ec2.py` is a helper script to start/stop ec2 instances.
+* `lhfallback-prob.go` is a helper script to generate `x` for lease-holder reads ratio.
+* `plot.py` and `extract-results.py` are data extraction and plot generation scripts.
+
+## Setup
 ### Cockroach Server
 1. Install `nmon`
 2. Copy over `cockroach` binary
