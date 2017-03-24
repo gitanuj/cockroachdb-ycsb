@@ -6,6 +6,17 @@ This repo contains all the scripts to run YCSB benchmarks on cockroachDB cluster
 * `lhfallback-prob.go` is a helper script to generate `x` for lease-holder reads ratio.
 * `plot.py` and `extract-results.py` are data extraction and plot generation scripts.
 
+## Custom environment vars
+* `COCKROACH_MAX_TXN_RETRIES` (int)
+..+ Workoaround the `zipfian` bug to abort txns after max retries.
+* `COCKROACH_READ_TYPE` (int)
+..+ `0`: Default lease-holder reads
+..+ `1`: Local reads
+..+ `2`: Quorum reads
+..+ `3`: Strongly consistent quorum reads
+* `COCKROACH_LHFALLBACK_PROB` (float [0.0, 1.0])
+..+ Ratio of read requests which should use lease-holder reads while using quorum reads.
+
 ## Setup machines
 ### Cockroach Server
 1. Install `nmon`
