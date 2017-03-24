@@ -7,14 +7,14 @@ This repo contains all the scripts to run YCSB benchmarks on cockroachDB cluster
 * `plot.py` and `extract-results.py` are data extraction and plot generation scripts.
 
 ## Custom environment vars
-* `COCKROACH_MAX_TXN_RETRIES` (int)
-  + Workoaround the `zipfian` bug to abort txns after max retries.
-* `COCKROACH_READ_TYPE` (int)
+* `COCKROACH_MAX_TXN_RETRIES` int [0, INT_MAX)
+  + Workaround the zipfian bug to abort txns after max retries.
+* `COCKROACH_READ_TYPE` int {0, 1, 2, 3}
   + `0`: Default lease-holder reads
   + `1`: Local reads
   + `2`: Quorum reads
   + `3`: Strongly consistent quorum reads
-* `COCKROACH_LHFALLBACK_PROB` (float [0.0, 1.0])
+* `COCKROACH_LHFALLBACK_PROB` float [0.0, 1.0]
   + Ratio of read requests which should use lease-holder reads while using quorum reads.
 
 ## Setup machines
