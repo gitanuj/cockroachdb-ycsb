@@ -6,7 +6,7 @@ This repo contains all the scripts to run YCSB benchmarks on cockroachDB cluster
 * `lhfallback-prob.go` is a helper script to generate `x` for lease-holder reads ratio.
 * `plot.py` and `extract-results.py` are data extraction and plot generation scripts.
 
-## Setup
+## Setup machines
 ### Cockroach Server
 1. Install `nmon`
 2. Copy over `cockroach` binary
@@ -19,6 +19,6 @@ This repo contains all the scripts to run YCSB benchmarks on cockroachDB cluster
 1. Copy over `common.sh`, `master.sh` and `run-benchmark.sh`
 2. (Optional) Copy over `ec2.py` and `lhfallback-prob.go`
 
-# Steps
+## Steps to run
 1. Update vars in `common.sh`
 2. Execute `master.sh`
