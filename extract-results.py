@@ -1,5 +1,5 @@
 #
-# Extracts results and plots graphs
+# Custom script to extract results and plot graphs
 # python extract-ycsb-results.py <output-dir>
 # 	Qualifiers: $readtype, $workload, $repetition, $thread, $machine
 #

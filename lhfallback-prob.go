@@ -1,4 +1,5 @@
 //
+// Calculates 'x' for using lease-holder for reads
 // Usage: go run lhfallback-prob.go <num_nodes>
 // Current implementation divides requests equally
 //

@@ -1,4 +1,5 @@
 #
+# Starts/Stops EC2 instances for use by scripts
 # Usage: python ec2.py <args>
 #	start <crdb_ami_id> <ycsb_ami_id> <cluster_size> <machine_type>
 #		Returns:	<ids>

@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# To repro the 'zipfian' workload bug in crdb
+#
 
 source "./common.sh"
 

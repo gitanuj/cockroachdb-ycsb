@@ -1,3 +1,7 @@
+#
+# Helper file to plot graphs using gnuplot
+#
+
 import Gnuplot, Gnuplot.funcutils
 import os
 

@@ -38,21 +38,16 @@ for read_type in "${read_types[@]}"
 do
 	for workload in "${workloads[@]}"
 	do
-		# for lhfallback_prob in "${lhfallback_probs[@]}"
-		# do
 		for (( c=0; c<$repetitions; c++ ))
 		do
 			cleanup
 			run $read_type $workload $c
 		done
-		# done
 	done
 done
 cleanup
 
-say "Benchmark Complete"
-
-# if [[ ! -z ${all_ec2_ids[@]} ]]; then
-# 	echo "Terminating EC2 instances..."
-# 	python "ec2.py" "stop" "${all_ec2_ids[@]}"	
-# fi
+if [[ ! -z ${all_ec2_ids[@]} ]]; then
+	echo "Terminating EC2 instances..."
+	python "ec2.py" "stop" "${all_ec2_ids[@]}"	
+fi
