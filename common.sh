@@ -4,28 +4,32 @@
 ### custom variables ###
 ########################
 
-benchmark_dir_prefix="ec2.m3.2xl"
-read_types=( 1 )
-workloads=( "hotspot8007" "hotspot8008" )
+benchmark_dir_prefix="mytest"
+read_types=( 0 1 2 3 )
+workloads=( "uniform95" )
 repetitions=2
-num_threads=( 70 )
+num_threads=( 1 5 10 15 20 )
 
 # Use ec2.py to generate
-# all_ec2_ids=()
-# all_names=( dsl0 dsl1 dsl2 dsl3 )
-# all_ips=( 128.111.44.237 128.111.44.241 128.111.44.238 128.111.44.163 )
-# all_internal_ips=( 128.111.44.237 128.111.44.241 128.111.44.238 128.111.44.163 )
+all_ec2_ids=()
+all_names=( dsl0 dsl1 dsl2 dsl3 )
+all_ips=( 128.111.44.237 128.111.44.241 128.111.44.238 128.111.44.163 )
+all_internal_ips=( 128.111.44.237 128.111.44.241 128.111.44.238 128.111.44.163 )
 
-ssh_user="ubuntu"
-ssh_id_file="~/.ssh/tanuj.pem"
+# for ec2
+# ssh_user="ubuntu"
+# ssh_id_file="~/.ssh/tanuj.pem"
+# for dsl
+ssh_user="migr"
+ssh_id_file=""
 
 db_name="test"
 crdb_port="26267"
 crdb_http_port="8081"
 
-crdb_wdir="~"
-ycsb_wdir="~"
-nmon_wdir="~"
+crdb_wdir="~/tanuj"
+ycsb_wdir="~/tanuj"
+nmon_wdir="~/tanuj"
 
 #########################
 ### derived variables ###
